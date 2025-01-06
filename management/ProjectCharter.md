@@ -27,17 +27,17 @@ To create this API, we need an algorithm to find the quickest travel between 2 p
 
 ## C. Project Deliverable
 
-The project will be rythmed by deadlines fixed by us because the school has just given the end deadline. So the milestones for the project are the following :
+For this project we manage our own deadlines, so the milestones for the project are the following :
 
-- 01/20/2025: Fonctional Specifications
-- 01/27/2025: Technical Specifications
-- 02/07/2025: Test Plan
-- 02/07/2025: User Manual
-- 02/07/2025: Final API
+- 01/20/2025: Fonctional Specifications,
+- 01/27/2025: Technical Specifications,
+- 02/07/2025: Test Plan,
+- 02/07/2025: User Manual,
+- 02/07/2025: Final API,
 
 ## D. Cost
 
-The budget for this project is limited to the material provided at the beginning of the project. About the time spent on the project, we have at least 94h30 without overtime.
+The budget for this project is limited to the material provided. About the time spent on the project, we have at least 94h30 without overtime.
 
 ## E. Risks
 
