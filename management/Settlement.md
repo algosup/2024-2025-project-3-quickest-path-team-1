@@ -22,5 +22,5 @@ New deadline :
 # Signature of each members
 
 |SANTOS Alexis| NOGUES Loïc | MEGNAN Lucas | BOUTON Yann-Maël | PAGNOUX Grégory | DE GERMAIN Léna |
-|-|-|-|-|-|-|
-|||||||
+|:-:|:-:|:-:|:-:|:-:|:-:|
+|agree||agree|agree|agree|agree|
