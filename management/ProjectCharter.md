@@ -29,11 +29,11 @@ To create this API, we need an algorithm to find the quickest travel between 2 p
 
 For this project we manage our own deadlines, so the milestones for the project are the following:
 
-- 01/20/2025: Fonctional Specifications,
-- 01/27/2025: Technical Specifications,
-- 02/07/2025: Test Plan,
-- 02/07/2025: User Manual,
-- 02/07/2025: Final API,
+- 01/20/2025: Fonctional Specifications.
+- 01/27/2025: Technical Specifications.
+- 02/07/2025: Test Plan.
+- 02/07/2025: User Manual.
+- 02/07/2025: Final API.
 
 ## D. Cost
 
