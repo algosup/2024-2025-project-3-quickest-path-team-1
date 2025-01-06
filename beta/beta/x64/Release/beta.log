@@ -1,0 +1,13 @@
+﻿  a_star.cpp
+  connectivity.cpp
+C:\Users\Yann-MaelBOUTON\OneDrive - ALGOSUP SAS\Desktop\project\p3-CPP-quickestpath-DEV-2425\src\beta\connectivity.cpp(101,25): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  integrity.cpp
+  log.cpp
+  main.cpp
+  api.cpp
+C:\Users\Yann-MaelBOUTON\OneDrive - ALGOSUP SAS\Desktop\project\p3-CPP-quickestpath-DEV-2425\src\beta\api.cpp(73,91): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 549 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  beta.vcxproj -> C:\Users\Yann-MaelBOUTON\OneDrive - ALGOSUP SAS\Desktop\project\p3-CPP-quickestpath-DEV-2425\src\beta\x64\Release\beta.exe

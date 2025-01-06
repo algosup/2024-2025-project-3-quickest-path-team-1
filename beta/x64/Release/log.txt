@@ -1,0 +1,60 @@
+[01/06/25] [16:25:09] > Logging started.
+[01/06/25] [16:25:27] > Starting integrity validation.
+[01/06/25] [16:25:27] > File opened successfully: C:\Users\Yann-MaelBOUTON\Downloads\USA-roads.csv
+[01/06/25] [16:25:30] > Processed 1000000 lines.
+[01/06/25] [16:25:31] > Assigned indices to 1000000 nodes.
+[01/06/25] [16:25:33] > Processed 2000000 lines.
+[01/06/25] [16:25:35] > Assigned indices to 2000000 nodes.
+[01/06/25] [16:25:37] > Processed 3000000 lines.
+[01/06/25] [16:25:39] > Assigned indices to 3000000 nodes.
+[01/06/25] [16:25:40] > Processed 4000000 lines.
+[01/06/25] [16:25:42] > Assigned indices to 4000000 nodes.
+[01/06/25] [16:25:43] > Processed 5000000 lines.
+[01/06/25] [16:25:46] > Processed 6000000 lines.
+[01/06/25] [16:25:47] > Assigned indices to 5000000 nodes.
+[01/06/25] [16:25:49] > Processed 7000000 lines.
+[01/06/25] [16:25:50] > Assigned indices to 6000000 nodes.
+[01/06/25] [16:25:52] > Processed 8000000 lines.
+[01/06/25] [16:25:54] > Assigned indices to 7000000 nodes.
+[01/06/25] [16:25:55] > Processed 9000000 lines.
+[01/06/25] [16:25:58] > Assigned indices to 8000000 nodes.
+[01/06/25] [16:25:58] > Processed 10000000 lines.
+[01/06/25] [16:26:01] > Assigned indices to 9000000 nodes.
+[01/06/25] [16:26:01] > Processed 11000000 lines.
+[01/06/25] [16:26:05] > Processed 12000000 lines.
+[01/06/25] [16:26:05] > Assigned indices to 10000000 nodes.
+[01/06/25] [16:26:08] > Processed 13000000 lines.
+[01/06/25] [16:26:09] > Assigned indices to 11000000 nodes.
+[01/06/25] [16:26:11] > Processed 14000000 lines.
+[01/06/25] [16:26:13] > Assigned indices to 12000000 nodes.
+[01/06/25] [16:26:14] > Processed 15000000 lines.
+[01/06/25] [16:26:16] > Assigned indices to 13000000 nodes.
+[01/06/25] [16:26:18] > Processed 16000000 lines.
+[01/06/25] [16:26:20] > Assigned indices to 14000000 nodes.
+[01/06/25] [16:26:21] > Processed 17000000 lines.
+[01/06/25] [16:26:24] > Processed 18000000 lines.
+[01/06/25] [16:26:24] > Assigned indices to 15000000 nodes.
+[01/06/25] [16:26:27] > Processed 19000000 lines.
+[01/06/25] [16:26:28] > Assigned indices to 16000000 nodes.
+[01/06/25] [16:26:30] > Processed 20000000 lines.
+[01/06/25] [16:26:32] > Assigned indices to 17000000 nodes.
+[01/06/25] [16:26:34] > Processed 21000000 lines.
+[01/06/25] [16:26:36] > Assigned indices to 18000000 nodes.
+[01/06/25] [16:26:37] > Processed 22000000 lines.
+[01/06/25] [16:26:40] > Assigned indices to 19000000 nodes.
+[01/06/25] [16:26:40] > Processed 23000000 lines.
+[01/06/25] [16:26:43] > Processed 24000000 lines.
+[01/06/25] [16:26:44] > Assigned indices to 20000000 nodes.
+[01/06/25] [16:26:47] > Processed 25000000 lines.
+[01/06/25] [16:26:48] > Assigned indices to 21000000 nodes.
+[01/06/25] [16:26:50] > Processed 26000000 lines.
+[01/06/25] [16:26:52] > Assigned indices to 22000000 nodes.
+[01/06/25] [16:26:54] > Processed 27000000 lines.
+[01/06/25] [16:26:56] > Assigned indices to 23000000 nodes.
+[01/06/25] [16:26:57] > Processed 28000000 lines.
+[01/06/25] [16:27:00] > Total lines processed: 28854312
+[01/06/25] [16:27:00] > Total unique nodes: 23947347
+[01/06/25] [16:27:00] > Total edges collected: 28854312
+[01/06/25] [16:27:00] > Rewound file stream for second pass.
+[01/06/25] [16:27:00] > Union-Find structure initialized.
+[01/06/25] [16:27:00] > Cycle detected when connecting nodes 24 and 5.
