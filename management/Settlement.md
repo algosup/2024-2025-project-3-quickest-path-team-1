@@ -14,10 +14,11 @@ There are several levels of sanctions:
   
 New deadline :
 
-- Functional Specification / User manual : **01/20/2025**
+- Functional Specification : **01/20/2025**
 - Technical Specification : **01/27/2025**
-- Test Cases / Test Plan : **02/10/2025**
-- Code : **02/10/2025**
+- Test Cases / Test Plan : **02/07/2025**
+- Code : **02/07/2025**
+- User Manual : **02/07/2025**
 
 # Signature of each members
 
