@@ -38,6 +38,9 @@
   - [C. Tasks and Deliverables](#c-tasks-and-deliverables)
   - [D. Environmental Needs](#d-environmental-needs)
     - [1. Test Environment](#1-test-environment)
+      - [a. Hardware](#a-hardware)
+      - [b. Network](#b-network)
+      - [c. Software](#c-software)
     - [2. Test Lab](#2-test-lab)
 - [III. Approach](#iii-approach)
   - [A. Assumptions / Contraints](#a-assumptions--contraints)
@@ -61,7 +64,21 @@
 
 ## A. Test Objectives
 
+The system integration test of the quickest path should validate the requirements perspective like:
+
+- The returned path should not exceed the shortest path duration by more than 10%.
+- The API must handle all queries within 1 second on a typical laptop.
+<!-- - Big O complexity
+- Security -->
+- Verify that the file forms a Directed Acyclic Graph (DAG) and is free of loops.
+- Ensure that the graph is fully connected, meaning it is possible to navigate between any two landmarks.
+- Demonstrating the ability to handle multiple formats (XML and JSON).
+- A utility to verify the integrity of the provided CSV file. 
+
 ## B. Scope of Testing
+
+Our scope is to have a high performant software solution that calculate two landmarks in the US. 
+Our algorithm needs to include a research system to find the quickest path between this two landmarks.
 
 ## C. Product Overview
 
@@ -75,7 +92,31 @@
 
 ## A. Test Team
 
+The following people will be on the system integration test team:
+
+| Role | Name | Level of involvement | Responsibilities |
+|------|------|----------------------|------------------|
+| Project Manager      | Alexis Santos   | Xhrs  |  |
+| Technical Lead       | Grégory Pagnoux | 1hrs  |  |
+| Quality Assurance    | Lucas MEGNAN    | 93hrs |  |
+<!-- | Software Enginner    | Yann-maël       | Xhrs  |  | -->
+
 ## B. Team Reviews
+
+The following reviews will be conducted by the entire test team and the QA. 
+Refer to the work schedule for the planned review dates.
+
+• Settlement review.
+• Project Charter review.
+• review the Management Documentation of every weeks.
+• Functional Specifications review.
+• Technical Specifications review.
+• Code review.
+• User Manual review.
+• Test plan review.
+• Test case review.
+<!-- • Test progress review. -->
+• Post Mortem review.
 
 ## C. Tasks and Deliverables
 
@@ -83,7 +124,29 @@
 
 ### 1. Test Environment
 
+#### a. Hardware
+
+All test cases will be executed on the SE's and QA's computer.
+
+(1) Mac
+
+(1) Windows
+
+#### b. Network
+
+Wifi: 
+
+#### c. Software
+
+IDE Visual Studio
+VScode
+
 ### 2. Test Lab
+
+The following items will be needed full-time by the system integration test team:
+
+• 1 whiteboard (large) with markers and erasers.
+• 1 screen to share informations from computers.
 
 # III. Approach
 
@@ -102,6 +165,12 @@
 ## A. Test Execution
 
 ### 1. Test Cases
+
+For each requirement, system feature, or algorithm to be tested, the tester will execute a set of pre-defined test cases.
+Each test case will have a series of actions and expected results. 
+As each action is performed, the results are evaluated.
+If the observed results are equal to the expected results, a checkmark is placed in the “pass” column.
+If the observed results are not equal to the expected results, a checkmark is placed in the “fail” column.
 
 ### 2. Order of Testing
 
