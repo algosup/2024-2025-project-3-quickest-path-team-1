@@ -50,6 +50,10 @@
     - [1. Test Cases](#1-test-cases)
     - [2. Order of Testing](#2-order-of-testing)
   - [B. Pass / Fail criteria](#b-pass--fail-criteria)
+  - [C. Suspension Criteria and Resumption Requirements](#c-suspension-criteria-and-resumption-requirements)
+    - [1. Normal Criteria](#1-normal-criteria)
+    - [2. Abnormal Criteria](#2-abnormal-criteria)
+  - [D. Defect Management](#d-defect-management)
 
 </details>
 
@@ -104,3 +108,11 @@
 ## B. Pass / Fail criteria
 
 To pass the system integration test, the following criteria must be met:
+
+## C. Suspension Criteria and Resumption Requirements
+
+### 1. Normal Criteria
+
+### 2. Abnormal Criteria
+
+## D. Defect Management
