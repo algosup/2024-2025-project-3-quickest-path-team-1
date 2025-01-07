@@ -45,11 +45,9 @@
     <ClCompile Include="log.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\db\USA-roads.csv">
+    <ClCompile Include="loader.cpp">
       <Filter>Source Files\db</Filter>
-    </None>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="incl.h">

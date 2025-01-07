@@ -47,8 +47,10 @@ int main(int argc, char* argv[])
         std::cout << "No path entered. Downloading from GitHub..." << std::endl;
     }
 
-    /* PTN DE PROBLEME DE MERDE
-    static bool result_integrity = integrity_validator(map_path);
+    graph_data gdata = load_graph_data(map_path);
+
+
+    static bool result_integrity = integrity_validator(gdata);
     if (!result_integrity)
     {
         std::cout << "[FAILED] integrity check resulted in an error. please ensure that your graph form a Directed Acyclic Graph (DAG) and is free of loops." << std::endl;
@@ -57,8 +59,8 @@ int main(int argc, char* argv[])
     else {
         std::cout << "[SUCCESS] integrity check passed without any error. continueing." << std::endl;
     }
-    */
-    static bool result_connectivity = connectivity_validator(map_path); 
+
+    static bool result_connectivity = connectivity_validator(gdata);
     if (!result_connectivity)
     {
         std::cout << "[FAILED] connectivity check resulted in an error. please ensure that the graph is fully connected, meaning it is possible to navigate between any two landmarks. " << std::endl;
@@ -68,5 +70,5 @@ int main(int argc, char* argv[])
         std::cout << "[SUCCESS] connectivity check passed without any error. continueing." << std::endl;
     }
 
-    api_start();
+    api_start(gdata);
 }

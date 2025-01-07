@@ -118,6 +118,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,12 +131,10 @@
     <ClCompile Include="a_star.cpp" />
     <ClCompile Include="connectivity.cpp" />
     <ClCompile Include="integrity.cpp" />
+    <ClCompile Include="loader.cpp" />
     <ClCompile Include="log.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="api.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\db\USA-roads.csv" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="incl.h" />

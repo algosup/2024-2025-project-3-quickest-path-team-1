@@ -1,29 +1,37 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Yann-MaelBOUTON\\OneDrive - ALGOSUP SAS\\Desktop\\project\\p3-CPP-quickestpath-DEV-2425\\src\\beta\\",
+  "WorkspaceRootPath": "C:\\Users\\devnj\\Documents\\GitHub\\2024-2025-project-3-quickest-path-team-1\\beta\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F905659B-8D11-4AF2-B784-F1ACED570D1E}|beta.vcxproj|C:\\Users\\Yann-MaelBOUTON\\OneDrive - ALGOSUP SAS\\Desktop\\project\\p3-CPP-quickestpath-DEV-2425\\src\\beta\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F905659B-8D11-4AF2-B784-F1ACED570D1E}|beta.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F905659B-8D11-4AF2-B784-F1ACED570D1E}|beta.vcxproj|C:\\Users\\Yann-MaelBOUTON\\OneDrive - ALGOSUP SAS\\Desktop\\project\\p3-CPP-quickestpath-DEV-2425\\src\\beta\\integrity.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F905659B-8D11-4AF2-B784-F1ACED570D1E}|beta.vcxproj|solutionrelative:integrity.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F905659B-8D11-4AF2-B784-F1ACED570D1E}|beta.vcxproj|C:\\Users\\Yann-MaelBOUTON\\OneDrive - ALGOSUP SAS\\Desktop\\project\\p3-CPP-quickestpath-DEV-2425\\src\\beta\\connectivity.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F905659B-8D11-4AF2-B784-F1ACED570D1E}|beta.vcxproj|solutionrelative:connectivity.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F905659B-8D11-4AF2-B784-F1ACED570D1E}|beta.vcxproj|C:\\Users\\Yann-MaelBOUTON\\OneDrive - ALGOSUP SAS\\Desktop\\project\\p3-CPP-quickestpath-DEV-2425\\src\\beta\\api.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{F905659B-8D11-4AF2-B784-F1ACED570D1E}|beta.vcxproj|solutionrelative:api.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F905659B-8D11-4AF2-B784-F1ACED570D1E}|beta.vcxproj|C:\\Users\\Yann-MaelBOUTON\\OneDrive - ALGOSUP SAS\\Desktop\\project\\p3-CPP-quickestpath-DEV-2425\\src\\beta\\log.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{F905659B-8D11-4AF2-B784-F1ACED570D1E}|beta.vcxproj|C:\\Users\\devnj\\Documents\\GitHub\\2024-2025-project-3-quickest-path-team-1\\beta\\log.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F905659B-8D11-4AF2-B784-F1ACED570D1E}|beta.vcxproj|solutionrelative:log.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F905659B-8D11-4AF2-B784-F1ACED570D1E}|beta.vcxproj|C:\\Users\\Yann-MaelBOUTON\\OneDrive - ALGOSUP SAS\\Desktop\\project\\p3-CPP-quickestpath-DEV-2425\\src\\beta\\incl.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{F905659B-8D11-4AF2-B784-F1ACED570D1E}|beta.vcxproj|C:\\Users\\devnj\\Documents\\GitHub\\2024-2025-project-3-quickest-path-team-1\\beta\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F905659B-8D11-4AF2-B784-F1ACED570D1E}|beta.vcxproj|solutionrelative:main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F905659B-8D11-4AF2-B784-F1ACED570D1E}|beta.vcxproj|C:\\Users\\devnj\\Documents\\GitHub\\2024-2025-project-3-quickest-path-team-1\\beta\\api.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F905659B-8D11-4AF2-B784-F1ACED570D1E}|beta.vcxproj|solutionrelative:api.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F905659B-8D11-4AF2-B784-F1ACED570D1E}|beta.vcxproj|C:\\Users\\devnj\\Documents\\GitHub\\2024-2025-project-3-quickest-path-team-1\\beta\\a_star.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F905659B-8D11-4AF2-B784-F1ACED570D1E}|beta.vcxproj|solutionrelative:a_star.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F905659B-8D11-4AF2-B784-F1ACED570D1E}|beta.vcxproj|C:\\Users\\devnj\\Documents\\GitHub\\2024-2025-project-3-quickest-path-team-1\\beta\\integrity.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F905659B-8D11-4AF2-B784-F1ACED570D1E}|beta.vcxproj|solutionrelative:integrity.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F905659B-8D11-4AF2-B784-F1ACED570D1E}|beta.vcxproj|C:\\Users\\devnj\\Documents\\GitHub\\2024-2025-project-3-quickest-path-team-1\\beta\\connectivity.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F905659B-8D11-4AF2-B784-F1ACED570D1E}|beta.vcxproj|solutionrelative:connectivity.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F905659B-8D11-4AF2-B784-F1ACED570D1E}|beta.vcxproj|C:\\Users\\devnj\\Documents\\GitHub\\2024-2025-project-3-quickest-path-team-1\\beta\\loader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{F905659B-8D11-4AF2-B784-F1ACED570D1E}|beta.vcxproj|solutionrelative:loader.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F905659B-8D11-4AF2-B784-F1ACED570D1E}|beta.vcxproj|C:\\Users\\devnj\\Documents\\GitHub\\2024-2025-project-3-quickest-path-team-1\\beta\\incl.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{F905659B-8D11-4AF2-B784-F1ACED570D1E}|beta.vcxproj|solutionrelative:incl.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -34,84 +42,110 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "log.cpp",
-              "DocumentMoniker": "C:\\Users\\Yann-MaelBOUTON\\OneDrive - ALGOSUP SAS\\Desktop\\project\\p3-CPP-quickestpath-DEV-2425\\src\\beta\\log.cpp",
-              "RelativeDocumentMoniker": "log.cpp",
-              "ToolTip": "C:\\Users\\Yann-MaelBOUTON\\OneDrive - ALGOSUP SAS\\Desktop\\project\\p3-CPP-quickestpath-DEV-2425\\src\\beta\\log.cpp",
-              "RelativeToolTip": "log.cpp",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAACgAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-06T12:37:43.97Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "main.cpp",
-              "DocumentMoniker": "C:\\Users\\Yann-MaelBOUTON\\OneDrive - ALGOSUP SAS\\Desktop\\project\\p3-CPP-quickestpath-DEV-2425\\src\\beta\\main.cpp",
-              "RelativeDocumentMoniker": "main.cpp",
-              "ToolTip": "C:\\Users\\Yann-MaelBOUTON\\OneDrive - ALGOSUP SAS\\Desktop\\project\\p3-CPP-quickestpath-DEV-2425\\src\\beta\\main.cpp",
-              "RelativeToolTip": "main.cpp",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAADEAAAAAAAAAAAAAAA==",
+              "Title": "log.cpp",
+              "DocumentMoniker": "C:\\Users\\devnj\\Documents\\GitHub\\2024-2025-project-3-quickest-path-team-1\\beta\\log.cpp",
+              "RelativeDocumentMoniker": "log.cpp",
+              "ToolTip": "C:\\Users\\devnj\\Documents\\GitHub\\2024-2025-project-3-quickest-path-team-1\\beta\\log.cpp",
+              "RelativeToolTip": "log.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-06T12:10:48.978Z",
+              "WhenOpened": "2025-01-07T22:22:13.178Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "integrity.cpp",
-              "DocumentMoniker": "C:\\Users\\Yann-MaelBOUTON\\OneDrive - ALGOSUP SAS\\Desktop\\project\\p3-CPP-quickestpath-DEV-2425\\src\\beta\\integrity.cpp",
-              "RelativeDocumentMoniker": "integrity.cpp",
-              "ToolTip": "C:\\Users\\Yann-MaelBOUTON\\OneDrive - ALGOSUP SAS\\Desktop\\project\\p3-CPP-quickestpath-DEV-2425\\src\\beta\\integrity.cpp",
-              "RelativeToolTip": "integrity.cpp",
-              "ViewState": "AgIAABEAAAAAAAAAAADwvx8AAAA1AAAAAAAAAA==",
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\devnj\\Documents\\GitHub\\2024-2025-project-3-quickest-path-team-1\\beta\\main.cpp",
+              "RelativeDocumentMoniker": "main.cpp",
+              "ToolTip": "C:\\Users\\devnj\\Documents\\GitHub\\2024-2025-project-3-quickest-path-team-1\\beta\\main.cpp",
+              "RelativeToolTip": "main.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-06T12:51:43.013Z",
+              "WhenOpened": "2025-01-07T21:54:48.475Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "incl.h",
+              "DocumentMoniker": "C:\\Users\\devnj\\Documents\\GitHub\\2024-2025-project-3-quickest-path-team-1\\beta\\incl.h",
+              "RelativeDocumentMoniker": "incl.h",
+              "ToolTip": "C:\\Users\\devnj\\Documents\\GitHub\\2024-2025-project-3-quickest-path-team-1\\beta\\incl.h",
+              "RelativeToolTip": "incl.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-01-07T22:16:23.99Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "a_star.cpp",
+              "DocumentMoniker": "C:\\Users\\devnj\\Documents\\GitHub\\2024-2025-project-3-quickest-path-team-1\\beta\\a_star.cpp",
+              "RelativeDocumentMoniker": "a_star.cpp",
+              "ToolTip": "C:\\Users\\devnj\\Documents\\GitHub\\2024-2025-project-3-quickest-path-team-1\\beta\\a_star.cpp",
+              "RelativeToolTip": "a_star.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-07T22:15:02.533Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "integrity.cpp",
+              "DocumentMoniker": "C:\\Users\\devnj\\Documents\\GitHub\\2024-2025-project-3-quickest-path-team-1\\beta\\integrity.cpp",
+              "RelativeDocumentMoniker": "integrity.cpp",
+              "ToolTip": "C:\\Users\\devnj\\Documents\\GitHub\\2024-2025-project-3-quickest-path-team-1\\beta\\integrity.cpp",
+              "RelativeToolTip": "integrity.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-07T22:10:36.335Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "loader.cpp",
+              "DocumentMoniker": "C:\\Users\\devnj\\Documents\\GitHub\\2024-2025-project-3-quickest-path-team-1\\beta\\loader.cpp",
+              "RelativeDocumentMoniker": "loader.cpp",
+              "ToolTip": "C:\\Users\\devnj\\Documents\\GitHub\\2024-2025-project-3-quickest-path-team-1\\beta\\loader.cpp",
+              "RelativeToolTip": "loader.cpp",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAAAFEAAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-07T21:55:02.323Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "api.cpp",
-              "DocumentMoniker": "C:\\Users\\Yann-MaelBOUTON\\OneDrive - ALGOSUP SAS\\Desktop\\project\\p3-CPP-quickestpath-DEV-2425\\src\\beta\\api.cpp",
+              "DocumentMoniker": "C:\\Users\\devnj\\Documents\\GitHub\\2024-2025-project-3-quickest-path-team-1\\beta\\api.cpp",
               "RelativeDocumentMoniker": "api.cpp",
-              "ToolTip": "C:\\Users\\Yann-MaelBOUTON\\OneDrive - ALGOSUP SAS\\Desktop\\project\\p3-CPP-quickestpath-DEV-2425\\src\\beta\\api.cpp",
+              "ToolTip": "C:\\Users\\devnj\\Documents\\GitHub\\2024-2025-project-3-quickest-path-team-1\\beta\\api.cpp",
               "RelativeToolTip": "api.cpp",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAAD4AAABsAAAAAAAAAA==",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAAKgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-01-06T12:15:57.01Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "connectivity.cpp",
-              "DocumentMoniker": "C:\\Users\\Yann-MaelBOUTON\\OneDrive - ALGOSUP SAS\\Desktop\\project\\p3-CPP-quickestpath-DEV-2425\\src\\beta\\connectivity.cpp",
-              "RelativeDocumentMoniker": "connectivity.cpp",
-              "ToolTip": "C:\\Users\\Yann-MaelBOUTON\\OneDrive - ALGOSUP SAS\\Desktop\\project\\p3-CPP-quickestpath-DEV-2425\\src\\beta\\connectivity.cpp",
-              "RelativeToolTip": "connectivity.cpp",
-              "ViewState": "AgIAACYAAAAAAAAAAADwv2kAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-01-06T12:15:37.428Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "incl.h",
-              "DocumentMoniker": "C:\\Users\\Yann-MaelBOUTON\\OneDrive - ALGOSUP SAS\\Desktop\\project\\p3-CPP-quickestpath-DEV-2425\\src\\beta\\incl.h",
-              "RelativeDocumentMoniker": "incl.h",
-              "ToolTip": "C:\\Users\\Yann-MaelBOUTON\\OneDrive - ALGOSUP SAS\\Desktop\\project\\p3-CPP-quickestpath-DEV-2425\\src\\beta\\incl.h",
-              "RelativeToolTip": "incl.h",
-              "ViewState": "AgIAADMAAAAAAAAAAAAAAC4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-01-06T12:10:47.309Z",
+              "Title": "connectivity.cpp",
+              "DocumentMoniker": "C:\\Users\\devnj\\Documents\\GitHub\\2024-2025-project-3-quickest-path-team-1\\beta\\connectivity.cpp",
+              "RelativeDocumentMoniker": "connectivity.cpp",
+              "ToolTip": "C:\\Users\\devnj\\Documents\\GitHub\\2024-2025-project-3-quickest-path-team-1\\beta\\connectivity.cpp",
+              "RelativeToolTip": "connectivity.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-01-07T21:54:43.058Z",
               "EditorCaption": ""
             }
           ]
