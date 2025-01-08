@@ -5,23 +5,23 @@
 
 | Created by | Creation date | Last modified |
 |:-------------:|:---------------:|:--------:|
-| Megnan Lucas | 01/06/2025 | 01/06/2025 |
+| Megnan Lucas | 01/06/2025 | 01/08/2025 |
 
 <br>
 </p>
 
-## Test-Plan-Approval
+## Test Plan Approval
 
 | Role | Name | Signature | Date |
 |------|------|-----------|------|
-| Project Manager      | [Alexis SANTOS](https://github.com/Mamoru-fr)                 |  | |
-| Technical Lead       | [Grégory PAGNOUX](https://github.com/Gregory-Pagnoux)         |  | |
-| Quality Assurance    | [Lucas MEGNAN](https://github.com/LucasMegnan)                |  | |
+| Project Manager      | [Alexis SANTOS](https://github.com/Mamoru-fr)         |  | |
+| Technical Lead       | [Grégory PAGNOUX](https://github.com/Gregory-Pagnoux) |  | |
+| Quality Assurance    | [Lucas MEGNAN](https://github.com/LucasMegnan)        |  | |
 
 <details>
 <summary>
 
-### Table-Of-Content
+### Table Of Content
 
 </summary>
 
@@ -68,8 +68,7 @@ The system integration test of the quickest path should validate the requirement
 
 - The returned path should not exceed the shortest path duration by more than 10%.
 - The API must handle all queries within 1 second on a typical laptop.
-<!-- - Big O complexity
-- Security -->
+- Big O complexity ...
 - Verify that the file forms a Directed Acyclic Graph (DAG) and is free of loops.
 - Ensure that the graph is fully connected, meaning it is possible to navigate between any two landmarks.
 - Demonstrating the ability to handle multiple formats (XML and JSON).
@@ -146,7 +145,7 @@ VScode
 The following items will be needed full-time by the system integration test team:
 
 • 1 whiteboard (large) with markers and erasers.
-• 1 screen to share informations from computers.
+• 1 screen & a HDMI wire to share informations from computers.
 
 # III. Approach
 
