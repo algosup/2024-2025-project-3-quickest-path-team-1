@@ -6,41 +6,42 @@
 <summary>📖 Table of content</summary>
 
 - [Technical Specifications](#technical-specifications)
-  - [I. Document](#i-document)
-    - [A. Information](#a-information)
-    - [B. History](#b-history)
-    - [C. Overview](#c-overview)
-  - [II. Solution](#ii-solution)
-    - [A. Descritpion](#a-descritpion)
-      - [1. Architectural Components](#1-architectural-components)
-        - [a. API](#a-api)
-        - [b. Data Management Layer](#b-data-management-layer)
-      - [2. Workflow Example](#2-workflow-example)
-      - [3. Technology Stack](#3-technology-stack)
-    - [B. Technical constraints](#b-technical-constraints)
-      - [1. Writing convention](#1-writing-convention)
-      - [2. C++ coding convention](#2-c-coding-convention)
-    - [C. How it works ?](#c-how-it-works-)
-    - [D. Program architecture diagram](#d-program-architecture-diagram)
-  - [III. Quality Control](#iii-quality-control)
-    - [A. Documentation and Reporting](#a-documentation-and-reporting)
-    - [B. Development](#b-development)
-  - [IV. Further considerations](#iv-further-considerations)
-    - [A. Cost estimation](#a-cost-estimation)
-      - [1. Software](#1-software)
-      - [2. Time \& Human](#2-time--human)
-    - [B. Security](#b-security)
-    - [C. Accessibility](#c-accessibility)
-  - [V. Success evaluation](#v-success-evaluation)
-  - [Glossary](#glossary)
+- [I. Document](#i-document)
+  - [A. Information](#a-information)
+  - [B. History](#b-history)
+  - [C. Overview](#c-overview)
+- [II. Solution](#ii-solution)
+  - [A. Description](#a-description)
+    - [1. Architectural Components](#1-architectural-components)
+      - [a. Documents](#a-documents)
+      - [b. API](#b-api)
+      - [c. Data Management](#c-data-management)
+    - [2. Workflow Example](#2-workflow-example)
+    - [3. Technology Stack](#3-technology-stack)
+  - [B. How it works ?](#b-how-it-works-)
+  - [C. Program architecture diagram](#c-program-architecture-diagram)
+- [III. Quality Control](#iii-quality-control)
+  - [A. Documentation and Reporting](#a-documentation-and-reporting)
+  - [B. Development](#b-development)
+- [IV. Further considerations](#iv-further-considerations)
+  - [A. Technical constraints](#a-technical-constraints)
+    - [1. Writing convention](#1-writing-convention)
+    - [2. C++ coding convention](#2-c-coding-convention)
+  - [B. Cost estimation](#b-cost-estimation)
+    - [1. Software](#1-software)
+    - [2. Time \& Human](#2-time--human)
+  - [C. Security](#c-security)
+  - [D. Accessibility](#d-accessibility)
+- [V. Success evaluation](#v-success-evaluation)
+- [Glossary](#glossary)
 
 </details>
 
 ![-](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-## I. Document
+# I. Document
 
-### A. Information
+## A. Information
 
 | Document writer | Grégory PAGNOUX |
 |---|---|
@@ -48,31 +49,54 @@
 | Reviewer | Lucas MEGNAN |
 | date | 01/../2025 |
 
-### B. History
+## B. History
 
 | Version | Edits completed by | Date | Description of edit |
 |---|---|---|---|
 | 1.1 | Grégory PAGNOUX | 01/06/2025 | Template, [Writing convention](#1-writing-convention), [Quality Control](#iii-quality-control) part A, [Success evaluation](#v-success-evaluation) |
+| 1.2 | Grégory PAGNOUX | 01/08/2025 | [Development](#b-development), [Software](#1-software), [Time & human](#2-time--human), [Overview](#c-overview), [Documents](#a-documents) |
 
-### C. Overview
+## C. Overview
 
-<!--TODO-->
+Our Software aim to make travel easier with faster pathing using the language C++ and the software VScode. The users can use this to gain time and travel more effectivilly and easily across the United States.
 
-This project encourages you to explore and implement efficient algorithms tailored to handle large-scale datasets, while also considering real-world constraints like speed and accuracy.
+This project is an oppurtunity to dive into the very famous laguage C++.
+Our main goal is to make a very easy and faster way to travel with an API.
 
-## II. Solution
+# II. Solution
 
-### A. Descritpion
-
-<!--TODO-->
-
-#### 1. Architectural Components
-
-##### a. API
+## A. Description
 
 <!--TODO-->
 
-##### b. Data Management Layer
+### 1. Architectural Components
+
+#### a. Documents
+
+<!--TODO-->
+
+```txt
+📦2024-2025-project-3-quickest-path-team-1
+└── 📁documents
+|    └── 📁 images
+|    └── 📝 FunctionalSpecifications.md
+|    └── 📝 TechnicalSpecifications.md
+|    └── 📝 TestCase.md
+|    └── 📝 TestPlan.md
+|    └── 📁 management
+|        └── 📝 DocumentManagement.md
+|        └── 📝 PostMortem.md
+|        └── 📝 ProjectCharter.md
+|        └── 📝 Settlement.md
+└── 📄 .gitignore
+└── 📝 README.MD 
+```
+
+#### b. API
+
+<!--TODO-->
+
+#### c. Data Management
 
 <!--TODO-->
 
@@ -92,59 +116,23 @@ This layer focuses on data storage, security, and regulatory compliance, especia
 
 **Compliance with GDPR**: Ensures data collection, storage, and deletion processes align with GDPR. Users can control their data visibility and deletion settings in the app.
 
-#### 2. Workflow Example
+### 2. Workflow Example
 
 <!--TODO-->
 
-**Power On**: When the user powers on the mirror, the Device Control Manager initializes the mirror’s display and checks connectivity status.
-**Health Metric Measurement**: When the user selects a function, like pulse monitoring, the Device Control Manager activates the relevant sensor, and the Application Layer processes and displays results in real-time.
-**Data Syncing with Smartphone**: If the smartphone is connected, the Bluetooth Communication Module sends data to the app, where it’s displayed on the dashboard and saved for future reference.
-**Data Privacy**: All sensitive data is temporarily stored on the mirror and deleted after syncing, or per user preference, aligned with privacy regulations.
+**Link data file**: When the user link the data file, the algorithm treat all information to facilitate and have the quickest research.
+**launch the algorithm**: When the user launch the algorithm, 
+**research time**: 
+**path displaying**: 
 
-#### 3. Technology Stack
-
-<!--TODO-->
-
-**Frontend (UI)**: HTML/CSS/JavaScript (for Mirror UI), Java or Swift (for mobile app UI)
-**Backend (Logic & Processing)**: Arduino for embedded system logic, Java (mobile app backend)
-**Data Storage**: SQLite (on-device), local storage on the app
-Communication Protocols: Bluetooth Low Energy (BLE) for mirror-to-phone data sync
-**Security**: GDPR compliance modules
-
-This architecture allows Phoenix to be a connected, privacy-conscious, and user-friendly health monitoring solution, integrating multiple health sensors into a modular design for ease of future updates and enhancements.
-
-### B. Technical constraints
-
-#### 1. Writing convention
-
-| Notation | How | Usage | Example |
-| :-: | :-: | :-: | :-: |
-| flatcase | we attach each word and in lowercase | naming folders | foldername |
-| PascalCase | we attach each word and write the first letter of each word in uppercase | naming files | FileName |
-| comment = ```<!--word-->``` | write your comment inside to have a reminder of your informations without have it visible on the document | organise and summarise informations that you need to put on each part of your document | ```<!--The following declaration creates a query. It doesn't appear on the document.-->``` |
-| Titles = I.A.1.a | the first index is the most general title and the last one is to have the most detail part (preceded by #) | to have a clear idea of the organisation of the document | <pre> ```# I. Title name``` <br> ```## A. Title name``` <br> ```### 1. Title name``` <br> ```#### a. Title name``` </pre> |
-| Table of content | at the beginning of the document | find a specific part of the document without going through it all |  |
-| Glossary | at the end of the document | understand some word that we don't know without loose time on google |  |
-
-You can have also [Markdown convention](https://www.markdownguide.org/basic-syntax/).
-
-#### 2. C++ coding convention
+### 3. Technology Stack
 
 <!--TODO-->
 
-The language used to develop the project is C++
+**Frontend (UI)**: This side of the product isn't required by the client. Informations are simply display as a list of all point that we need to follow to go on the point B. All points are display like : {Point 1, Point 2, distance}
+**Backend (Logic & Processing)**: 
 
-| Notation | How | Usage | Example |
-| :-: | :-: | :-: | :-: |
-| comment = // | start each line with two slashes and an uppercase letter and finish the comment by a period. | give more information of the code | <pre>```// The following declaration creates a query. It doesn't run the query.```</pre> |
-| comment = ```/*paragraphe*/``` | start each line with two slashes and an uppercase letter and finish the comment by a period. | give more information of the code | <pre>```/*The following declaration creates a query.``` <br> ```It doesn't run the query.*/```</pre> |
-| snake_case |  |  | variable_name |
-| Pascal_Snake_Case |  |  | Fonction_Name |
-|  |  |  |  |
-
-*source : []()*
-
-### C. How it works ?
+## B. How it works ?
 
 <!--TODO-->
 
@@ -172,15 +160,15 @@ namespace KrugApp
 }
 ```
 
-### D. Program architecture diagram
+## C. Program architecture diagram
 
-![Program Architechture Diagram](images/)
+![Program Architecture Diagram](images/)
 
-## III. Quality Control
+# III. Quality Control
 
 The Quality Control (QC) of the project will be mainly done by the Quality Assurance (QA) of our team.
 
-### A. Documentation and Reporting
+## A. Documentation and Reporting
 
 To ensure that the whole team has the same idea of the project, the [Functional](FunctionalSpecifications.md) and [Technical](TechnicalSpecifications.md) are drawn up.
 
@@ -188,33 +176,66 @@ Maintain a comprehensive record of the process. This should include:
 Weekly Reports: A consolidated report of the week's progress, challenges, and learnings.
 Meetings: to have a debriefing of everything that has been done and needs to be done.
 
-### B. Development
+## B. Development
+
+The product is control task by task and report on the [Test Case](TestCase.md) as planned on the [Test Plan](TestPlan.md).
+
+# IV. Further considerations
+
+## A. Technical constraints
+
+### 1. Writing convention
+
+| Notation | How | Usage | Example |
+| :-: | :-: | :-: | :-: |
+| flatcase | we attach each word and in lowercase | naming folders | foldername |
+| PascalCase | we attach each word and write the first letter of each word in uppercase | naming files | FileName |
+| comment = ```<!--word-->``` | write your comment inside to have a reminder of your informations without have it visible on the document | organise and summarise informations that you need to put on each part of your document | ```<!--The following declaration creates a query. It doesn't appear on the document.-->``` |
+| Titles = I.A.1.a | the first index is the most general title and the last one is to have the most detail part (preceded by #) | to have a clear idea of the organisation of the document | <pre> ```# I. Title name``` <br> ```## A. Title name``` <br> ```### 1. Title name``` <br> ```#### a. Title name``` </pre> |
+| Table of content | at the beginning of the document | find a specific part of the document without going through it all |  |
+| Glossary | at the end of the document | understand some word that we don't know without loose time on google |  |
+
+You can have also [Markdown convention](https://www.markdownguide.org/basic-syntax/).
+
+### 2. C++ coding convention
 
 <!--TODO-->
 
-## IV. Further considerations
+The language used to develop the project is C++
 
-### A. Cost estimation
+| Notation | How | Usage | Example |
+| :-: | :-: | :-: | :-: |
+| comment = // | start each line with two slashes and an uppercase letter and finish the comment by a period. | give more information of the code | <pre>```// The following declaration creates a query. It doesn't run the query.```</pre> |
+| comment = ```/*paragraphe*/``` | start each line with two slashes and an uppercase letter and finish the comment by a period. | give more information of the code | <pre>```/*The following declaration creates a query.``` <br> ```It doesn't run the query.*/```</pre> |
+| snake_case |  |  | variable_name |
+| Pascal_Snake_Case |  |  | Fonction_Name |
+|  |  |  |  |
 
-#### 1. Software
+*source : []()*
 
-<!--TODO-->
+## B. Cost estimation
 
-#### 2. Time & Human
+### 1. Software
+
+The software used to develop the project, we use Visual Studio and Visual Studio Code and the data file used is a CSV (but the alghorithm needs to be compatible with other types of data documents). Those development software are used on schoool or personnal Windows and MacOS. We need an internet connection given by the ALGOSUP's wifi or personnal fiber for those who work at home.
+
+### 2. Time & Human
+
+Minimum work time to accomplish the project:
 
 | Number of people | work time/person | TOTAL |
 | :-: | :-: | :-: |
-| 6 | 94 h 30 | 567 h |
+| 6 | 77 h | 472 h |
 
-### B. Security
-
-<!--TODO-->
-
-### C. Accessibility
+## C. Security
 
 <!--TODO-->
 
-## V. Success evaluation
+## D. Accessibility
+
+<!--TODO-->
+
+# V. Success evaluation
 
 The program is scored according to the following criteria :
 
@@ -226,7 +247,7 @@ The program is scored according to the following criteria :
 
 ![-](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-## Glossary
+# Glossary
 
 [^1]: []()
 .
