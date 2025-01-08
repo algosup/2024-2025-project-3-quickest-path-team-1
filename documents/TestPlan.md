@@ -14,9 +14,9 @@
 
 | Role | Name | Signature | Date |
 |------|------|-----------|------|
-| Project Manager      | [Alexis SANTOS](https://github.com/Mamoru-fr)         |  | |
-| Technical Lead       | [Grégory PAGNOUX](https://github.com/Gregory-Pagnoux) |  | |
-| Quality Assurance    | [Lucas MEGNAN](https://github.com/LucasMegnan)        |  | |
+| Project Manager      | [Alexis SANTOS](https://github.com/Mamoru-fr)         |  |  |
+| Technical Lead       | [Grégory PAGNOUX](https://github.com/Gregory-Pagnoux) |  |  |
+| Quality Assurance    | [Lucas MEGNAN](https://github.com/LucasMegnan)        |  |  |
 
 <details>
 <summary>
@@ -64,22 +64,33 @@
 
 ## A. Test Objectives
 
-The system integration test of the quickest path should validate the requirements perspective like:
+The system integration test of the quickest path must validate the following requirements:
 
-- The returned path should not exceed the shortest path duration by more than 10%.
-- The API must handle all queries within 1 second on a typical laptop.
-- Big O complexity ...
-- Verify that the file forms a Directed Acyclic Graph (DAG) and is free of loops.
-- Ensure that the graph is fully connected, meaning it is possible to navigate between any two landmarks.
-- Demonstrating the ability to handle multiple formats (XML and JSON).
-- A utility to verify the integrity of the provided CSV file. 
+- **Functional Accuracy**:
+  - The returned path should not exceed the shortest path duration by more than 10%.
+  - The API must handle all queries within 1 second on a typical laptop.
+- **Data Integrity**:
+  - Verify that the file forms a Directed Acyclic Graph (DAG) and is free of loops.
+  - Ensure that the graph is fully connected, meaning it is possible to navigate between any two landmarks.
+- **Versatility**:
+  - Demonstrating the ability to handle multiple formats (XML and JSON).
+  - A utility to verify the integrity of the provided CSV file. 
+- **Algorithm Performance**:
+  - Evaluate the Big O complexity and ensure it meets the project goals.
 
 ## B. Scope of Testing
 
-Our scope is to have a high performant software solution that calculate two landmarks in the US. 
-Our algorithm needs to include a research system to find the quickest path between this two landmarks.
+The scope is to develop and validate a high-performance algorithm in C++ that calculates the quickest path between two landmarks in the United States. This includes:
+
+- Functional testing of the REST API.
+- Performance testing to ensure adherence to time constraints.
+- Data validation to verify the integrity of the dataset.
+- Compatibility testing across different operating systems (Windows and macOS).
 
 ## C. Product Overview
+
+Our Software aim to make travel easier with faster pathing using the language C++ and the software VScode. 
+The users can use this to gain time and travel more effectivilly and easily across the United States.
 
 ## D. Definitions / Acronyms
 
@@ -125,11 +136,19 @@ Refer to the work schedule for the planned review dates.
 
 #### a. Hardware
 
-All test cases will be executed on the SE's and QA's computer.
+Our team members have different computer OS, which are Windows and MacOs, that gives us the opportunity of testing that the program is working properly on the different OS. But also the environment is different and so the steps to be capable to test are different.
 
-(1) Mac
+The tests will be run on the following environments:
 
-(1) Windows
+(1) Apple MacBook Air M3 2024
+- Apple M3
+- 16 GB
+- macOS Sequoia 15.1.1
+
+(1) Lenovo ThinkBook 14	
+- Intel Core i7-1165G7	
+- 16 GB	
+- Windows 11 Pro 22H2	
 
 #### b. Network
 
