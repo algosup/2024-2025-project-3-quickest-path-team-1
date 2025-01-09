@@ -10,8 +10,8 @@
 - [III. What is Quickest Path ?](#iii-what-is-quickest-path-)
 - [IV. What is C++ ?](#iv-what-is-c-)
 - [V. Deadlines](#v-deadlines)
-- [VI. How to Use :](#vi-how-to-use-)
-- [VII. Project Documents :](#vii-project-documents-)
+- [VI. How to Use](#vi-how-to-use)
+- [VII. Project Documents](#vii-project-documents)
 - [VIII. MIT License](#viii-mit-license)
 
 </details>
@@ -47,11 +47,11 @@ C++ is a **compiled programming language** enabling programming in multiple para
 * **Test Cases / Test Plan** : 02/07/2025
 * **User Manual** : 02/07/2025
   
-# VI. How to Use :
+# VI. How to Use
 
 To use our API, feel free to check the documentation here : User Manual 
 
-# VII. Project Documents :
+# VII. Project Documents
 
 * Project Charter
 * Functional Specifications
