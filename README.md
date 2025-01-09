@@ -16,7 +16,7 @@
 
 </details>
 
-## A. Team Members
+# I. Team Members
 
 |Photo|Name|Role|Contact|
 |:-:|:-:|:-:|:-:|
@@ -27,19 +27,19 @@
 |<img src="https://ca.slack-edge.com/T0871HD8PPG-U087FQUB4BW-ab023db594b4-192" width="100" height="100">|Lucas MEGNAN|Quality Assurance|[GitHub](https://github.com/LucasMegnan)\| [LinkedIn](https://www.linkedin.com/in/lucas-megnan/)\|  [Mail](mailto:lucas.megnan@algosup.com)|
 |<img src="https://ca.slack-edge.com/T0871HD8PPG-U087D5NNFSN-gd49a1525f78-192" width="100" height="100">|Lena DE GERMAIN|Technical Writer|[GitHub](https://github.com/lenadg18) \| [LinkedIn](https://www.linkedin.com/in/lena-degermain-5535a032a/) \| [Mail](mailto:lena.degermain@algosup.com)|
 
-## B. Overview
+# II. Overview
 
 This project is an ALGOSUP project, driven by the students. This project aims to create an API to find the quickest path of a travel. For this project, we need to program in C++. 
 
-## C. What is Quickest Path ?
+# III. What is Quickest Path ?
 
 The quickest path problem is to find a path to send a given amount of data from the source to the destination with **minimum transmission time**. To find the quickest path, existing algorithms enumerate non-dominated paths with **distinct capacity**, and then determine a quickest path by **comparing** their transmission time.
 
-## D. What is C++ ?
+# IV. What is C++ ?
 
 C++ is a **compiled programming language** enabling programming in multiple paradigms, including procedural programming, object-oriented programming and generic programming. Its **high performance** and compatibility with the C language make it one of the most widely used programming languages for **performance-critical applications**.
 
-## E. Deadlines
+# V. Deadlines
 
 * **Functional Specification** : 01/20/2025
 * **Technical Specification** : 01/27/2025
@@ -47,11 +47,11 @@ C++ is a **compiled programming language** enabling programming in multiple para
 * **Test Cases / Test Plan** : 02/07/2025
 * **User Manual** : 02/07/2025
   
-## F. How to Use :
+# VI. How to Use :
 
 To use our API, feel free to check the documentation here : User Manual 
 
-## G. Project Documents :
+# VII. Project Documents :
 
 * Project Charter
 * Functional Specifications
@@ -60,7 +60,7 @@ To use our API, feel free to check the documentation here : User Manual
 * Test Plan
 * Management
   
-## H. MIT License
+# VIII. MIT License
 
 Copyright (c) 2024 ALGOSUP
 
