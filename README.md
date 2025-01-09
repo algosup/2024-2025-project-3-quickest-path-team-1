@@ -5,14 +5,14 @@
 <summary> Table of content </summary>
 
 - [2024-2025-project-3-quickest-path-team-1](#2024-2025-project-3-quickest-path-team-1)
-  - [A. Team Members](#a-team-members)
-  - [B. Overview](#b-overview)
-  - [C. What is Quickest Path ?](#c-what-is-quickest-path-)
-  - [D. What is C++ ?](#d-what-is-c-)
-  - [E. Deadlines](#e-deadlines)
-  - [F. How to Use :](#f-how-to-use-)
-  - [G. Project Documents :](#g-project-documents-)
-  - [H. MIT License](#h-mit-license)
+- [I. Team Members](#i-team-members)
+- [II. Overview](#ii-overview)
+- [III. What is Quickest Path ?](#iii-what-is-quickest-path-)
+- [IV. What is C++ ?](#iv-what-is-c-)
+- [V. Deadlines](#v-deadlines)
+- [VI. How to Use :](#vi-how-to-use-)
+- [VII. Project Documents :](#vii-project-documents-)
+- [VIII. MIT License](#viii-mit-license)
 
 </details>
 
