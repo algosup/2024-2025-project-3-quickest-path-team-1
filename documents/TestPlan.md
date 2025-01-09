@@ -176,6 +176,8 @@ The following items will be needed full-time by the system integration test team
 
 ## B. Test Tools
 
+
+
 ## C. Test Data
 
 # IV. Testing Procedures
@@ -191,6 +193,9 @@ If the observed results are equal to the expected results, a checkmark is placed
 If the observed results are not equal to the expected results, a checkmark is placed in the “fail” column.
 
 ### 2. Order of Testing
+
+The order of testing will be driven primarily by the build order. Within each build, the following
+order of testing will be followed:
 
 ## B. Pass / Fail criteria
 
