@@ -5,24 +5,24 @@
 <summary>Table of content</summary>
 
 - [Summary of Team Answers](#summary-of-team-answers)
-  - [I. Overview](#i-overview)
-  - [II. Objective](#ii-objective)
-  - [III. Questions](#iii-questions)
-  - [IV. Lists of Answers' Table](#iv-lists-of-answers-table)
-    - [A. Week 1](#a-week-1)
-    - [B. Week 2](#b-week-2)
-    - [C. Week 3](#c-week-3)
-    - [D. Week 4](#d-week-4)
-    - [E. Week 5](#e-week-5)
-    - [D. Week 6](#d-week-6)
+- [I. Overview](#i-overview)
+- [II. Objective](#ii-objective)
+- [III. Questions](#iii-questions)
+- [IV. Lists of Answers' Table](#iv-lists-of-answers-table)
+  - [A. Week 1](#a-week-1)
+  - [B. Week 2](#b-week-2)
+  - [C. Week 3](#c-week-3)
+  - [D. Week 4](#d-week-4)
+  - [E. Week 5](#e-week-5)
+  - [D. Week 6](#d-week-6)
 
 </details>
 
-## I. Overview
+# I. Overview
 
-## II. Objective
+# II. Objective
 
-## III. Questions
+# III. Questions
 
 * What do you think about this week overall?
 * What had you planned to do this week?
@@ -33,16 +33,16 @@
 * What do you think everyone could do to improve their performance, to work more effectively both as a group and as individuals? Try to give a global answer and an individual answer if necessary. All answers will be anonymous, unless you request otherwise.
 * Finally, what are your goals for the upcoming week? How do you think you can achieve them?
 
-## IV. Lists of Answers' Table
+# IV. Lists of Answers' Table
 
-### A. Week 1
+## A. Week 1
 
-### B. Week 2
+## B. Week 2
 
-### C. Week 3
+## C. Week 3
 
-### D. Week 4
+## D. Week 4
 
-### E. Week 5
+## E. Week 5
 
-### D. Week 6
+## D. Week 6
