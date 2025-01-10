@@ -39,7 +39,7 @@ The purpose of task progress is to understand the team's progress, to know if so
 
 * What do you think about this week overall?
 * What had you planned to do this week?
-* Did you manage to achieve these objectives? If it was different from what you had planned. Why?
+* Did you manage to achieve these objectives? If it was different from what you had planned. Why? How many percent of each goal did you achieve?
 * If you worked overtime, why did you do it? Because you didn't have enough time for the project? Because you're passionate about it and want to work harder? Anything else?
 * What problems have you encounter? If yes, how do you solve them?
 * How do you feel at the end of the week? Why?
