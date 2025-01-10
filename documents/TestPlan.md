@@ -1,11 +1,11 @@
-<h1 align="center"> Quickest path Test Plan </h1>
+<h1 align="center"> SmashThePath Test Plan </h1>
 
 <p>
 <br>
 
 | Created by | Creation date | Last modified |
 |:-------------:|:---------------:|:--------:|
-| Megnan Lucas | 01/06/2025 | 01/08/2025 |
+| Megnan Lucas | 01/06/2025 | 01/10/2025 |
 
 <br>
 </p>
@@ -80,16 +80,16 @@ The system integration test of the quickest path must validate the following req
 
 ## B. Scope of Testing
 
-The scope is to develop and validate a high-performance algorithm in C++ that calculates the quickest path between two landmarks in the United States. This includes:
+The scope is to **develop and validate a high-performance algorithm in C++** that calculates the quickest path between two landmarks in the United States. This includes:
 
-- Functional testing of the REST API.
-- Performance testing to ensure adherence to time constraints.
-- Data validation to verify the integrity of the dataset.
-- Compatibility testing across different operating systems (Windows and macOS).
+- **Functional** testing of the REST API.
+- **Performance** testing to ensure adherence to time constraints.
+- **Data validation** to verify the **integrity** of the dataset.
+- **Compatibility** testing across different operating systems (Windows and macOS).
 
 ## C. Product Overview
 
-Our software enginner aim to make travel easier with faster pathing using the language C++ and the software VScode. 
+Our software enginner aim to make **travel easier** with faster pathing using the language C++ and the software Visual Studio. 
 The users can use this to gain time and travel more effectively and easily across the United States.
 
 ## D. Definitions / Acronyms
@@ -107,26 +107,26 @@ The following people will be on the system integration test team:
 | Role | Name | Level of involvement | Responsibilities |
 |------|------|----------------------|------------------|
 | Project Manager      | Alexis Santos   | Xhrs  |  |
-| Technical Lead       | Grégory Pagnoux | 1hrs  |  |
+| Technical Leader       | Grégory Pagnoux | 1hrs  |  |
 | Quality Assurance    | Lucas MEGNAN    | 93hrs |  |
 <!-- | Software Enginner    | Yann-maël       | Xhrs  |  | -->
 
 ## B. Team Reviews
 
-The following reviews will be conducted by the entire test team and the QA. 
+The following reviews will be conducted by minimal 1 person of the test team (Project Manager or Technical Leader) and the QA. 
 Refer to the work schedule for the planned review dates.
 
-• Settlement review.
-• Project Charter review.
-• review the Management Documentation of every weeks.
-• Functional Specifications review.
-• Technical Specifications review.
-• Code review.
-• User Manual review.
-• Test plan review.
-• Test case review.
+- Settlement review.
+- Project Charter review.
+- review the Management Documentation of every weeks.
+- Functional Specifications review.
+- Technical Specifications review.
+- Code review.
+- User Manual review.
+- Test plan review.
+- Test case review.
 <!-- • Test progress review. -->
-• Post Mortem review.
+- Post Mortem review.
 
 ## C. Tasks and Deliverables
 
@@ -163,8 +163,8 @@ VScode
 
 The following items will be needed full-time by the system integration test team:
 
-• 1 whiteboard (large) with markers and erasers.
-• 1 screen & a HDMI wire to share informations from computers.
+- 1 whiteboard (large) with markers and erasers.
+- 1 screen & a HDMI wire to share informations from computers.
 
 # III. Approach
 
