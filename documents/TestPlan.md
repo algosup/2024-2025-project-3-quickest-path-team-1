@@ -89,8 +89,8 @@ The scope is to develop and validate a high-performance algorithm in C++ that ca
 
 ## C. Product Overview
 
-Our Software aim to make travel easier with faster pathing using the language C++ and the software VScode. 
-The users can use this to gain time and travel more effectivilly and easily across the United States.
+Our software enginner aim to make travel easier with faster pathing using the language C++ and the software VScode. 
+The users can use this to gain time and travel more effectively and easily across the United States.
 
 ## D. Definitions / Acronyms
 
@@ -146,7 +146,7 @@ The tests will be run on the following environments:
 - macOS Sequoia 15.1.1
 
 (1) Lenovo ThinkBook 14	
-- Intel Core i7-1165G7	
+- Intel Core i7-1255U	
 - 16 GB	
 - Windows 11 Pro 22H2	
 
