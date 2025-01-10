@@ -125,7 +125,6 @@ Refer to the work schedule for the planned review dates.
 - User Manual review.
 - Test plan review.
 - Test case review.
-<!-- • Test progress review. -->
 - Post Mortem review.
 
 ## C. Tasks and Deliverables
