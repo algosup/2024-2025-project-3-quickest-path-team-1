@@ -33,7 +33,7 @@ This project is an ALGOSUP project, driven by students. This project aims to cre
 
 # III. What is a Quickest Path ?
 
-Our Software Engineer aim to make travel easier with faster pathing using the language C++ and the software VScode. The users can use this to gain time and travel more effectively and easily across the United States.
+The Quickest Path refers to the path in a network or graph that minimizes the total time required to travel from a starting node (source) to a destination node (target). Unlike the "shortest path," which minimizes distance or cost, the quickest path accounts for time-dependent factors such as speed, traffic, or weights on the edges that represent time rather than distance."
 
 # IV. What is C++ ?
 
