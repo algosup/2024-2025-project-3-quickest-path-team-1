@@ -30,7 +30,7 @@ All session reports are available below:
 
 <summary>Report</summary>
 
-- [01/10/2025](./Weekly%20report/01_10_2025.md)
+- [Weekly Report 1](./weeklyreport/Weekly%20Report%201.md)
 
 </details>
 
