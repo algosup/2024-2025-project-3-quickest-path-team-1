@@ -31,9 +31,9 @@ For this project we manage our own deadlines, so the milestones for the project 
 
 - 01/20/2025: Fonctional Specifications.
 - 01/27/2025: Technical Specifications.
+- 01/31/2025: Final API.
 - 02/07/2025: Test Plan.
 - 02/07/2025: User Manual.
-- 01/31/2025: Final API.
 
 # IV. Cost
 

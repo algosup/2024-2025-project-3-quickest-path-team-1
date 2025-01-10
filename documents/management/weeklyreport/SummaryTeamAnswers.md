@@ -54,7 +54,7 @@ The form link : https://docs.google.com/forms/d/e/1FAIpQLSc3I0RIRz6lXpi4_GOiqsDT
 
 |Question \ Team's Members| SANTOS Alexis | NOGUES Loïc | MEGNAN Lucas | BOUTON Yann-Maël | PAGNOUX Grégory | DE GERMAIN Léna |
 |:-|:-|:-|:-|:-|:-|:-|
-|What do you think about this week overall?|||great week.|||fine|
+|What do you think about this week overall?|It's a great week ! ||great week.|||fine|
 |What had you planned to do this week?|||test plan & test cases skeleton, template of issue & (PR), issues, white board creation.|||nothing|
 |Did you manage to achieve these objectives? If it was different from what you had planned. Why?|||I didn't make the template PR but it can wait.|||i coded and started the functional with Loïc, so i do more what I planned lmao, because I'm tw and tw is is unemployed at the beginning|
 |If you worked overtime, why did you do it? Because you didn't have enough time for the project? Because you're passionate about it and want to work harder? Anything else?|||To advance in my work and to have a good comprehension with the SE and TL|||no overtime|
