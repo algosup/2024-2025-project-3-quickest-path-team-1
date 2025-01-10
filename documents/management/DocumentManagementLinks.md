@@ -30,7 +30,7 @@ All session reports are available below:
 
 <summary>Report</summary>
 
-- [Weekly Report 1](./weeklyreport/Weekly%20Report%201.md)
+- [Weekly Report 1](./weeklyreport/WeeklyReport1.md)
 
 </details>
 
