@@ -73,22 +73,28 @@ Our main goal is to make a very easy and faster way to travel with an API.
 
 #### a. Documents
 
-<!--TODO-->
-
 ```txt
-📦2024-2025-project-3-quickest-path-team-1
-└── 📁documents
+📦 2024-2025-project-3-quickest-path-team-1
+└── 📁 beta
+|    └── 📝 a_star.cpp
+|    └── 📝 api.cpp
+|    └── 📝 connectivity.cpp
+|    └── 📝 incl.h
+|    └── 📝 integrity.cpp
+|    └── 📝 loader.cpp
+|    └── 📝 log.cpp
+|    └── 📝 main.cpp
+└── 📁 documents
 |    └── 📁 images
-|    └── 📝 FunctionalSpecifications.md
-|    └── 📝 TechnicalSpecifications.md
-|    └── 📝 TestCase.md
-|    └── 📝 TestPlan.md
 |    └── 📁 management
 |        └── 📝 DocumentManagement.md
 |        └── 📝 PostMortem.md
 |        └── 📝 ProjectCharter.md
 |        └── 📝 Settlement.md
-└── 📄 .gitignore
+|    └── 📝 FunctionalSpecifications.md
+|    └── 📝 TechnicalSpecifications.md
+|    └── 📝 TestCase.md
+|    └── 📝 TestPlan.md
 └── 📝 README.MD 
 ```
 
