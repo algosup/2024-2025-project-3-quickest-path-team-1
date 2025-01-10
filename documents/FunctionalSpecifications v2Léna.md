@@ -1,8 +1,4 @@
 # Functional
-|author|Léna|
-|-|-|
-|Created|01/6/2024|
-|Finished|01/10/2024|
 ![-](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <hr>
@@ -25,13 +21,27 @@
 
 ## Overview
 ### Project summary
-SmashThePath aims to make travel easier with faster pathing. Users can use it to save time and travel more efficiently and easily across the U.S.
-This project is an opportunity to dive into the very famous language C++.
+Our Software aim to make travel easier with faster pathing using 
+the language C++[^C++] and the software VScode. The users can use this to gain time and travel more effectivilly and easily across the United States.
+### Project Purpose
+This project is an oppurtunity to dive into the very famous laguage C++.
 Our main goal is to make a very easy and faster way to travel with an API for everyone and every age.
 ### Out of scope
 |Sellable API|Complex API|
 |-|-|
 |The project is aimed at teaching us to do a easy and much usefull way to travel with our API. It is not supposed to be really huge and sellable at the final deadline. |To complete this project. We need to create an API that correpond to our requirements, overcomplicating interface can be hard for new users.
+
+### Personas
+The primary user of our software include:
+    
+Adults:
+Habits: Have a car to travel and search for a easy and faster travel.
+
+Old person:
+Someone who is not acquainted to use a smartphone or a computer, they want to find a not complex way to fast travel.
+
+Goals :
+Both of the personnas has the same wish, an easy and precise way to travel. So our goals is to make a simple and an accurate API to travel faster around the United States.
 
 
 ## Functional requirements
