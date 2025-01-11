@@ -23,6 +23,29 @@
   - [F. Week 4](#f-week-4)
   - [G. Week 5](#g-week-5)
   - [H. Week 6](#h-week-6)
+- [VI. Step Software development](#vi-step-software-development)
+  - [A. Step 1: General Initialization](#a-step-1-general-initialization)
+    - [1. Parse command-line arguments](#1-parse-command-line-arguments)
+    - [2. Initialize the logger for global use](#2-initialize-the-logger-for-global-use)
+  - [B. Step 2: Data Loading and Setup](#b-step-2-data-loading-and-setup)
+    - [1. Load graph data](#1-load-graph-data)
+    - [2. Parse files to extract graph information](#2-parse-files-to-extract-graph-information)
+    - [3. Manage edges within the graph](#3-manage-edges-within-the-graph)
+    - [4. Initialize Union-Find structure for connectivity checks](#4-initialize-union-find-structure-for-connectivity-checks)
+    - [5. Select landmarks for heuristic computation](#5-select-landmarks-for-heuristic-computation)
+  - [C. Step 3: Data Validation](#c-step-3-data-validation)
+    - [1. Validate data integrity](#1-validate-data-integrity)
+    - [2. Validate connectivity](#2-validate-connectivity)
+  - [D. Step 4: API Initialization](#d-step-4-api-initialization)
+    - [1. Initialize the API server](#1-initialize-the-api-server)
+  - [E. Step 5: Algorithms and Pathfinding](#e-step-5-algorithms-and-pathfinding)
+    - [1. Set up pathfinding](#1-set-up-pathfinding)
+    - [2. Construct the shortest path from results](#2-construct-the-shortest-path-from-results)
+  - [F. Step 6: Request Handling](#f-step-6-request-handling)
+    - [1. Handle incoming API requests](#1-handle-incoming-api-requests)
+    - [2. Construct and return responses](#2-construct-and-return-responses)
+  - [G. Step 7: Finalization](#g-step-7-finalization)
+    - [1. Clean up the logger and release resources](#1-clean-up-the-logger-and-release-resources)
 
 </details>
 
@@ -186,3 +209,130 @@ The form link : https://docs.google.com/forms/d/e/1FAIpQLSc3I0RIRz6lXpi4_GOiqsDT
 
 |ID|Task|Due Date|Responsible| Status| Rate Completed |
 |:-:|:-:|:-:|:-:|:-:|:-:|
+
+# VI. Step Software development
+
+## A. Step 1: General Initialization
+
+### 1. Parse command-line arguments
+
+**Purpose**: Extract configuration and runtime options.
+
+**Why**: Defines how the application will run (e.g., file paths, parameters).
+### 2. Initialize the logger for global use
+
+**Purpose**: Set up logging for system-wide message tracking.
+
+**Why**: Enables consistent debugging and monitoring across all modules.
+
+## B. Step 2: Data Loading and Setup
+
+### 1. Load graph data
+
+**Purpose**: Read graph input data into memory.
+
+**Why**: Provides the foundational data structure for all operations.
+
+### 2. Parse files to extract graph information
+
+**Purpose**: Interpret the raw data and format it for processing.
+
+**Why**: Ensures the graph data is usable and correctly structured.
+
+### 3. Manage edges within the graph
+
+**Purpose**: Initialize and store relationships between nodes.
+
+**Why**: Prepares the graph for efficient traversal and validation.
+
+### 4. Initialize Union-Find structure for connectivity checks
+
+**Purpose**: Set up a disjoint-set structure for fast connectivity operations.
+
+**Why**: Essential for verifying graph connectivity and avoiding redundant computations.
+
+### 5. Select landmarks for heuristic computation
+
+**Purpose**: Identify key nodes to improve pathfinding efficiency.
+
+**Why**: Landmarks help optimize the ALT heuristic for faster shortest path calculations.
+
+## C. Step 3: Data Validation
+
+### 1. Validate data integrity
+
+**Edge hashing**: Ensures edge data is unique and intact.
+Conflict detection: Identifies inconsistencies in the graph.
+
+**Progress logging**: Tracks the validation steps for debugging.
+
+**Why**: Guarantees the reliability and correctness of the graph data.
+
+### 2. Validate connectivity
+
+**Union-Find integration**: Uses the structure to verify connections.
+
+**Connectivity check**: Ensures all nodes are reachable.
+
+**Progress logging**: Records validation progress.
+
+**Why**: Confirms the graph is well-formed and usable for pathfinding.
+
+## D. Step 4: API Initialization
+
+### 1. Initialize the API server
+
+**Socket initialization**: Sets up communication endpoints.
+
+**Continuous listening**: Prepares for incoming client requests.
+
+**Why**: Provides a user interface for interacting with the application.
+
+## E. Step 5: Algorithms and Pathfinding
+
+### 1. Set up pathfinding
+
+**Custom priority queue**: Optimizes node selection in the algorithm.
+
+**ALT heuristic computation**: Speeds up pathfinding using landmarks.
+
+**Bidirectional weighted A search**: Implements an efficient shortest-path algorithm.
+
+**Why**: Enables fast and accurate route calculations.
+
+### 2. Construct the shortest path from results
+
+**Purpose**: Build the final path from the search results.
+
+**Why**: Provides usable output for API responses or further processing.
+
+## F. Step 6: Request Handling
+
+### 1. Handle incoming API requests
+
+**Purpose**: Process user queries for graph operations or pathfinding.
+
+**Why**: Delivers the application’s functionality to end-users.
+
+### 2. Construct and return responses
+
+**Purpose**: Provide results or feedback to API clients.
+
+**Why**: Completes the interaction loop between users and the application.
+
+## G. Step 7: Finalization
+
+### 1. Clean up the logger and release resources
+
+**Purpose**: Shut down logging and free any reserved resources.
+
+**Why**: Ensures a clean exit and prevents resource leaks.
+Key Dependencies
+
+Logger initialization is required first for debugging and monitoring.
+
+Data loading must precede validation and algorithms to provide input.
+
+Validation ensures the graph is reliable before enabling the API.
+
+The API server is activated last to ensure all components are ready.

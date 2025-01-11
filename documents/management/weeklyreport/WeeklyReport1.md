@@ -105,7 +105,7 @@ The Software Engineer (SE) explains the project concept to the team. The Project
 |2| Technical Specifications | 01/27/2025 | Grégory PAGNOUX  | On Time |10%|
 |3| Test Plan | 02/07/2025 |Lucas MEGNAN| On Time |35%|
 |4| Test Cases | 02/07/2025 |Lucas MEGNAN| On Time |15%|
-|6| Code | 01/31/2025 | Yann-Maël BOUTON | On Time ||
+|6| Code | 01/31/2025 | Yann-Maël BOUTON | On Time |30%|
 
 # IV. Time Management
 
@@ -133,3 +133,9 @@ The Software Engineer (SE) explains the project concept to the team. The Project
 |PAGNOUX Grégory | 14:00h |	1.00h	| 2:45h	| 1:24h | 10:06h | | Personal appointment |
 
 # V. Next Week's Plan
+
+For the next week, the focus should be on the project's functional specifications as the deadline fixed by the team is 01/20/2025 but the team do not have project time between the 13th and the 15th of January 2025.
+
+The team should also focus on the project's technical as the deadline will soon be reached.
+
+The development team will continue to develop the first version of the project on both operating system, MacOs and Windows.
