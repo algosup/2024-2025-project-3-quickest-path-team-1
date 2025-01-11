@@ -18,6 +18,9 @@
     - [2. MIT Licence](#2-mit-licence)
       - [a. Overview](#a-overview-1)
       - [b. Solution](#b-solution-1)
+    - [3. Be Lost on the Project](#3-be-lost-on-the-project)
+      - [a. Overview](#a-overview-2)
+      - [b. Solution](#b-solution-2)
   - [E. Uncompleted Tasks](#e-uncompleted-tasks)
 - [IV. Time Management](#iv-time-management)
   - [A. Global Time Management](#a-global-time-management)
@@ -83,6 +86,16 @@ We need to add an MIT License, but adding one is not very intuitive in Github. T
 #### b. Solution
 
 After some time of research, when the QA put 'License' in the title, he was invited to another menu and found the tabs when is possible to add it.
+
+### 3. Be Lost on the Project
+
+#### a. Overview
+
+The Technical Leader (TL), the Program Manager (PGM), and the Technical Writer (TW) don't really understand the project. The first doesn't understand the subject and is lost in it. PGM and TW didn't understand the concept of the API.
+
+#### b. Solution
+
+The Software Engineer (SE) explains the project concept to the team. The Project Manager (PM) and the Quality Assurence (QA) try to explain also the project to everyone who needs an explanation.
 
 ## E. Uncompleted Tasks
 
