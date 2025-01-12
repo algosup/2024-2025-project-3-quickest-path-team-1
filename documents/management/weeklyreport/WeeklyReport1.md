@@ -35,21 +35,21 @@ As the first week of the project, the team analyzed the call for tender, began w
 
 # II. Work Planned
 
-During the first week, the plan was to analyze the project's call for tender, plan a new deadline to have a better organisation, make the Skeleton and advance on each documents, create template for github issues and pull request, make a collaborate white board. Furthermore, we have planned to advance on the code to have a beta. 
+During the first week, the plan was to analyze the project's call for tender, plan a new deadline to have a better organization, make the skeleton and advance on each documents, create template for github issues and pull request, make a collaborate white board. Furthermore, we have planned to advance on the code to have a beta. 
 
 # III. Work Done
 
 ## A. Documentation
 
-The team started started to develop the project's documentation. The documentation is being developed in Markdown format and is being stored in the 'documents' folder.
+The team started started to develop the project's documentation. The documentation is being developed in Markdown format and is being stored in the `documents` folder.
 
-The Program Manager is responsible for the 'FunctionalSpecifications.md'. However, because he was sick all week and because, for this project, the 'FunctionalSpecifications.md' and the 'UserManual.pdf' have many similarities, the Technical Lead prepared a document to become the 'FunctionalSpecifications', and when the Program Manager will come back, they going to work together to finish it.
+The Program Manager is responsible for the `FunctionalSpecifications.md`. However, because he was sick all week and because, for this project, the `FunctionalSpecifications.md` and the `UserManual.pdf` have many similarities, the Technical Writer prepared a document to become the `FunctionalSpecifications`, and when the Program Manager will come back, they going to work together to finish it.
 
-The Technical Manager is responsible for the 'TechnicalSpecifications.md'. He is also responsible for setting up all the conventions used, the architecture of all documentation, and the organization of files.
+The Technical Manager is responsible for the `TechnicalSpecifications.md`. He is also responsible for setting up all the conventions used, the architecture of all documentation, and the organization of files.
 
-The Quality Assurance is responsible for the 'TestPlan.md' and the 'TestCases.md'. He is also responsible for setting up a whiteboard and Github Issues templates. He has also reviewed three management documents, giving some issues, and fixing them. The whiteboard is used to collaborate with the whole team, stock information, and make teamwork with schema and other graphic and Post-it notes. 
+The Quality Assurance is responsible for the `TestPlan.md` and the `TestCases.md`. He is also responsible for setting up a whiteboard and Github Issues templates. He has also reviewed three management documents, giving some issues, and fixing them. The whiteboard is used to collaborate with the whole team, stock information, and make teamwork with schema and other graphic and Post-it notes. 
 
-The Project Manager is responsible for the 'Settlement.md', the 'ProjectCharter.md', 'WeeklyReport1.md', and the Time Management.
+The Project Manager is responsible for the `Settlement.md`, the `ProjectCharter.md`, `WeeklyReport1.md`, and the Time Management.
 
 ## B. Development
 
@@ -75,7 +75,7 @@ The Program Manager missed his train at the beginning of the week and, then wait
 
 #### b. Solution
 
-This problem should not affect the project's schedule. The 'FunctionalSpecifications.md', by the similarity of this document and the 'UserManual.pdf', we have asked the Technical Writer to continue the document. To complete this task, she saw team 4 ask some questions.
+This problem should not affect the project's schedule. The `FunctionalSpecifications.md`, by the similarity of this document and the `UserManual.pdf`, we have asked the Technical Writer to continue the document. To complete this task, she saw team 4 ask some questions.
 
 ### 2. MIT Licence
 
@@ -108,6 +108,8 @@ The Software Engineer (SE) explains the project concept to the team. The Project
 |6| Code | 01/31/2025 | Yann-Maël BOUTON | On Time |30%|
 
 # IV. Time Management
+
+In the settlement, the team agreed that if we missed any project time, we had to make up at least half the time we missed in overtime.
 
 ## A. Global Time Management
 
