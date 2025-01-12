@@ -21,10 +21,11 @@
     - [3. Be Lost on the Project](#3-be-lost-on-the-project)
       - [a. Overview](#a-overview-2)
       - [b. Solution](#b-solution-2)
+    - [4. Remote Compiling](#4-remote-compiling)
+      - [a. Overview](#a-overview-3)
+      - [b. Solution](#b-solution-3)
   - [E. Uncompleted Tasks](#e-uncompleted-tasks)
-- [IV. Time Management](#iv-time-management)
-  - [A. Global Time Management](#a-global-time-management)
-  - [B. Week Time Management](#b-week-time-management)
+- [IV. Feeling](#iv-feeling)
 - [V. Next Week's Plan](#v-next-weeks-plan)
 
 </details>
@@ -97,6 +98,16 @@ The Technical Leader (TL), the Program Manager (PGM), and the Technical Writer (
 
 The Software Engineer (SE) explains the project concept to the team. The Project Manager (PM) and the Quality Assurence (QA) try to explain also the project to everyone who needs an explanation.
 
+### 4. Remote Compiling
+
+#### a. Overview
+
+The Software Engineer (SE) has created the beta of the code on his windows. However, the achitecture of a windows and a mac are different. Therefore the SE has choosen to use a remote compilling. With that, he compilling the code on the windows, put it on the mac and use it on the mac.
+
+#### b. Solution
+
+This problem is not already solved.
+
 ## E. Uncompleted Tasks
 
 |ID|Task|Due Date|Additional Time Required |Responsible| Status|
@@ -107,32 +118,9 @@ The Software Engineer (SE) explains the project concept to the team. The Project
 |4| Test Cases | 02/07/2025 |Lucas MEGNAN| On Time |15%|
 |6| Code | 01/31/2025 | Yann-Maël BOUTON | On Time |30%|
 
-# IV. Time Management
+# IV. Feeling
 
-In the settlement, the team agreed that if we missed any project time, we had to make up at least half the time we missed in overtime.
-
-## A. Global Time Management
-
-|Team's Members | Project Time Realised | Overtime Realised | Missing time | Missing time to Reimburse | Total Time spent on the Project | Reasons for working overtime | Reasons for Missing Project Time | 
-|-|-|-|-|-|-|-|-|
-|SANTOS Alexis | 14:00h |	5:10h |	0:00h | 0:00h |	19:10h | He wants to advance on his document. | |
-|BOUTON Yann-Maël	| 14:00h |	22:50h | 0:00h | 0:00h | 36:50h | | |
-|DE GERMAIN Lena |	14:00h |	0:00h | 0:00h |	0:00h	| 14:00h | | |
-|MEGNAN Lucas	| 14:00h |	2:40h	| 0:00h	| 0:00h | 16:40h | | |
-|NOGUES Loïc	| 14:00h |	1:30h |	11:30h	| 05:15h | 10:15h | | Sick and not present in Vierzon because of cancelled trains |
-|PAGNOUX Grégory | 14:00h |	1.00h	| 3:45h	| 1:54h | 13:08h | | Personal appointment |
-
-
-## B. Week Time Management
-
-|Team's Members | Project Time Realised | Overtime Realised | Missing time | Missing time to Reimburse | Total Time spent on the Project | Reasons for working overtime | Reasons for Missing Project Time | 
-|-|-|-|-|-|-|-|-|
-|SANTOS Alexis | 14:00h |	2:10h |	0:00h | 0:00h |	16:10h | He wants to advance on his documents before the end of the week. But is not because we missing project time. | |
-|BOUTON Yann-Maël	| 14:00h |	22:50h | 0:00h | 0:00h | 36:50h | | |
-|DE GERMAIN Lena |	14:00h |	0:00h | 0:00h |	0:00h	| 14:00h | | |
-|MEGNAN Lucas	| 14:00h |	2:40h	| 0:00h	| 0:00h | 13:10h | | |
-|NOGUES Loïc	| 14:00h |	1:30h |	14:00h	| 07:00h | 8:30h | | Sick and not present in Vierzon because of cancelled trains |
-|PAGNOUX Grégory | 14:00h |	1.00h	| 2:45h	| 1:24h | 10:06h | | Personal appointment |
+Overall, the team feels very well. Some are tired because the whole work is done, and some are enjoying this week because they have made a big step in the project.
 
 # V. Next Week's Plan
 
