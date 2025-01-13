@@ -50,7 +50,7 @@ The **Quality Assurance** had set up a whiteboard and Github Issues templates. H
 
 The **Project Manager** had created the Settlement, aproved by whole the team, and the Project Charter.
 
-Finaly, on Github, The **Project Manager** and the **Quality Assurance** had write the README and added a MIT License.
+Finaly, on Github, The **Project Manager** and the **Quality Assurance** wrote the README and added a MIT License.
 
 ## B. Development
 
