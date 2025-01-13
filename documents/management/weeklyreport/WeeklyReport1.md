@@ -76,7 +76,7 @@ The Program Manager missed his train at the beginning of the week and, then wait
 
 #### b. Solution
 
-This problem should not affect the project's schedule. The `FunctionalSpecifications.md`, by the similarity of this document and the `UserManual.pdf`, we have asked the Technical Writer to continue the document. To complete this task, she saw team 4 ask some questions.
+This problem should not affect the project's schedule. The `FunctionalSpecifications.md`, by the similarity of this document and the `UserManual.pdf`, we have asked the Technical Writer to continue the document. To complete this task, she went to see team 4 to ask them some questions.
 
 ### 2. MIT Licence
 
