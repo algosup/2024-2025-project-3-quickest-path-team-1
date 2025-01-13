@@ -44,13 +44,13 @@ During the first week, the plan was to analyze the project's call for tender, pl
 
 The team started started to develop the project's documentation. The documentation is being developed in Markdown format and is being stored in the `documents` folder.
 
-The Program Manager is responsible for the `FunctionalSpecifications.md`. However, because he was sick all week and because, for this project, the `FunctionalSpecifications.md` and the `UserManual.pdf` have many similarities, the Technical Writer prepared a document to become the `FunctionalSpecifications`, and when the Program Manager will come back, they going to work together to finish it.
+The **Technical Leader** had established all the conventions used, the architecture of all the documentation and the organization of the files. 
 
-The Technical Manager is responsible for the `TechnicalSpecifications.md`. He is also responsible for setting up all the conventions used, the architecture of all documentation, and the organization of files.
+The **Quality Assurance** had set up a whiteboard and Github Issues templates. He has also reviewed three management documents, giving some issues, and fixing them. The whiteboard is used to collaborate with the whole team, stock information, and make teamwork with schema and other graphic and Post-it notes. 
 
-The Quality Assurance is responsible for the `TestPlan.md` and the `TestCases.md`. He is also responsible for setting up a whiteboard and Github Issues templates. He has also reviewed three management documents, giving some issues, and fixing them. The whiteboard is used to collaborate with the whole team, stock information, and make teamwork with schema and other graphic and Post-it notes. 
+The **Project Manager** had created the Settlement, aproved by whole the team, and the Project Charter.
 
-The Project Manager is responsible for the `Settlement.md`, the `ProjectCharter.md`, `WeeklyReport1.md`, and the Time Management.
+Finaly, on Github, The **Project Manager** and the **Quality Assurance** had write the README and added a MIT License.
 
 ## B. Development
 
