@@ -110,13 +110,13 @@ This problem is not already solved.
 
 ## E. Uncompleted Tasks
 
-|ID|Task|Due Date|Additional Time Required |Responsible| Status|
-|-|-|-|-|-|-|
-|1| Functional Specifications | 01/20/2025 | Loïc NOGUES & Léna DE GERMAIN | On Time | 10% |
-|2| Technical Specifications | 01/27/2025 | Grégory PAGNOUX  | On Time |10%|
-|3| Test Plan | 02/07/2025 |Lucas MEGNAN| On Time |35%|
-|4| Test Cases | 02/07/2025 |Lucas MEGNAN| On Time |15%|
-|6| Code | 01/31/2025 | Yann-Maël BOUTON | On Time |30%|
+|ID|Task|Due Date|Additional Time Required |Responsible| Status| Percentage completed |
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|1| Functional Specifications | 01/20/2025 | 1 week | Loïc NOGUES & Léna DE GERMAIN | On Time | 10% |
+|2| Technical Specifications | 01/27/2025 | 2 weeks | Grégory PAGNOUX  | On Time |10%|
+|3| Test Plan | 02/07/2025 | 4 weeks | Lucas MEGNAN| On Time |35%|
+|4| Test Cases | 02/07/2025 | 4 weeks | Lucas MEGNAN| On Time |15%|
+|6| Code | 01/31/2025 | 3 weeks | Yann-Maël BOUTON | On Time |30%|
 
 # IV. Feeling
 
