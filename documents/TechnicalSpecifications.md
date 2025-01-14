@@ -55,10 +55,11 @@
 |---|---|---|---|
 | 1.1 | Grégory PAGNOUX | 01/06/2025 | Template, [Writing convention](#1-writing-convention), [Quality Control](#iii-quality-control) part A, [Success evaluation](#v-success-evaluation) |
 | 1.2 | Grégory PAGNOUX | 01/08/2025 | [Development](#b-development), [Software](#1-software), [Time & human](#2-time--human), [Overview](#c-overview), [Documents](#a-documents) |
+| 1.3 | Grégory PAGNOUX | 01/14/2025 | [Coding convention](#2-c-coding-convention) |
 
 ## C. Overview
 
-Our Software aim to make travel easier with faster pathing using the language C++ and the software VScode. The users can use this to gain time and travel more effectivilly and easily across the United States.
+SmashThePath aim to make travel easier with faster pathing using the language C++ and the software VScode. The users can use this to gain time and travel more effectivilly and easily across the United States.
 
 This project is an oppurtunity to dive into the very famous laguage C++.
 Our main goal is to make a very easy and faster way to travel with an API.
@@ -87,10 +88,19 @@ Our main goal is to make a very easy and faster way to travel with an API.
 └── 📁 documents
 |    └── 📁 images
 |    └── 📁 management
-|        └── 📝 DocumentManagement.md
-|        └── 📝 PostMortem.md
-|        └── 📝 ProjectCharter.md
-|        └── 📝 Settlement.md
+|    |   └── 📁 weeklyreport
+|    |   |   └── 📝 SummaryTeamAnswers.md
+|    |   |   └── 📝 WeeklyReport1.md
+|    |   |   └── 📝 WeeklyReport2.md
+|    |   |   └── 📝 WeeklyReport3.md
+|    |   |   └── 📝 WeeklyReport4.md
+|    |   |   └── 📝 WeeklyReport5.md
+|    |   |   └── 📝 WeeklyReport6.md
+|    |   |   └── 📝 WeeklyReportTemplate.md
+|    |   └── 📝 DocumentManagement.md
+|    |   └── 📝 PostMortem.md
+|    |   └── 📝 ProjectCharter.md
+|    |   └── 📝 Settlement.md
 |    └── 📝 FunctionalSpecifications.md
 |    └── 📝 TechnicalSpecifications.md
 |    └── 📝 TestCase.md
@@ -205,19 +215,21 @@ You can have also [Markdown convention](https://www.markdownguide.org/basic-synt
 
 ### 2. C++ coding convention
 
-<!--TODO-->
-
 The language used to develop the project is C++
 
 | Notation | How | Usage | Example |
 | :-: | :-: | :-: | :-: |
 | comment = // | start each line with two slashes and an uppercase letter and finish the comment by a period. | give more information of the code | <pre>```// The following declaration creates a query. It doesn't run the query.```</pre> |
 | comment = ```/*paragraphe*/``` | start each line with two slashes and an uppercase letter and finish the comment by a period. | give more information of the code | <pre>```/*The following declaration creates a query.``` <br> ```It doesn't run the query.*/```</pre> |
-| snake_case |  |  | variable_name |
-| Pascal_Snake_Case |  |  | Fonction_Name |
-|  |  |  |  |
+| snake_case | each words are separated by an underscore | name variable | variable_name |
+| camelCase | each words are concatenate and all words start by an uppercase except the first one | name functions | functionName |
+| Interface (suffix) | put the word "Interface" at the end | named interface |  |
+| Abstract (prefix) | put the word "Abstract" at the beginning | named abstract base classes |  |
+| g_ (prefix) | put the letter "g" at the beginning separated by an underscore | named global variables |  |
+| s_ (prefix) | put the letter "s" at the beginning separated by an underscore | named static class variables |  |
+| c_ (prefix) | put the letter "c" at the beginning separated by an underscore | named global constants |  |
 
-*source : []()*
+*source : [Gromacs](https://manual.gromacs.org/5.1-current/dev-manual/naming.html#:~:text=would%20be%20better.-,C%2B%2B%20code)*
 
 ## B. Cost estimation
 
