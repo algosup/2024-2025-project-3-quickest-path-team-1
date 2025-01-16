@@ -64,7 +64,7 @@ The development team started to study the project's requirements and started to 
 |8| Project Charter | 01/06/2025| Alexis SANTOS | Finished | 
 |9| README | 01/06/2025 | ALexis SANTOS & Lucas MEGNAN| Finished |
 |10| White Board | 01/10/2025 | Lucas MEGNAN | Usable by the Team |
-|11| Development steps | 01/10/2025 | Yann-Maël BOUTON & Grégory PAGNOUX | Finished |
+|11| Development steps list | 01/10/2025 | Yann-Maël BOUTON & Grégory PAGNOUX | Finished |
 
 ## D. Problems Faced
 
