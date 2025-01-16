@@ -12,13 +12,17 @@
 <details>
 <summary>📖 Table of content</summary>
 
-  - [Functional Specifications](#functional-specifications)
+
   - [I. Overview](#i-overview)
     - [A. Project summary](#a-project-summary)
     - [B. Out of Scope](#b-out-of-scope)
-    - [C. Personas and Use Cases](#c-personas-and-use-cases)
+    - [C. Personas](#c-personas)
+    - [D. Use case](#d-use-case)
   - [II. Functional requirements](#ii-functional-requirements)
   - [III. Non-Functional Requirements](#iii-non-functional-requirements)
+      - [A. Node and Path Management](#a-node-and-path-management)
+      - [B. Fastest Path Calculation]()
+      - [C. REST API Specification]()
   - [IV. Feature of the API](#iv-feature-of-the-api)
   - [V. Future improvement](#v-future-improvement)
   - [VI. Glossary](#vi-glossary)
@@ -32,80 +36,83 @@
 
 ## A. Project summary
 
-SmashThePath aims to make travel easier with faster pathing. Users can use it to save time and travel more efficiently and easily across the U.S.
-This project is an opportunity to dive into the very famous language C++[^3].
-Our main goal is to make a very easy and faster way to travel with an API for everyone and every age.
-
-----
-
-Our Software aim to make travel easier with precise pathing using 
-the language C++[^3] and the software VScode[^4]. The users can use this to travel
-more effectivilly and easily across the United States.
-
-----
-
-This project is an oppurtunity to dive into the very famous laguage C++.
-Our main goal is to make a very easy and precise GPS API for everyone and 
-every age.
-
-
+SmashThePath aims to determine the time between two nodes and find the fastest way. Users can use it to save time and travel more effectively across the United States. This project is an opportunity to dive into the renowned C++ language[^3]. Our main goal is to create an easier way to determine the fastest time between two nodes.
 
 ## B. Out of scope
 
 |Sellable API|Complex API|
 |-|-|
-|The project is aimed at teaching us to do a easy and much usefull way to travel with our API. It is not supposed to be really huge and sellable at the final deadline. |To complete this project. We need to create an API that correpond to our requirements, overcomplicating interface can be hard for new users.
+|The project aims to teach us a simple and useful way to manage travel with our API. It is not intended to be very large or commercially viable by the final deadline. |To complete this project, we need to create an API that meets our requirements. An overly complicated interface could be difficult for new users to handle.
 
-----
-
-    -Sellable API
-        The project is aimed at teaching us to do a easy and precise API.
-        It is not supposed to be really huge and sellable at the final deadline.
-    -Complex API
-        To complete this project. We need to create an app that correpond to our requirements, overcomplicating interface can be hard for new users.
 
 ## C. Personas
-This project will not have personas, for the simple reason that the people who will use it have to know how it works and code a software to use effectivily our SmashThePath
-## D. Goals
-    Both of the personnas has the same wish, an easy and precise way to travel. So our goals is to make a simple and an accurate API to travel around the United States.
+This project will not include personas, for the simple reason that the people who will use it must understand how it works and be able to code software to use SmashThePath effectively.
+
+## D. Use case
 
 
+![image schema](./image/schema1.png)
 
 
 # II. Functional requirements
+## A. Node and Path Management
+The system shall allow defining nodes (landmarks) and their connections with specified travel times.
+It shall support reading node and connection data from a file (e.g., USA-roads.csv).
 
--The travel time
-    -The number of kilometers to acheive to be at the destination
-    -An easy interface.
- 
+## B. Fastest Path Calculation
+The system shall calculate the fastest path and total travel time between two nodes based on the given data.
+It shall provide an ordered list of landmarks in the path.
 
-# III. Non-Functional Requirements
--
+## C. REST API Specification
+Expose a GET endpoint that accepts:
+Input: Source and destination node IDs.
+Output:
+Travel time.
+Ordered list of landmarks in the path.
+Response formats: JSON and XML.
+
+
+ # III. Non-Functional Requirements
+
+## A. Programming Language
+The software must be implemented in C++ to ensure optimal performance and efficient memory handling.
+
+## B. Performance
+The system should calculate the fastest path for typical queries within 1 second.
+
+## C. Scalability
+The software must efficiently handle large datasets (e.g., 24 million nodes in USA-roads.csv).
+
+## D. API Accessibility
+The REST API must run on an HTTP server accessible via localhost and support concurrent requests.
+
+## E. Data Format Compatibility
+The system shall ensure compatibility with CSV files and handle potential errors like missing or malformed data.
+
+## F. Reliability
+The system must ensure accurate results for pathfinding, even under high load or large datasets.
 
 # IV. Feature of the API
 
--The travel time
+The travel time between the node A and the node B.
 
--The number of kilometers to acheive to be at the destination
-
--An easy interface.
 
 # V. Future improvement
 
 # VI. Glossary
 
-
 [^1]: Data 
-Facts and statistics collected together for reference or analysis. // facts and statistics collected together for reference or analysis.
+Facts and statistics collected together for reference or analysis.
+src:wikipedia
 
-[^2]: RESAPI
-An application programming interface (API) that follows the design principles of the REST architectural style. // an application programming interface (API) that follows the design principles of the REST architectural style.
+[^2]: RESTAPI
+An application programming interface (API) that follows the design principles of the REST architectural style.
+src:wikipedia 
 
 [^3]: C++
-An object-oriented programming (OOP) language that is viewed by many as the best language for creating large-scale applications. // an object-oriented programming (OOP) language that is viewed by many as the best language for creating large-scale applications
+An object-oriented programming (OOP) language that is viewed by many as the best language for creating large-scale applications.
+
 
 [^4]: VScode
-An integrated development environment developed by Microsoft for Windows, Linux, macOS and web browsers. // an integrated development environment developed by Microsoft for Windows, Linux, macOS and web browsers.
-
-
+An integrated development environment developed by Microsoft for Windows, Linux, macOS and web browsers. 
 
