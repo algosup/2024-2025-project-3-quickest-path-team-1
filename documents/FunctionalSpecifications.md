@@ -137,9 +137,7 @@ An application programming interface (API) that follows the design principles of
 
 Source: Wikipedia 
 
-[^cpp]: An object-oriented programming (OOP) language that is viewed by many as the best language for creating large-scale applications.
-
-Source: Wikipedia
+[^cpp]: An object-oriented programming (OOP) language that is viewed by many as the best language for creating large-scale applications. Source: Wikipedia
 
 
 [^4] : VScode
