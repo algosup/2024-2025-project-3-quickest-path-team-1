@@ -36,7 +36,7 @@
 
 ## A. Project summary
 
-SmashThePath aims to determine the time between two nodes and find the fastest way. Users can use it to save time and travel more effectively across the United States. This project is an opportunity to dive into the renowned C++ language[^3]. Our main goal is to create an easier way to determine the fastest time between two nodes.
+SmashThePath aims to determine the time between two nodes and find the fastest way. Users can use it to save time and travel more effectively across the United States. This project is an opportunity to dive into the renowned C++ language [^3]. Our main goal is to create an easier way to determine the fastest time between two nodes.
 
 ## B. Out of scope
 
@@ -121,3 +121,6 @@ An object-oriented programming (OOP) language that is viewed by many as the best
 [^4] : VScode
 An integrated development environment developed by Microsoft for Windows, Linux, macOS and web browsers. 
 
+
+
+[M]: image/Schema3.png
