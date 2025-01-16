@@ -98,7 +98,7 @@ The system should calculate the fastest path for all queries within 1 second.
 The software must efficiently handle large datasets (e.g., 24 million nodes in USA-roads.csv).
 
 ## D. API Accessibility
-The REST API must run on an HTTP server accessible via localhost and support concurrent requests.
+The REST API must run on an HTTP server accessible via  localhost or public network and support concurrent requests.
 
 ## E. Data Format Compatibility
 The system shall ensure compatibility with CSV files and handle potential errors like missing or malformed data.
@@ -108,6 +108,8 @@ The system must ensure accurate results for pathfinding, even under high load or
 
 # IV. Feature of the API
 The travel time between the node A and the node B.
+
+You can also use other coding language to use the SmashToPath
 
 
 # V. Future improvement
