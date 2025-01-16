@@ -45,7 +45,7 @@
 
 ## A. Project summary
 
-SmashThePath aims to determine the time between two nodes and find the fastest way. Users can use it to save time and travel more effectively across the United States. This project is an opportunity to dive into the renowned C++ language [^3]. Our main goal is to create an easier way to determine the fastest time between two nodes.
+SmashThePath aims to determine the time between two nodes and find the fastest way. Users can use it to save time and travel more effectively across the United States. This project is an opportunity to dive into the renowned C++ language[^cpp]. Our main goal is to create an easier way to determine the fastest time between two nodes.
 
 ## B. Out of scope
 
@@ -137,9 +137,7 @@ An application programming interface (API) that follows the design principles of
 
 Source: Wikipedia 
 
-[^3] : C++
-
-An object-oriented programming (OOP) language that is viewed by many as the best language for creating large-scale applications.
+[^cpp]: An object-oriented programming (OOP) language that is viewed by many as the best language for creating large-scale applications.
 
 Source: Wikipedia
 
