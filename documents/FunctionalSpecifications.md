@@ -51,7 +51,7 @@ This project will not include personas, for the simple reason that the people wh
 ## D. Use case
 
 
-![image schema](./image/schema1.png)
+![schema](image/Schema.png)
 
 
 # II. Functional requirements
