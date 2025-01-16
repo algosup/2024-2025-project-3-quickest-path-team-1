@@ -71,19 +71,19 @@ This project will not include personas, for the simple reason that the people wh
 # II. Functional requirements
 ## A. Node and Path Management
 The system shall allow defining nodes (landmarks) and their connections with specified travel times.
-It shall support reading node and connection data from a file (e.g., USA-roads.csv).
+It shall support reading node and connection data[^data] from a file (e.g., USA-roads.csv).
 
 ## B. Fastest Path Calculation
 The system shall calculate the fastest path and total travel time between two nodes based on the given data.
 It shall provide an ordered list of landmarks in the path.
 
 ## C. REST API Specification
-Expose a GET endpoint that accepts:
+Expose a GET[^get] endpoint that accepts:
 Input: Source and destination node IDs.
 Output:
 Travel time.
 Ordered list of landmarks in the path.
-Response formats: JSON and XML.
+Response formats: JSON and XML[^jsonxml].
 
 
 # III. Non-Functional Requirements
@@ -98,7 +98,7 @@ The system should calculate the fastest path for all queries within 1 second.
 The software must efficiently handle large datasets (e.g., 24 million nodes in USA-roads.csv).
 
 ## D. API Accessibility
-The REST API must run on an HTTP server accessible via  localhost or public network and support concurrent requests.
+The REST API[^restapi] must run on an HTTP server accessible via  localhost or public network and support concurrent requests.
 
 ## E. Data Format Compatibility
 The system shall ensure compatibility with CSV files and handle potential errors like missing or malformed data.
@@ -127,32 +127,13 @@ Pre-compute and cache the shortest paths for commonly requested queries to reduc
 
 # VI. Glossary
 
-[^1] : Data 
+[^data]: Facts and statistics collected together for reference or analysis. Source: Wikipedia
 
-Facts and statistics collected together for reference or analysis.
-
-Source: Wikipedia
-
-[^2] : RESTAPI
-
-An application programming interface (API) that follows the design principles of the REST architectural style.
-
-Source: Wikipedia 
+[^restapi]: An application programming interface (API) that follows the design principles of the REST architectural style. Source: Wikipedia 
 
 [^cpp]: An object-oriented programming (OOP) language that is viewed by many as the best language for creating large-scale applications. Source: Wikipedia
 
 
-[^4] : VScode
+[^jsonxml]: JSON is an open data interchange format that is readable by both people and machines. JSON is independent of any programming language and is a common API output in a wide variety of applications. XML is a markup language that provides rules to define any data. Source: Wikipedia
 
-An integrated development environment developed by Microsoft for Windows, Linux, macOS and web browsers. 
-
-[^5] : JSON/XML
-
-JSON is an open data interchange format that is readable by both people and machines. JSON is independent of any programming language and is a common API output in a wide variety of applications. XML is a markup language that provides rules to define any data.
-Source: Wikipedia
-
-[^6] : GET
-
-Is one of the standard HTTP request methods used in web communication. It is typically used to retrieve data from a server without modifying its state. GET requests are widely employed in RESTful APIs, websites, and web applications for fetching resources or information.
-
-Source: Wikipedia
+[^get]: Is one of the standard HTTP request methods used in web communication. It is typically used to retrieve data from a server without modifying its state. GET requests are widely employed in RESTful APIs, websites, and web applications for fetching resources or information. Source: Wikipedia
