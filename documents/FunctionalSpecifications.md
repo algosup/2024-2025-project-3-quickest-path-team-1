@@ -50,9 +50,14 @@ This project will not include personas, for the simple reason that the people wh
 
 ## D. Use case
 
-
+### 1st use case
 ![schema](image/Schema.png)
 
+### 2nd us
+![schema2](image/Schema2.png)
+
+
+![schema2](image/Schema2.png)
 
 # II. Functional requirements
 ## A. Node and Path Management
@@ -101,18 +106,18 @@ The travel time between the node A and the node B.
 
 # VI. Glossary
 
-[^1]: Data 
+[^1] : Data 
 Facts and statistics collected together for reference or analysis.
 src:wikipedia
 
-[^2]: RESTAPI
+[^2] : RESTAPI
 An application programming interface (API) that follows the design principles of the REST architectural style.
 src:wikipedia 
 
-[^3]: C++
+[^3] : C++
 An object-oriented programming (OOP) language that is viewed by many as the best language for creating large-scale applications.
 
 
-[^4]: VScode
+[^4] : VScode
 An integrated development environment developed by Microsoft for Windows, Linux, macOS and web browsers. 
 
