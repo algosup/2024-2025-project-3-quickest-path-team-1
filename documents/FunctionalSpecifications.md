@@ -19,11 +19,20 @@
     - [C. Personas](#c-personas)
     - [D. Use case](#d-use-case)
   - [II. Functional requirements](#ii-functional-requirements)
-  - [III. Non-Functional Requirements](#iii-non-functional-requirements)
       - [A. Node and Path Management](#a-node-and-path-management)
-      - [B. Fastest Path Calculation]()
-      - [C. REST API Specification]()
+      - [B. Fastest Path Calculation](#b-fastest-path-calculation)
+      - [C. REST API Specification](#c-rest-api-specification)
+  - [III. Non-Functional Requirements](#iii-non-functional-requirements)
+      - [A. Programming Language](#a-programming-language)
+      - [B. Performance](#b-performance)
+      - [C. Scalability](#c-scalability)
+      - [D. API Accessibility](#d-api-accessibility)
+      - [E. Data Format Compatibility](#e-data-format-compatibility)
+      - [F. Reliability](#f-reliability)
   - [IV. Feature of the API](#iv-feature-of-the-api)
+      - [1. Advanced Pathfinding Features](#1-advanced-pathfinding-features)
+      - [2. Scalability and Performance Enhancements](#2-scalability-and-performance-enhancements)
+      - [3. Multi-Language Support](#3-multi-language-support)
   - [V. Future improvement](#v-future-improvement)
   - [VI. Glossary](#vi-glossary)
 
@@ -46,7 +55,7 @@ SmashThePath aims to determine the time between two nodes and find the fastest w
 
 
 ## C. Personas
-This project will not include personas, for the simple reason that the people who will use it must understand how it works and be able to code software to use SmashThePath effectively.
+This project will not include personas, for the simple reason that the people who will use it, must understand how it works and be able to code a software to use SmashThePath effectively.
 
 ## D. Use case
 
@@ -77,7 +86,7 @@ Ordered list of landmarks in the path.
 Response formats: JSON and XML.
 
 
- # III. Non-Functional Requirements
+# III. Non-Functional Requirements
 
 ## A. Programming Language
 The software must be implemented in C++ to ensure optimal performance and efficient memory handling.
@@ -98,29 +107,60 @@ The system shall ensure compatibility with CSV files and handle potential errors
 The system must ensure accurate results for pathfinding, even under high load or large datasets.
 
 # IV. Feature of the API
-
 The travel time between the node A and the node B.
 
 
 # V. Future improvement
+## 1. Advanced Pathfinding Features
+### Dynamic Weights:
+Incorporate real-time data such as traffic conditions, weather, or road closures to dynamically adjust travel times.
+### Multi-Criteria Optimization:
+Allow users to optimize paths based on multiple criteria, such as shortest distance, fastest time, or cost
+
+## 2. Scalability and Performance Enhancements
+### Distributed Computation:
+Implement distributed graph processing using frameworks like Apache Giraph or GraphX to handle extremely large datasets.
+### Pre-computation and Caching:
+Pre-compute and cache the shortest paths for commonly requested queries to reduce response times.
+## 3. Multi-Language Support
+### code languages
+Extend the API to support additional programming languages (e.g., Python, Java) via SDKs or client libraries.
+
+### Language support
+Add other language for the API like french or many others. 
 
 # VI. Glossary
 
 [^1] : Data 
+
 Facts and statistics collected together for reference or analysis.
-src:wikipedia
+
+Source: Wikipedia
 
 [^2] : RESTAPI
+
 An application programming interface (API) that follows the design principles of the REST architectural style.
-src:wikipedia 
+
+Source: Wikipedia 
 
 [^3] : C++
+
 An object-oriented programming (OOP) language that is viewed by many as the best language for creating large-scale applications.
+
+Source: Wikipedia
 
 
 [^4] : VScode
+
 An integrated development environment developed by Microsoft for Windows, Linux, macOS and web browsers. 
 
+[^5] : JSON/XML
 
+JSON is an open data interchange format that is readable by both people and machines. JSON is independent of any programming language and is a common API output in a wide variety of applications. XML is a markup language that provides rules to define any data.
+Source: Wikipedia
 
-[M]: image/Schema3.png
+[^6] : GET
+
+Is one of the standard HTTP request methods used in web communication. It is typically used to retrieve data from a server without modifying its state. GET requests are widely employed in RESTful APIs, websites, and web applications for fetching resources or information.
+
+Source: Wikipedia
