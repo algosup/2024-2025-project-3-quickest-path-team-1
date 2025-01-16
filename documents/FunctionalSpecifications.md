@@ -32,7 +32,6 @@
   - [IV. Feature of the API](#iv-feature-of-the-api)
       - [1. Advanced Pathfinding Features](#1-advanced-pathfinding-features)
       - [2. Scalability and Performance Enhancements](#2-scalability-and-performance-enhancements)
-      - [3. Multi-Language Support](#3-multi-language-support)
   - [V. Future improvement](#v-future-improvement)
   - [VI. Glossary](#vi-glossary)
 
