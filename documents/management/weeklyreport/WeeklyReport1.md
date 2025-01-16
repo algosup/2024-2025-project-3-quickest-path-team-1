@@ -36,7 +36,7 @@ As the first week of the project, the team analyzed the call for tender, began w
 
 # II. Work Planned
 
-During the first week, the plan was to analyze the project's call for tender, plan a new deadline to have a better organization, make the skeleton and advance on each documents, create template for github issues and pull request, make a collaborate white board. Furthermore, we have planned to advance on the code to have a beta. 
+During the first week, the plan was to analyze the project's call for tender, plan a deadline to have a better organization, make the skeleton and advance on each documents, create template for github issues and pull request, make a collaborate white board. Furthermore, we have planned to advance on the code to have a Minimum Viable Product (MVP). 
 
 # III. Work Done
 
@@ -54,7 +54,7 @@ Finaly, on Github, The **Project Manager** and the **Quality Assurance** wrote t
 
 ## B. Development
 
-The development team started to study the project's requirements and started to develop the project. At the end of the week, the Software Engineer has created a Minimum Viable Product (MVP) of the software of the API.
+The development team started to study the project's requirements and started to develop the project. At the end of the week, the Software Engineer has created a MVP of the software of the API.
 
 ## C. Completed Tasks
 
