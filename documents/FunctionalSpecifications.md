@@ -92,7 +92,7 @@ Response formats: JSON and XML.
 The software must be implemented in C++ to ensure optimal performance and efficient memory handling.
 
 ## B. Performance
-The system should calculate the fastest path for typical queries within 1 second.
+The system should calculate the fastest path for all queries within 1 second.
 
 ## C. Scalability
 The software must efficiently handle large datasets (e.g., 24 million nodes in USA-roads.csv).
@@ -122,12 +122,6 @@ Allow users to optimize paths based on multiple criteria, such as shortest dista
 Implement distributed graph processing using frameworks like Apache Giraph or GraphX to handle extremely large datasets.
 ### Pre-computation and Caching:
 Pre-compute and cache the shortest paths for commonly requested queries to reduce response times.
-## 3. Multi-Language Support
-### code languages
-Extend the API to support additional programming languages (e.g., Python, Java) via SDKs or client libraries.
-
-### Language support
-Add other language for the API like french or many others. 
 
 # VI. Glossary
 
