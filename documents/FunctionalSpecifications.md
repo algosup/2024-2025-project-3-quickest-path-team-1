@@ -30,9 +30,9 @@
       - [E. Data Format Compatibility](#e-data-format-compatibility)
       - [F. Reliability](#f-reliability)
   - [IV. Feature of the API](#iv-feature-of-the-api)
+  - [V. Future improvement](#v-future-improvement)
       - [1. Advanced Pathfinding Features](#1-advanced-pathfinding-features)
       - [2. Scalability and Performance Enhancements](#2-scalability-and-performance-enhancements)
-  - [V. Future improvement](#v-future-improvement)
   - [VI. Glossary](#vi-glossary)
 
 </details>
