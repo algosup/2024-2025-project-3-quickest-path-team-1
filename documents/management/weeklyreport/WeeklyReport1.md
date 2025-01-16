@@ -1,11 +1,11 @@
-# Weekly Report 1 - 01-06-2025 to 01-10-2025
+# Weekly Report 1 - 01/06/2025 to 01/10/2025
 
 <details> 
 
 <summary> Table of content </summary>
 
-- [Weekly Report 1 - 01-06-2025 to 01-10-2025](#weekly-report-1---01-06-2025-to-01-10-2025)
-- [I. Overview](#i-overview)
+- [Weekly Report 1 - 01/06/2025 to 01/10/2025](#weekly-report-1---01062025-to-01102025)
+- [I. Overview of the week](#i-overview-of-the-week)
 - [II. Work Planned](#ii-work-planned)
 - [III. Work Done](#iii-work-done)
   - [A. Documentation](#a-documentation)
@@ -30,9 +30,9 @@
 
 </details>
 
-# I. Overview
+# I. Overview of the week
 
-As the first week of the project, the team analyzed the call for tender, began writing a large number of documents and developed the first version of the code. The team also set up a naming convention for files and folders, another to ensure a similar layout for all documents, and another for the code convention. Unfortunately, our Program Manager's train was cancelled, and he also fell sick. So we spent a week without him.
+As the first week of the project, the team analyzed the call for tender, began writing a large number of documents and developed the first version of the code. The team also set up a naming convention for files and folders, another to ensure a similar layout for all documents, and another for the code convention. Unfortunately, our Program Manager's train was cancelled, he does one remote work to go forward on his doc. However he also fell sick, so we spent a week without him.
 
 # II. Work Planned
 
@@ -42,11 +42,11 @@ During the first week, the plan was to analyze the project's call for tender, pl
 
 ## A. Documentation
 
-The team started started to develop the project's documentation. The documentation is being developed in Markdown format and is being stored in the `documents` folder.
+The team started to develop the project's documentation. The documentation is being developed in Markdown format and is being stored in the `documents` folder.
 
 The **Technical Leader** had established all the conventions used, the architecture of all the documentation and the organization of the files. 
 
-The **Quality Assurance** had set up a whiteboard and Github Issues templates. He has also reviewed three management documents, giving some issues, and fixing them. The whiteboard is used to collaborate with the whole team, stock information, and make teamwork with schema and other graphic and Post-it notes. 
+The **Quality Assurance** had set up a whiteboard and Github Issues templates. He has also reviewed three management documents, giving some issues, and fixing them. The [whiteboard](https://www.canva.com/design/DAGbahnxBDg/V_nKqqe4qy7hZuCz-ju3PA/edit?utm_content=DAGbahnxBDg&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) is used to collaborate with the whole team, stock information, and make teamwork with schema and other graphic and Post-it notes. 
 
 The **Project Manager** had created the Settlement, aproved by whole the team, and the Project Charter.
 
@@ -54,17 +54,17 @@ Finaly, on Github, The **Project Manager** and the **Quality Assurance** wrote t
 
 ## B. Development
 
-The development team started to study the project's requirements and started to develop the project. At the end of the week, the Software Engineer has created a beta of the software of the API.
+The development team started to study the project's requirements and started to develop the project. At the end of the week, the Software Engineer has created a Minimum Viable Product (MVP) of the software of the API.
 
 ## C. Completed Tasks
 
 |ID|Task|Due Date|Responsible| Status|
 |-|-|-|-|-|
-|7| Settlement | 01/06/2025 | Alexis SANTOS | Finished and signed by the whole team | 100% |
-|8| Project Charter | 01/06/2025| Alexis SANTOS | Finished | 100% |
-|9| README | 01/06/2025 | ALexis SANTOS & Lucas MEGNAN| Finished | 100% |
-|10| White Board | 01/10/2025 | Lucas MEGNAN | Usable by the Team | 100% |
-|11| Development steps | 01/10/2025 | Yann-Maël BOUTON & Grégory PAGNOUX | Finished | 100% |
+|7| Settlement | 01/06/2025 | Alexis SANTOS | Finished and signed by the whole team |
+|8| Project Charter | 01/06/2025| Alexis SANTOS | Finished | 
+|9| README | 01/06/2025 | ALexis SANTOS & Lucas MEGNAN| Finished |
+|10| White Board | 01/10/2025 | Lucas MEGNAN | Usable by the Team |
+|11| Development steps | 01/10/2025 | Yann-Maël BOUTON & Grégory PAGNOUX | Finished |
 
 ## D. Problems Faced
 
@@ -72,11 +72,11 @@ The development team started to study the project's requirements and started to 
 
 #### a. Overview
 
-The Program Manager missed his train at the beginning of the week and, then waiting to take a train, he became sick from 01/07/2025 to 01/10/2025. This part of his work is of high priority at this stage of the project.
+The Program Manager missed his train at the beginning of the week, then waiting to take a train, he became sick from 01/07/2025 to 01/10/2025. This part of his work is of high priority at this stage of the project.
 
 #### b. Solution
 
-This problem should not affect the project's schedule. The `FunctionalSpecifications.md`, by the similarity of this document and the `UserManual.pdf`, we have asked the Technical Writer to continue the document. To complete this task, she went to see team 4 to ask them some questions.
+This problem should not affect the project's schedule. At monday, the Program Manager (PgM) and the Technical Writer (TW) had working in remote because the `FunctionalSpecifications.md`, by the similarity of this document and the `UserManual.pdf`. Therefore, when the PgM fell sick, we have asked the TW to continue the document. To complete this task, she went to see team 4 to ask them some questions.
 
 ### 2. MIT Licence
 
@@ -86,13 +86,13 @@ We need to add an MIT License, but adding one is not very intuitive in Github. T
 
 #### b. Solution
 
-After some time of research, when the QA put 'License' in the title, he was invited to another menu and found the tabs when is possible to add it.
+After some time of research, in the security window, in the policy section. When we want to add a security policy, if we put 'License' in the title, the user was invited to another menu. In this one, we can choose a license to add.
 
 ### 3. Be Lost on the Project
 
 #### a. Overview
 
-The Technical Leader (TL), the Program Manager (PGM), and the Technical Writer (TW) don't really understand the project. The first doesn't understand the subject and is lost in it. PGM and TW didn't understand the concept of the API.
+The Technical Leader (TL), the Program Manager (PgM), the Technical Writer (TW) don't really understand the project. The TL doesn't understand the subject and is lost in it. PgM and TW didn't understand the concept of the API.
 
 #### b. Solution
 
@@ -102,11 +102,11 @@ The Software Engineer (SE) explains the project concept to the team. The Project
 
 #### a. Overview
 
-The Software Engineer (SE) has created the beta of the code on his windows. However, the achitecture of a windows and a mac are different. Therefore the SE has choosen to use a remote compilling. With that, he compilling the code on the windows, put it on the mac and use it on the mac.
+The Software Engineer (SE) has created the MVP of the code on his windows. However, the achitecture of a windows and a mac are different. Therefore the SE has choosen to use a remote compilling. With that, he compilling the code on the mac from the windows. With this method, we compilling on the mac and all information are displayed on the windows.
 
 #### b. Solution
 
-This problem is not already solved.
+This problem is not already solved. However, the SE work currently on it
 
 ## E. Uncompleted Tasks
 
@@ -116,11 +116,13 @@ This problem is not already solved.
 |2| Technical Specifications | 01/27/2025 | 2 weeks | Grégory PAGNOUX  | On Time |10%|
 |3| Test Plan | 02/07/2025 | 4 weeks | Lucas MEGNAN| On Time |35%|
 |4| Test Cases | 02/07/2025 | 4 weeks | Lucas MEGNAN| On Time |15%|
+|5| User Manual | 02/07/2025 | Léna DE GERMAIN | Not Started |0%|
 |6| Code | 01/31/2025 | 3 weeks | Yann-Maël BOUTON | On Time |30%|
+
 
 # IV. Feeling
 
-Overall, the team feels very well. Some are tired because the whole work is done, and some are enjoying this week because they have made a big step in the project.
+Overall, the team feels very well. Some are tired because the whole work is done and some are enjoying this week because they have made a big step in the project.
 
 # V. Next Week's Plan
 
@@ -129,3 +131,4 @@ For the next week, the focus should be on the project's functional specification
 The team should also focus on the project's technical as the deadline will soon be reached.
 
 The development team will continue to develop the first version of the project on both operating system, MacOs and Windows.
+
