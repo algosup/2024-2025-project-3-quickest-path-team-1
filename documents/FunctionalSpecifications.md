@@ -54,10 +54,10 @@ This project will not include personas, for the simple reason that the people wh
 ![schema](image/Schema.png)
 
 ### 2nd use case
-![schema2](image/Schema2.png)
+![schema2](image/schema2.png)
 
 ### 3th use case
-![schema3](image/Schema3.png)
+![schema3](image/schema3.png)
 
 # II. Functional requirements
 ## A. Node and Path Management
