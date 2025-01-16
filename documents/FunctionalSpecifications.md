@@ -64,7 +64,7 @@ This project will not include personas, for the simple reason that the people wh
 ### 2nd use case
 ![schema2](image/schema2.png)
 
-### 3th use case
+### 3rd use case
 ![schema3](image/schema3.png)
 
 # II. Functional requirements
