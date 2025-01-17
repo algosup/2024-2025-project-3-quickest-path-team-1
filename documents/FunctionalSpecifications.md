@@ -50,7 +50,7 @@ SmashThePath aims to determine the time between two nodes and find the fastest w
 
 |Sellable API|Complex API|
 |-|-|
-|The project aims to teach us a simple and useful way to manage travel with our API. It is not intended to be very large or commercially viable by the final deadline. |To complete this project, we need to create an API that meets our requirements. An overly complicated interface could be difficult for new users to handle.
+|The project aims to teach us a simple and useful way to manage travel with our API[^restapi] . It is not intended to be very large or commercially viable by the final deadline. |To complete this project, we need to create an API that meets our requirements. An overly complicated interface could be difficult for new users to handle.
 
 
 ## C. Personas
@@ -70,19 +70,19 @@ This project will not include personas, for the simple reason that the people wh
 # II. Functional requirements
 ## A. Node and Path Management
 The system shall allow defining nodes (landmarks) and their connections with specified travel times.
-It shall support reading node and connection data from a file (e.g., USA-roads.csv).
+It shall support reading node and connection data[^data] from a file (e.g., USA-roads.csv).
 
 ## B. Fastest Path Calculation
-The system shall calculate the fastest path and total travel time between two nodes based on the given data.
-It shall provide an ordered list of landmarks in the path.
+The system will calculate the fastest path and total travel time between two nodes based on the given data.
+It provide an ordered list of landmarks in the path.
 
 ## C. REST API Specification
-Expose a GET endpoint that accepts:
+Expose a GET[^get] endpoint that accepts:
 Input: Source and destination node IDs.
 Output:
 Travel time.
 Ordered list of landmarks in the path.
-Response formats: JSON and XML.
+Response formats: JSON and XML[^jsonxml] .
 
 
 # III. Non-Functional Requirements
@@ -91,12 +91,12 @@ Response formats: JSON and XML.
 The software must be implemented in C++ to ensure optimal performance and efficient memory handling.
 
 ## B. Performance
-The system should calculate the fastest path for all queries within 1 second.
+To prioritize speed over precision, our solution can use heuristics, provided the returned path's duration does not exceed the shortest possible path by more than 10%.
 
 ## C. Scalability
 The software must efficiently handle large datasets (e.g., 24 million nodes in USA-roads.csv).
 
-## D. API Accessibility
+## D. REST API Accessibility
 The REST API must run on an HTTP server accessible via  localhost or public network and support concurrent requests.
 
 ## E. Data Format Compatibility
@@ -108,7 +108,15 @@ The system must ensure accurate results for pathfinding, even under high load or
 # IV. Feature of the API
 The travel time between the node A and the node B.
 
-You can also use other coding language to use the SmashToPath
+You can add a picture on the API interface.
+
+![Path](image/Path.png)
+
+
+
+You can also use other coding language to use the SmashThePath.
+
+You have the time to find the path.
 
 
 # V. Future improvement
@@ -116,42 +124,22 @@ You can also use other coding language to use the SmashToPath
 ### Dynamic Weights:
 Incorporate real-time data such as traffic conditions, weather, or road closures to dynamically adjust travel times.
 ### Multi-Criteria Optimization:
-Allow users to optimize paths based on multiple criteria, such as shortest distance, fastest time, or cost
+Allow users to optimize paths based on multiple criteria, such as shortest distance, fastest time, or cost.
 
 ## 2. Scalability and Performance Enhancements
 ### Distributed Computation:
 Implement distributed graph processing using frameworks like Apache Giraph or GraphX to handle extremely large datasets.
-### Pre-computation and Caching:
-Pre-compute and cache the shortest paths for commonly requested queries to reduce response times.
+### Pre-processing and Caching:
+Pre-process and cache the shortest paths for commonly requested queries to reduce response times.
 
 # VI. Glossary
 
-[^1] : Data 
+[^data]: Facts and statistics collected together for reference or analysis. [Source](https://dictionary.cambridge.org/dictionary/english/data)
 
-Facts and statistics collected together for reference or analysis.
+[^restapi]: An application programming interface (API) that follows the design principles of the REST architectural style. [Source](https://www.redhat.com/en/topics/api/what-is-a-rest-api) 
 
-Source: Wikipedia
+[^cpp]: An object-oriented programming (OOP) language that is viewed by many as the best language for creating large-scale applications. [Source](https://en.wikipedia.org/wiki/C%2B%2B)
 
-[^2] : RESTAPI
+[^jsonxml]: JSON is an open data interchange format that is readable by both people and machines. JSON is independent of any programming language and is a common API output in a wide variety of applications. XML is a markup language that provides rules to define any data. [Source](https://en.wikipedia.org/wiki/JSON)
 
-An application programming interface (API) that follows the design principles of the REST architectural style.
-
-Source: Wikipedia 
-
-[^cpp]: An object-oriented programming (OOP) language that is viewed by many as the best language for creating large-scale applications. Source: Wikipedia
-
-
-[^4] : VScode
-
-An integrated development environment developed by Microsoft for Windows, Linux, macOS and web browsers. 
-
-[^5] : JSON/XML
-
-JSON is an open data interchange format that is readable by both people and machines. JSON is independent of any programming language and is a common API output in a wide variety of applications. XML is a markup language that provides rules to define any data.
-Source: Wikipedia
-
-[^6] : GET
-
-Is one of the standard HTTP request methods used in web communication. It is typically used to retrieve data from a server without modifying its state. GET requests are widely employed in RESTful APIs, websites, and web applications for fetching resources or information.
-
-Source: Wikipedia
+[^get]: Is one of the standard HTTP request methods used in web communication. It is typically used to retrieve data from a server without modifying its state. GET requests are widely employed in RESTful APIs, websites, and web applications for fetching resources or information. [Source](https://en.wikipedia.org/wiki/HTTP)
