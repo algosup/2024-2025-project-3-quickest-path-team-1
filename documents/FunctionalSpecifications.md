@@ -108,16 +108,13 @@ The system must ensure accurate results for pathfinding, even under high load or
 # IV. Feature of the API
 The travel time between the node A and the node B.
 
-You can add a picture on the API interface.
-
-![Path](image/Path.png)
-
-
-
-You can also use other coding language to use the SmashThePath.
+You can also use other coding language to use the SmashThePath (XML/JSON).
 
 You have the time to find the path.
 
+You have the number of node.
+
+![Path](image/Path.png)
 
 # V. Future improvement
 ## 1. Advanced Pathfinding Features
