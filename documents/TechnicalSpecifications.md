@@ -63,7 +63,7 @@
 | 1.2 | Grégory PAGNOUX | 01/08/2025 | [Development](#b-development), [Software](#1-software), [Time & human](#2-time--human), [Overview](#c-overview), [Documents](#a-documents) |
 | 1.3 | Grégory PAGNOUX | 01/14/2025 | [Coding convention](#2-c-coding-convention) |
 | 1.4 | Grégory PAGNOUX | 01/16/2025 | [Description](#a-description), [Security](#c-security), [Accessibility](#d-accessibility), [Glossary](#glossary) |
-| 1.5 | Grégory PAGNOUX | 01/17/2025 | [API](#b-api), [Data Management](#c-data-management), [Workflow example](#2-workflow-example), [Technology stack](#3-technology-stack), [How it works](#b-how-it-works-) |
+| 1.5 | Grégory PAGNOUX | 01/17/2025 | [API](#b-api), [Data Management](#c-data-management), [Workflow example](#2-workflow-example), [Technology stack](#3-technology-stack), [How it works](#b-how-it-works-), [Program architecture diagram](#c-program-architecture-diagram) |
 
 ### C. Overview
 
@@ -76,7 +76,7 @@ Our main goal is to make a very easy and faster way to travel with an API[^4].
 
 ### A. Description
 
-To complete this project, we need to create an API that manage Nodes and Pathes between them, calculate the quickest path from a point A to B, a compatibility with multiple data file type in input of the algorithm and send a response in JSON[^5] or XML[^6] format in 1 second maximum.
+To complete this project, we need to create an API that manage Nodes and Paths between them, calculate the quickest path from a point A to B, a compatibility with multiple data file type in input of the algorithm and send a response in JSON[^5] or XML[^6] format in 1 second maximum.
 The algorithm nee to propose one of the 10% best path and the REST API[^7] must run on an HTTP server[^8] accessible via localhost and support concurrent requests.
 
 #### 1. Architectural Components
@@ -122,55 +122,69 @@ The algorithm nee to propose one of the 10% best path and the REST API[^7] must 
 The API will expose endpoints for interacting with the system's core functionalities. It will include:
 
 **Pathfinding Endpoint**:
-   - **Method**: `GET`
-   - **Input**: Source node ID, destination node ID
-   - **Output**:
-     - Total travel time
-     - Ordered list of landmarks in the path
-   - **Response Formats**: JSON and XML
+
+- **Method**: `GET`
+- **Input**: Source node ID, destination node ID
+- **Output**:
+  - Total travel time (in ms)
+  - Point requseted (A, B)
+  - Total time (in ms)
+  - Total node
+  - Itinirary [{node a, node b, time}, etc]
+- **Response Formats**: JSON
 
 **Error Handling**:
-   - Return structured error responses (e.g., `400 Bad Request` for invalid input, `404 Not Found` for non-existent nodes).
+
+- Return structured error responses (e.g., `400 Bad Request` for invalid input, `404 Not Found` for non-existent nodes).
 
 **Performance Goals**:
-   - Response times under 1 second for typical queries.
+
+- Response times under 1 second for typical queries.
 
 ##### c. Data Management
 
 This layer focuses on efficient data handling, ensuring scalability and compliance with privacy standards.
 
-**Local Data Storage**
+**Local Data Storage**:
+
 - **Node and Path Data**: Stored locally in CSV format, such as `USA-roads.csv`.
-- **Temporary Cache**: Keeps intermediate results to improve query performance, discarded when no longer needed.
+- **Temporary Cache**: Keeps heuristics data when you launch the program, i.e. give the answer directly if you search the same point to gain time.
 
-**Data Syncing and Backup**
-- **Data Import**: Supports importing node and path data directly from local or remote CSV files.
-- **Backup and Recovery**: Implement version control for data files to prevent loss during updates.
+**Data Import**:
 
-**Security and Privacy Management**
+- Supports importing nodes and paths data directly from local CSV files.
+
+**Security and Privacy Management**:
+
 - **Error Detection**: Handles malformed or missing data gracefully, logging issues for debugging.
-- **Data Validation**: Ensures imported data conforms to expected formats (e.g., valid node IDs, positive travel times).
+- **Data Validation**: Ensures imported data conforms to expected formats (integrity, connectivity, etc).
 
 #### 2. Workflow Example
 
 **Data Linking**:
-- When a user uploads a data file, the system processes the data to construct the node network.
+
+- When a user uploads a data file, the system processes the data to construct the node network by making a UCG (Undirected cyclic graph)
 
 **Algorithm Execution**:
-- Upon initiating the algorithm, the system calculates the fastest route between the specified nodes.
+
+- You need to pre-processing the algorithm to get more fast response time.
+- Upon initiating the algorithm, the system calculates the quickest path between the specified nodes.
 
 **Result Display**:
-- Results are formatted as an ordered list, such as `{Point 1, Point 2, distance}`, and returned to the user.
+
+![JSON response file](images/responseJSON.png)
 
 #### 3. Technology Stack
 
 **Frontend (UI)**:
+
 - Not required for this project; data is displayed in a text-based format listing all waypoints and distances.
 
 **Backend (Logic & Processing)**:
+
 - **Programming Language**: C++ for performance and memory efficiency.
-- **Libraries**: Utilize C++ standard libraries for file I/O, graph algorithms (e.g., Dijkstra's or A*), and JSON/XML serialization.
-- **API Framework**: Use lightweight frameworks like FastCGI or an HTTP server library for REST API implementation.
+- **Libraries**: Utilize C++ standard libraries for file I/O, graph algorithms A*, and JSON serialization.
+- **API Framework**: Use an HTTP server library for REST API implementation.
 
 ### B. How it works ?
 
@@ -179,9 +193,45 @@ This layer focuses on efficient data handling, ensuring scalability and complian
 To start, we need to include and implement some basic structure class for the product in the incl.h file.
 
 ```cpp
-using System;
-using System.Collections;
-using System.Threading.Tasks;
+struct union_find {
+    std::vector<int> parent;
+    std::vector<int> rank;
+
+    void resize(size_t n) {
+        parent.resize(n);
+        rank.resize(n, 0);
+        for (size_t i = 0; i < n; ++i) {
+            parent[i] = static_cast<int>(i);
+        }
+    }
+
+    int find_set(int v) {
+        if (parent[v] == v) {
+            return v;
+        }
+        parent[v] = find_set(parent[v]);
+        return parent[v];
+    }
+
+    bool union_set(int a, int b) {
+        int root_a = find_set(a);
+        int root_b = find_set(b);
+        if (root_a == root_b) {
+            return false;
+        }
+        if (rank[root_a] < rank[root_b]) {
+            parent[root_a] = root_b;
+        }
+        else if (rank[root_a] > rank[root_b]) {
+            parent[root_b] = root_a;
+        }
+        else {
+            parent[root_b] = root_a;
+            rank[root_a]++;
+        }
+        return true;
+    }
+};
 ```
 
 *You can do that in this code.*
@@ -189,13 +239,40 @@ using System.Threading.Tasks;
 ![-](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 
 ```cpp
-namespace KrugApp
-{
-    public class Tank
-    {
-        ...
-    }
-}
+struct graph_data {
+    std::unordered_map<int, size_t> node_to_index;
+    std::vector<std::tuple<int, int, int>> edges;
+
+    size_t line_count = 0;
+    size_t index_count = 0;
+
+    union_find uf;
+
+    std::unordered_map<int, std::vector<std::pair<int, int>>> adjacency;
+};
+```
+
+*You can do that in this code.*
+
+![-](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
+
+```cpp
+struct path_step {
+    int node_a;
+    int node_b;
+    int time;
+};
+```
+
+*You can do that in this code.*
+
+![-](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
+
+```cpp
+struct path_result {
+    int total_time;
+    std::vector<path_step> steps;
+};
 ```
 
 *You can do that in this code.*
@@ -234,7 +311,7 @@ Our API is implemented in the api.cpp file.
 
 <!--TODO-->
 
-![Program Architecture Diagram](images/)
+![Program Architecture Diagram](images/programArchitectureDiagram.png)
 
 ## III. Quality Control
 
