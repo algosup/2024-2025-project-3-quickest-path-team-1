@@ -30,10 +30,9 @@
       - [E. Data Format Compatibility](#e-data-format-compatibility)
       - [F. Reliability](#f-reliability)
   - [IV. Feature of the API](#iv-feature-of-the-api)
+  - [V. Future improvement](#v-future-improvement)
       - [1. Advanced Pathfinding Features](#1-advanced-pathfinding-features)
       - [2. Scalability and Performance Enhancements](#2-scalability-and-performance-enhancements)
-      - [3. Multi-Language Support](#3-multi-language-support)
-  - [V. Future improvement](#v-future-improvement)
   - [VI. Glossary](#vi-glossary)
 
 </details>
@@ -65,7 +64,7 @@ This project will not include personas, for the simple reason that the people wh
 ### 2nd use case
 ![schema2](image/schema2.png)
 
-### 3th use case
+### 3rd use case
 ![schema3](image/schema3.png)
 
 # II. Functional requirements

@@ -19,7 +19,12 @@
       - [2. Workflow Example](#2-workflow-example)
       - [3. Technology Stack](#3-technology-stack)
     - [B. How it works ?](#b-how-it-works-)
-      - [1. Research algorithm](#1-research-algorithm)
+      - [1. Includes](#1-includes)
+      - [2. Integrity checking](#2-integrity-checking)
+      - [3. Connectivity checking](#3-connectivity-checking)
+      - [4. Graph](#4-graph)
+      - [5. Research algorithm](#5-research-algorithm)
+      - [6. API](#6-api)
     - [C. Program architecture diagram](#c-program-architecture-diagram)
   - [III. Quality Control](#iii-quality-control)
     - [A. Documentation and Reporting](#a-documentation-and-reporting)
@@ -58,6 +63,7 @@
 | 1.2 | Grégory PAGNOUX | 01/08/2025 | [Development](#b-development), [Software](#1-software), [Time & human](#2-time--human), [Overview](#c-overview), [Documents](#a-documents) |
 | 1.3 | Grégory PAGNOUX | 01/14/2025 | [Coding convention](#2-c-coding-convention) |
 | 1.4 | Grégory PAGNOUX | 01/16/2025 | [Description](#a-description), [Security](#c-security), [Accessibility](#d-accessibility), [Glossary](#glossary) |
+| 1.5 | Grégory PAGNOUX | 01/17/2025 | [API](#b-api), [Data Management](#c-data-management), [Workflow example](#2-workflow-example), [Technology stack](#3-technology-stack), [How it works](#b-how-it-works-) |
 
 ### C. Overview
 
@@ -113,63 +119,76 @@ The algorithm nee to propose one of the 10% best path and the REST API[^7] must 
 
 ##### b. API
 
-<!--TODO-->
+The API will expose endpoints for interacting with the system's core functionalities. It will include:
+
+**Pathfinding Endpoint**:
+   - **Method**: `GET`
+   - **Input**: Source node ID, destination node ID
+   - **Output**:
+     - Total travel time
+     - Ordered list of landmarks in the path
+   - **Response Formats**: JSON and XML
+
+**Error Handling**:
+   - Return structured error responses (e.g., `400 Bad Request` for invalid input, `404 Not Found` for non-existent nodes).
+
+**Performance Goals**:
+   - Response times under 1 second for typical queries.
 
 ##### c. Data Management
 
-<!--TODO-->
-
-This layer focuses on data storage, security, and regulatory compliance, especially concerning health data.
+This layer focuses on efficient data handling, ensuring scalability and compliance with privacy standards.
 
 **Local Data Storage**
-
-**Temporary Data Cache**: Stores session data temporarily on the mirror, discarding it once synced to the smartphone.
-**Data Retention Policy**: Implements time-based deletion for data, following GDPR and other regional privacy laws.
+- **Node and Path Data**: Stored locally in CSV format, such as `USA-roads.csv`.
+- **Temporary Cache**: Keeps intermediate results to improve query performance, discarded when no longer needed.
 
 **Data Syncing and Backup**
-
-**Smartphone Sync**: Ensures user data is synced to their smartphone when connected. Data is encrypted during transfer.
-**User-Controlled Data Backup**: Allows users to enable/disable data backups on the smartphone app, giving them control over data retention and sharing.
+- **Data Import**: Supports importing node and path data directly from local or remote CSV files.
+- **Backup and Recovery**: Implement version control for data files to prevent loss during updates.
 
 **Security and Privacy Management**
-
-**Compliance with GDPR**: Ensures data collection, storage, and deletion processes align with GDPR. Users can control their data visibility and deletion settings in the app.
+- **Error Detection**: Handles malformed or missing data gracefully, logging issues for debugging.
+- **Data Validation**: Ensures imported data conforms to expected formats (e.g., valid node IDs, positive travel times).
 
 #### 2. Workflow Example
 
-<!--TODO-->
+**Data Linking**:
+- When a user uploads a data file, the system processes the data to construct the node network.
 
-**Link data file**: When the user link the data file, the algorithm treat all information to facilitate and have the quickest research.
-**launch the algorithm**: When the user launch the algorithm, 
-**research time**: 
-**path displaying**: 
+**Algorithm Execution**:
+- Upon initiating the algorithm, the system calculates the fastest route between the specified nodes.
+
+**Result Display**:
+- Results are formatted as an ordered list, such as `{Point 1, Point 2, distance}`, and returned to the user.
 
 #### 3. Technology Stack
 
-<!--TODO-->
+**Frontend (UI)**:
+- Not required for this project; data is displayed in a text-based format listing all waypoints and distances.
 
-**Frontend (UI)**: This side of the product isn't required by the client. Informations are simply display as a list of all point that we need to follow to go on the point B. All points are display like : {Point 1, Point 2, distance}
-**Backend (Logic & Processing)**: 
+**Backend (Logic & Processing)**:
+- **Programming Language**: C++ for performance and memory efficiency.
+- **Libraries**: Utilize C++ standard libraries for file I/O, graph algorithms (e.g., Dijkstra's or A*), and JSON/XML serialization.
+- **API Framework**: Use lightweight frameworks like FastCGI or an HTTP server library for REST API implementation.
 
 ### B. How it works ?
 
-<!--TODO-->
+#### 1. Includes
 
-#### 1. Research algorithm
+To start, we need to include and implement some basic structure class for the product in the incl.h file.
 
-Define every function/method/file we use that is external to the page.
-
-```cs
+```cpp
 using System;
 using System.Collections;
 using System.Threading.Tasks;
 ```
 
+*You can do that in this code.*
+
 ![-](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 
-Inside the namespace KrugApp, we start by define a new class "Tank" accessible
-
-```cs
+```cpp
 namespace KrugApp
 {
     public class Tank
@@ -179,7 +198,41 @@ namespace KrugApp
 }
 ```
 
+*You can do that in this code.*
+
+#### 2. Integrity checking
+
+To check informations integrity of the data file, we are implemented an integrity_validator function in the integrity.cpp file.
+
+<!--TODO-->
+
+#### 3. Connectivity checking
+
+To check the right connectivity of all nodes, we are implemented a connectivity_validator function in the connectivity.cpp file.
+
+<!--TODO-->
+
+#### 4. Graph
+
+We are creating the graph in the memory in the loader.cpp file.
+
+<!--TODO-->
+
+#### 5. Research algorithm
+
+The research algorithm is done thanks the A* method which is implemented in the a_star.cpp file.
+
+<!--TODO-->
+
+#### 6. API
+
+Our API is implemented in the api.cpp file.
+
+<!--TODO-->
+
 ### C. Program architecture diagram
+
+<!--TODO-->
 
 ![Program Architecture Diagram](images/)
 
