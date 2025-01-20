@@ -61,7 +61,7 @@ As the **Program Manager** (PgM) was a new student and he started with Github. T
 
 #### b. Solution
 
-For the PgM, the team explain to him how github work. For the PR, because we can't delete a pull request and it was created earlier than the team create a new branch for the functional, the team has decided to merge the branch documents into the main branch.
+For the PgM, the team explain to him how github work. For the PR, because we can't delete a pull request and it was created earlier than the team create a new branch for the functional, the team decided to merge the branch documents into the main branch, assuming that the functional specifications were to be found there.
 
 ### 2. Pre-processing algorithm
 
