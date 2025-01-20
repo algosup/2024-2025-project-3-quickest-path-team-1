@@ -53,7 +53,7 @@
 |---|---|
 | Issue date | 01/27/2025 |
 | Reviewer | Lucas MEGNAN |
-| review date | 01/../2025 |
+| review date | 01/20/2025 |
 
 ### B. History
 
@@ -64,6 +64,7 @@
 | 1.3 | Grégory PAGNOUX | 01/14/2025 | [Coding convention](#2-c-coding-convention) |
 | 1.4 | Grégory PAGNOUX | 01/16/2025 | [Description](#a-description), [Security](#c-security), [Accessibility](#d-accessibility), [Glossary](#glossary) |
 | 1.5 | Grégory PAGNOUX | 01/17/2025 | [API](#b-api), [Data Management](#c-data-management), [Workflow example](#2-workflow-example), [Technology stack](#3-technology-stack), [How it works](#b-how-it-works-), [Program architecture diagram](#c-program-architecture-diagram) |
+| 1.5 | Grégory PAGNOUX | 01/20/2025 | [How it work](#b-how-it-works-), [Glossary](#glossary) |
 
 ### C. Overview
 
@@ -143,12 +144,12 @@ The API will expose endpoints for interacting with the system's core functionali
 
 ##### c. Data Management
 
-This layer focuses on efficient data handling, ensuring scalability and compliance with privacy standards.
+This layer focuses on efficient data handling, ensuring scalability[^9] and compliance with privacy standards.
 
 **Local Data Storage**:
 
 - **Node and Path Data**: Stored locally in CSV format, such as `USA-roads.csv`.
-- **Temporary Cache**: Keeps heuristics data when you launch the program, i.e. give the answer directly if you search the same point to gain time.
+- **Temporary Cache**: Keeps heuristics data[^10] when you launch the program, i.e. give the answer directly if you search the same point to gain time.
 
 **Data Import**:
 
@@ -157,17 +158,17 @@ This layer focuses on efficient data handling, ensuring scalability and complian
 **Security and Privacy Management**:
 
 - **Error Detection**: Handles malformed or missing data gracefully, logging issues for debugging.
-- **Data Validation**: Ensures imported data conforms to expected formats (integrity, connectivity, etc).
+- **Data Validation**: Ensures imported data conforms to expected formats (integrity[^11], connectivity, etc).
 
 #### 2. Workflow Example
 
 **Data Linking**:
 
-- When a user uploads a data file, the system processes the data to construct the node network by making a UCG (Undirected cyclic graph)
+- When a user uploads a data file, the system processes the data to construct the node network by making a UGC[^12].
 
 **Algorithm Execution**:
 
-- You need to pre-processing the algorithm to get more fast response time.
+- You need to pre-processing[^13] the algorithm to get more fast response time.
 - Upon initiating the algorithm, the system calculates the quickest path between the specified nodes.
 
 **Result Display**:
@@ -234,7 +235,8 @@ struct union_find {
 };
 ```
 
-*You can do that in this code.*
+*In this structure, we generate links between nodes to create the tree.*
+*The two first line stocks data. The resize method initialize each elements as its own parent and his depth to 0. The find_set method determine the root of the tree that he has in input. The union_set method merge two different trees using the method find to use their root and assemble the final tree.*
 
 ![-](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 
@@ -252,7 +254,7 @@ struct graph_data {
 };
 ```
 
-*You can do that in this code.*
+*This structure manage graph information, including mappings of nodes to indices, edges, adjacency lists, a union-find structure, and counters for lines and indices.*
 
 ![-](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 
@@ -264,7 +266,7 @@ struct path_step {
 };
 ```
 
-*You can do that in this code.*
+*This structure represents a step in a path, containing two nodes (node_a, node_b) and the time (time) associated with the step.*
 
 ![-](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 
@@ -275,41 +277,215 @@ struct path_result {
 };
 ```
 
-*You can do that in this code.*
+*This structure holds the total travel time (total_time) and a sequence of path steps (steps).*
 
 #### 2. Integrity checking
 
-To check informations integrity of the data file, we are implemented an integrity_validator function in the integrity.cpp file.
+To check informations integrity of the data file (duplicated edges), we are implemented an integrity_validator function in the integrity.cpp file.
 
-<!--TODO-->
+```cpp
+uint64_t reversed_code = encode_edge(B, A);
+if (edge_hash_set.find(reversed_code) != edge_hash_set.end()) {
+    std::cout << "[ERROR] integrity conflict : edge (" + std::to_string(A) + "," + std::to_string(B)
+        + ") conflicts with (" + std::to_string(B) + "," + std::to_string(A) + ")." << std::endl;
+    _logger("Integrity error: edge (" + std::to_string(A) + "," + std::to_string(B)
+        + ") conflicts with (" + std::to_string(B) + "," + std::to_string(A) + ").");
+    return false;
+}
+```
 
 #### 3. Connectivity checking
 
-To check the right connectivity of all nodes, we are implemented a connectivity_validator function in the connectivity.cpp file.
+To check the connectivity between all nodes, we are implemented a connectivity_validator function in the connectivity.cpp file.
 
-<!--TODO-->
+```cpp
+int first_rep = gdata.uf.find_set(0);
+
+size_t i = 0;
+for (; i < gdata.node_to_index.size(); ++i) {
+    if (gdata.uf.find_set(static_cast<int>(i)) != first_rep) {
+        _logger("Graph is NOT fully connected. Disconnection found at index " 
+            + std::to_string(i));
+        return false;
+    }
+    if (i % 1'000'000 == 0 && i > 0) {
+        _logger("Checked connectivity for " + std::to_string(i) + " nodes...");
+    }
+}
+```
 
 #### 4. Graph
 
 We are creating the graph in the memory in the loader.cpp file.
 
-<!--TODO-->
+```cpp
+while (std::getline(file_stream, line_data)) 
+{
+    gdata.line_count++;
+    if (line_data.empty()) {
+        continue;
+    }
+
+    std::stringstream line_stream(line_data);
+    std::string val_a, val_b, val_time;
+        
+    // reading all value inside .csv file & checking if any value is missing.
+    if (!std::getline(line_stream, val_a, ',')) {
+        std::cout << "[WARNING] Missing Landmark_A_ID at line " + std::to_string(gdata.line_count) << std::endl;
+        _logger("Warning: Missing Landmark_A_ID at line " + std::to_string(gdata.line_count));
+        continue;
+    }
+    if (!std::getline(line_stream, val_b, ',')) {
+        std::cout << "[WARNING] Missing Landmark_B_ID at line " + std::to_string(gdata.line_count) << std::endl;
+        _logger("Warning: Missing Landmark_B_ID at line " + std::to_string(gdata.line_count));
+        continue;
+    }
+
+    if (!std::getline(line_stream, val_time, ',')) {
+        std::cout << "[WARNING] Missing val_time at line " + std::to_string(gdata.line_count) << std::endl;
+        _logger("Warning: Missing val_time at line " + std::to_string(gdata.line_count));
+        continue;
+    }
+
+    int node_a, node_b, time_cost;
+
+    try {
+        node_a = std::stoi(val_a);
+        node_b = std::stoi(val_b);
+        time_cost = std::stoi(val_time);
+    }
+    catch (const std::exception& e) { // catch any formatting problem of retreived values.
+        _logger("Warning: Invalid node/time ID at line "
+            + std::to_string(gdata.line_count) + ": " + e.what());
+        continue;
+    }
+
+    // assign an index if they never been met.
+    if (gdata.node_to_index.find(node_a) == gdata.node_to_index.end()) {
+        gdata.node_to_index[node_a] = gdata.index_count++;
+    }
+    if (gdata.node_to_index.find(node_b) == gdata.node_to_index.end()) {
+        gdata.node_to_index[node_b] = gdata.index_count++;
+    }
+
+    // stock the decree inside a triplet (A, B, time_cost).
+    gdata.edges.emplace_back(node_a, node_b, time_cost);
+
+    // adjacence construction
+    gdata.adjacency[node_a].push_back({node_b, time_cost});
+    gdata.adjacency[node_b].push_back({node_a, time_cost});
+}
+```
 
 #### 5. Research algorithm
 
 The research algorithm is done thanks the A* method which is implemented in the a_star.cpp file.
 
-<!--TODO-->
+```cpp
+std::unordered_map<int, int> dist_from_start, dist_from_end;
+std::unordered_map<int, std::pair<int, int>> parent_start, parent_end;
+
+const int INF = std::numeric_limits<int>::max();
+```
+
+*Initialize structures for distances and parent nodes for both directions and define infinity as the maximum integer value.*
+
+![-](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
+
+```cpp
+if (gdata.adjacency.find(cur_node) != gdata.adjacency.end()) {
+    const auto& edges = gdata.adjacency.at(cur_node);
+    for (auto& e : edges) {
+        int neigh = e.first;
+        int cost = e.second;
+        int ndist = cur_dist + cost;
+
+        // If a shorter path to a neighbor is found, update the distance and parent.
+        if (!dist_from_start.count(neigh) || ndist < dist_from_start[neigh]) {
+            dist_from_start[neigh] = ndist;
+            parent_start[neigh] = { cur_node, cost };
+            forward_queue.push({ ndist, neigh });
+        }
+
+        // Check if the neighbor has already been visited in the backward search.
+        if (dist_from_end.count(neigh)) {
+            int total_potential = ndist + dist_from_end[neigh];
+            if (total_potential < best_distance) {
+                best_distance = total_potential;
+                best_meet_node = neigh;
+            }
+        }
+    }
+}
+```
+
+*This loop allows to visit neighboors to the current node, check if their is a path and if it was already check.*
+
+![-](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
+
+```cpp
+path_forward.insert(path_forward.end(), path_backward.begin(), path_backward.end());
+```
+
+*This line reconstructs the path found by combining the forward path and the backward path.*
 
 #### 6. API
 
 Our API is implemented in the api.cpp file.
 
-<!--TODO-->
+```cpp
+WSADATA wsaData;
+int result = WSAStartup(MAKEWORD(2, 2), &wsaData);
+if (result != 0) {
+    std::cerr << "WSAStartup failed: " << result << "\n";
+    return 1;
+}
+```
+
+*Initialize the Winsock library[^14].*
+
+![-](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
+
+```cpp
+SOCKET listening_socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+if (listening_socket == INVALID_SOCKET) {
+    // If socket creation fails, print an error, clean up, and return.
+    std::cerr << "Error at socket(): " << WSAGetLastError() << "\n";
+    WSACleanup();
+    return 1;
+}
+```
+
+*Create a listening socket[^15] for the server to accept incoming connections.*
+
+![-](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
+
+```cpp
+std::stringstream ss;
+ss << R"({"status":{"message":"OK"},"response_time":)"
+    << elapsed_ms
+    << R"(,"req":{"start":)"
+    << start_val << R"(,"end":)"
+    << end_val << R"(},"res":{"total_time":)"
+    << pres.total_time
+    << R"(,"itinary":[)";
+for (size_t i = 0; i < pres.steps.size(); i++) {
+    ss << R"({"node_a":)"
+        << pres.steps[i].node_a
+        << R"(,"node_b":)"
+        << pres.steps[i].node_b
+        << R"(,"time":)"
+        << pres.steps[i].time
+        << "}";
+    if (i + 1 < pres.steps.size()) ss << ",";
+}
+ss << "]}}";
+response_body = ss.str();
+```
+
+*This is the template for the answer with all details of the path find on the tree.*
 
 ### C. Program architecture diagram
-
-<!--TODO-->
 
 ![Program Architecture Diagram](images/programArchitectureDiagram.png)
 
@@ -370,7 +546,7 @@ The language used to develop the project is C++
 
 #### 1. Software
 
-The software used to develop the project, we use Visual Studio and Visual Studio Code and the data file used is a CSV (but the alghorithm needs to be compatible with other types of data documents). Those development software are used on schoool or personnal Windows and MacOS. We need an internet connection given by the ALGOSUP's wifi or personnal fiber for those who work at home.
+The software used to develop the project, we use Visual Studio and Visual Studio Code and the data file used is a CSV (but the alghorithm needs to be compatible with other types of data documents). Those development software are used on schoool or personnal Windows and MacOS. We need an internet connection given by the ALGOSUP's WIFI or personnal fiber for those who work at home.
 
 #### 2. Time & Human
 
@@ -429,3 +605,24 @@ Also called RESTful API, is an API designed in the REST (Representational State 
 
 [^8]: [HTTP server](https://fr.wikipedia.org/wiki/Serveur_web)
 A web server is either web resource service software (HTTP server) or a computer server (computer) that responds to requests from the World Wide Web on a public (Internet) or private (intranet)1,2,3 network, mainly using the HTTP protocol.
+
+[^9]: [Scalability](https://dictionary.cambridge.org/dictionary/english/scalability)
+The ability of a system to grow larger.
+
+[^10]: [Heuristics data](https://en.wikipedia.org/wiki/Heuristic_(computer_science))
+In mathematical optimization and computer science, heuristic is a technique designed for problem solving more quickly when classic methods are too slow for finding an exact or approximate solution, or when classic methods fail to find any exact solution in a search space. This is achieved by trading optimality, completeness, accuracy, or precision for speed. In a way, it can be considered a shortcut.
+
+[^11]: [Integrity](https://dictionary.cambridge.org/dictionary/english/integrity)
+The quality of being whole and complete
+
+[^12]: [UCG](https://math.stackexchange.com/questions/1029073/a-cycle-in-an-undirected-graph#:~:text=A%20cycle%20is%20a%20simple,of%20length%20at%20least%203.)
+A cycle is a simple path of length at least 1 which begins and ends at the same vertex. In an Undirected Graph Cycle, it must be of length at least 3.
+
+[^14]: [pre-processing](https://datascientest.com/guide-du-data-preprocessing)
+pre-processing is used to check that no information is missing for the programme to run smoothly and obtain a conclusive result. It allows calculations to be set up beforehand to improve performance.
+
+[^14]: [Winsock library](https://fr.wikipedia.org/wiki/Winsock#:~:text=Winsock%20(WINdows%20SOCKet)%20est%20une,sur%20des%20réseaux%20TCP%2FIP.)
+It's a software library for Windows designed to implement a programming interface inspired by Berkeley sockets
+
+[^15]: [socket](https://learn.microsoft.com/fr-fr/dotnet/api/system.net.sockets.socket.listen?view=net-9.0)
+It's a method which allows a Socket connection-oriented user to listen for incoming connection attempts.
