@@ -116,7 +116,7 @@ This problem is not already solved. However, the SE work currently on it
 |2| Technical Specifications | 01/27/2025 | 2 weeks | Grégory PAGNOUX  | On Time |10%|
 |3| Test Plan | 02/07/2025 | 4 weeks | Lucas MEGNAN| On Time |35%|
 |4| Test Cases | 02/07/2025 | 4 weeks | Lucas MEGNAN| On Time |15%|
-|5| User Manual | 02/07/2025 | Léna DE GERMAIN | Not Started |0%|
+|5| User Manual | 02/07/2025 | 3 weeks | Léna DE GERMAIN | Not Started |0%|
 |6| Code | 01/31/2025 | 3 weeks | Yann-Maël BOUTON | On Time |30%|
 
 

@@ -90,14 +90,14 @@ The form link : https://docs.google.com/forms/d/e/1FAIpQLSc3I0RIRz6lXpi4_GOiqsDT
 
 |Question \ Team's Members| SANTOS Alexis | NOGUES Loïc | MEGNAN Lucas | BOUTON Yann-Maël | PAGNOUX Grégory | DE GERMAIN Léna |
 |:-|:-|:-|:-|:-|:-|:-|
-|What do you think about this week overall?|||||||
-|What had you planned to do this week?|||||||
-|Did you manage to achieve these objectives? If it was different from what you had planned. Why?|||||||
-|If you worked overtime, why did you do it? Because you didn't have enough time for the project? Because you're passionate about it and want to work harder? Anything else?|||||||
-|What problems have you encounter? If yes, how do you solve them?|||||||
-|How do you feel at the end of the week? Why?|||||||
-|What do you think everyone could do to improve their performance, to work more effectively both as a group and as individuals? Try to give a global answer and an individual answer if necessary. All answers will be anonymous, unless you request otherwise.|||||||
-|Finally, what are your goals for the upcoming week? How do you think you can achieve them?|||||||
+|What do you think about this week overall?|It's a great week ! All the team have work with motivation and we have done a great advanced. |I think it was a good week overall|short week only one day of project time.|actually good|really efficient|it's fine, we do a good work with loic|
+|What had you planned to do this week?|Manage my team|Finish the functional|pull request template, review weekly report 1, review functional spec, pr for functional spec, continue my test plan and maybe start test cases.|obtimize the code performance.|make my technical until 35% at least|finish the functional|
+|Did you manage to achieve these objectives? If it was different from what you had planned. Why?|I achieved them|Yes, I manage to end the Functional with Lena today (1/17/2025) 100%|I didn't had the time to work on the test plan, and we didn't started test cases.|yes, 100%|yes and I think my technical is finish at 45%|yes, the functional is done|
+|If you worked overtime, why did you do it? Because you didn't have enough time for the project? Because you're passionate about it and want to work harder? Anything else?|I'm enjoy about my job.|Because I was absent i thought it will be a good idea to do some overtime.|no over time this week.|Same as the last week.|my overtime are to complete the time that I need to finish to catch up last week. So I work on my Technical for that.|I did overtime, because I wanted to finish quickly the functional|
+|What problems have you encounter? If yes, how do you solve them?|No problem really|So problem with github desktop and the pull etc, the team helped me.|We wanted to merge only the functional specifications, but the pull request was send before we had the time to make a new branch to put only the functional specifications and we can't remove a PR we decided to push the entire branch in the main.|Complexity to implement a new pre-processing algorithm.|understand the code and how it works, I need to ask every time to Yann-Maël to explain me each line one by one.|problem with GitHub, BECAUSE THIS IS A SHIT|
+|How do you feel at the end of the week? Why?|Great|Happy because the biggest part for me and my role is done and tired because it was a lot of work this week (include the others courses)|personal feeling is tired due to private life but for the project I feel really confident.|Tired.|really tired|tired and angry because I'm not good with GitHub. However, I'm happy to have  finished  the functional|
+|What do you think everyone could do to improve their performance, to work more effectively both as a group and as individuals? Try to give a global answer and an individual answer if necessary. All answers will be anonymous, unless you request otherwise.|Nothing, all work very well.|I don't know, maybe practicing more seriously English in project|I don't know|Nothing||nothing|
+|Finally, what are your goals for the upcoming week? How do you think you can achieve them?|Manage and support my team|For next week, maybe I have to help Lena on the user manual. But we have time so I don't know if it is the priority.|work on my test plan, review weekly report 2 and start the review of the technical specifications, maybe start test cases.|Don't have precise goal. I have a lot of different to do, I will see this week-end|finish completely my technical Tuesday, make the review Wednesday, and make the final merge Thursday to be on time.|start the user manual|
 
 ## C. Week 3
 
@@ -157,38 +157,51 @@ The form link : https://docs.google.com/forms/d/e/1FAIpQLSc3I0RIRz6lXpi4_GOiqsDT
 
 |ID|Task|Due Date|Responsible| Status| Rate Completed |
 |:-:|:-:|:-:|:-:|:-:|:-:|
-|1| Functional Specifications | 01/20/2025 | Loïc NOGUES & Léna DE GERMAIN | On Time | |
-|2| Technical Specifications | 01/27/2025 | Grégory PAGNOUX  | On Time ||
-|3| Test Plan | 02/07/2025 |Lucas MEGNAN| On Time ||
-|4| Test Cases | 02/07/2025 |Lucas MEGNAN| On Time ||
-|5| User Manual | 02/07/2025 | Léna DE GERMAIN | Not Started ||
-|6| Code | 01/31/2025 | Yann-Maël BOUTON | On Time ||
+|1| Functional Specifications | 01/20/2025 | Loïc NOGUES & Léna DE GERMAIN | Finished | 100% |
+|2| Technical Specifications | 01/27/2025 | Grégory PAGNOUX  | On Time |45%|
+|3| Test Plan | 02/07/2025 |  Lucas MEGNAN| On Time |35%|
+|4| Test Cases | 02/07/2025 | Lucas MEGNAN| On Time |15%|
+|5| User Manual | 02/07/2025 | Léna DE GERMAIN | Not Started |0%|
+|6| Code | 01/31/2025  | Yann-Maël BOUTON | On Time |50%|
 |7| Settlement | 01/06/2025 | Alexis SANTOS | Finished and signed by the whole team | 100% |
 |8| Project Charter | 01/06/2025| Alexis SANTOS | Finished | 100% |
 |9| README | 01/06/2025 | ALexis SANTOS & Lucas MEGNAN| Finished | 100% |
 |10| White Board | 01/10/2025 | Lucas MEGNAN | Usable by the Team | 100% |
-|11| Development steps | 01/10/2025 | Yann-Maël BOUTON & Grégory PAGNOUX |||
+|11| Development steps | 01/10/2025 | Yann-Maël BOUTON & Grégory PAGNOUX |Finished|100%|
+|12| Issues and Pull Request templates | 01/17/2025 | Lucas MEGNAN | Usable | 100%|
 
 ## B. Week 1
 
 |ID|Task|Due Date|Responsible| Status| Rate Completed |
 |:-:|:-:|:-:|:-:|:-:|:-:|
-|1| Functional Specifications | 01/20/2025 | Loïc NOGUES & Léna DE GERMAIN | On Time | |
-|2| Technical Specifications | 01/27/2025 | Grégory PAGNOUX  | On Time ||
-|3| Test Plan | 02/07/2025 |Lucas MEGNAN| On Time ||
-|4| Test Cases | 02/07/2025 |Lucas MEGNAN| On Time ||
-|5| User Manual | 02/07/2025 | Léna DE GERMAIN | Not Started ||
-|6| Code | 01/31/2025 | Yann-Maël BOUTON | On Time ||
+|1| Functional Specifications | 01/20/2025 | Loïc NOGUES & Léna DE GERMAIN | On Time | 10% |
+|2| Technical Specifications | 01/27/2025 | Grégory PAGNOUX  | On Time |10%|
+|3| Test Plan | 02/07/2025 | Lucas MEGNAN| On Time |35%|
+|4| Test Cases | 02/07/2025 | Lucas MEGNAN| On Time |15%|
+|5| User Manual | 02/07/2025 | Léna DE GERMAIN | Not Started |0%|
+|6| Code | 01/31/2025 | Yann-Maël BOUTON | On Time |30%|
 |7| Settlement | 01/06/2025 | Alexis SANTOS | Finished and signed by the whole team | 100% |
 |8| Project Charter | 01/06/2025| Alexis SANTOS | Finished | 100% |
 |9| README | 01/06/2025 | ALexis SANTOS & Lucas MEGNAN| Finished | 100% |
 |10| White Board | 01/10/2025 | Lucas MEGNAN | Usable by the Team | 100% |
-|11| Development steps | 01/10/2025 | Yann-Maël BOUTON & Grégory PAGNOUX |||
+|11| Development steps list | 01/10/2025 | Yann-Maël BOUTON & Grégory PAGNOUX |Finished|100%|
 
 ## C. Week 2
 
 |ID|Task|Due Date|Responsible| Status| Rate Completed |
 |:-:|:-:|:-:|:-:|:-:|:-:|
+|1| Functional Specifications | 01/20/2025 | Loïc NOGUES & Léna DE GERMAIN | Finished | 100% |
+|2| Technical Specifications | 01/27/2025 | Grégory PAGNOUX  | On Time |45%|
+|3| Test Plan | 02/07/2025 |  Lucas MEGNAN| On Time |35%|
+|4| Test Cases | 02/07/2025 | Lucas MEGNAN| On Time |15%|
+|5| User Manual | 02/07/2025 | Léna DE GERMAIN | Not Started |0%|
+|6| Code | 01/31/2025  | Yann-Maël BOUTON | On Time |50%|
+|7| Settlement | 01/06/2025 | Alexis SANTOS | Finished and signed by the whole team | 100% |
+|8| Project Charter | 01/06/2025| Alexis SANTOS | Finished | 100% |
+|9| README | 01/06/2025 | ALexis SANTOS & Lucas MEGNAN| Finished | 100% |
+|10| White Board | 01/10/2025 | Lucas MEGNAN | Usable by the Team | 100% |
+|11| Development steps list | 01/10/2025 | Yann-Maël BOUTON & Grégory PAGNOUX |Finished|100%|
+|12| Issues and Pull Request templates | 01/17/2025 | Lucas MEGNAN | Usable | 100%|
 
 ## D. Week 3
 
