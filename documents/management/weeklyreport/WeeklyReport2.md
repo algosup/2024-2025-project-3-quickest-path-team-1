@@ -30,7 +30,7 @@ During this second week, the team worked on the project's documents. The develop
 
 # II. Work Planned
 
-This week will be focused on the functional specifications that need to be done by the start of the third week. The **Technical Leader** planned to advance on the technical specification until 35%. The **Quality Assurance** planned to review the first week's weekly report and the functional, create github's pull request (PR) templates, make the functional's PR to put the functional in the main branch and work on his documents. The developing team will optimize the code. 
+This week has been focused on the functional specifications, which must be completed by the start of the third week. The **Technical Leader** planned to advance on the technical specification until 35%. The **Quality Assurance** planned to review the first week's weekly report and the functional, create github's pull request (PR) templates, make the functional's PR to put the functional in the main branch and work on his documents. The developing team will optimize the code. 
 
 # III. Work Done
 
@@ -57,11 +57,11 @@ The development team have finish to optimize the code.
 
 #### a. Overview
 
-It is the first time when the **Program Manager** (PgM) used Github like today. Therefore, when the team wanted to do a pull request (PR) to put the Functional in the main branch, we have missing to put the functional in another branch to just merge the functional.
+As the **Program Manager** (PgM) was a new student and he started with Github. Therefore, when the team wanted to do a pull request (PR) to put the Functional in the main branch, we have missing to put the functional in another branch to just merge the functional.
 
 #### b. Solution
 
-For the PgM, the team explain to him how github work. For the PR, because we can't delete a pull request and it was created earlier than the team create a branch for the functional, the team has decided that the branch will be merge in the main.
+For the PgM, the team explain to him how github work. For the PR, because we can't delete a pull request and it was created earlier than the team create a new branch for the functional, the team has decided to merge the branch documents into the main branch.
 
 ### 2. Pre-processing algorithm
 
