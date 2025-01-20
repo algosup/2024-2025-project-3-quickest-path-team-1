@@ -36,7 +36,7 @@ This week has been focused on the functional specifications, which must be compl
 
 ## A. Documentation
 
-The **Program Manager** and the **Technical Writer** have finished the Functional Specifications and a Pull Request (PR) has done at the end of the week reviewed and approve by the **Project Manager**, the **Quality Assurence** and the **Technical Leader**. 
+The **Program Manager** and the **Technical Writer** have finished the Functional Specifications and a Pull Request (PR) has done at the end of the week reviewed and approve by the **Project Manager**, the **Quality Assurance** and the **Technical Leader**. 
 
 The **Quality Assurance** had review the first week's weekly report and the functional specifications. He has also make Pull Request (PR) template on github.
 
