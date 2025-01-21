@@ -5,7 +5,7 @@
 
 | Created by | Creation date | Last modified |
 |:-------------:|:---------------:|:--------:|
-| Megnan Lucas | 01/06/2025 | 01/10/2025 |
+| Megnan Lucas | 01/06/2025 | 01/20/2025 |
 
 <br>
 </p>
@@ -32,6 +32,7 @@
   - [D. Definitions / Acronyms](#d-definitions--acronyms)
     - [1. Definitions](#1-definitions)
     - [2. Acronyms](#2-acronyms)
+  - [E. References](#e-references)
 - [II. Plan](#ii-plan)
   - [A. Test Team](#a-test-team)
   - [B. Team Reviews](#b-team-reviews)
@@ -72,11 +73,9 @@ The system integration test of the quickest path must validate the following req
 - **Data Integrity**:
   - Verify that the file forms a Directed Acyclic Graph (DAG) and is free of loops.
   - Ensure that the graph is fully connected, meaning it is possible to navigate between any two landmarks.
+  - A utility to verify the integrity of the provided CSV file. 
 - **Versatility**:
   - Demonstrating the ability to handle multiple formats (XML and JSON).
-  - A utility to verify the integrity of the provided CSV file. 
-- **Algorithm Performance**:
-  - Evaluate the Big O complexity and ensure it meets the project goals.
 
 ## B. Scope of Testing
 
@@ -98,6 +97,17 @@ The users can use this to gain time and travel more effectively and easily acros
 
 ### 2. Acronyms
 
+| Acronyms | Definition |
+|----------|------------|
+| QA | Quality Assurance |
+| TL | Technical Leader |
+| SE | Software Engineer |
+| PR | Pull Request |
+| OS | Operating System |
+| IDE | Integrated Development Environment |
+
+## E. References
+
 # II. Plan
 
 ## A. Test Team
@@ -106,14 +116,13 @@ The following people will be on the system integration test team:
 
 | Role | Name | Level of involvement | Responsibilities |
 |------|------|----------------------|------------------|
-| Project Manager      | Alexis Santos   | Xhrs  |  |
-| Technical Leader       | Grégory Pagnoux | 1hrs  |  |
+| Technical Leader     | Grégory Pagnoux | 1hrs  |  |
 | Quality Assurance    | Lucas MEGNAN    | 93hrs |  |
-<!-- | Software Enginner    | Yann-maël       | Xhrs  |  | -->
+| Software Enginner    | Yann-maël       | Xhrs  |  |
 
 ## B. Team Reviews
 
-The following reviews will be conducted by minimal 1 person of the test team (Project Manager or Technical Leader) and the QA. 
+The following reviews will be conducted by the QA, and for the developement part the TL and SE will support the QA. 
 Refer to the work schedule for the planned review dates.
 
 - Settlement review.
@@ -128,6 +137,15 @@ Refer to the work schedule for the planned review dates.
 - Post Mortem review.
 
 ## C. Tasks and Deliverables
+
+| Task | Start | Stop | Deliveable(s) |
+|------|-------|------|---------------|
+| Issue template | 01/09/2025 | 01/10/2025 | Issue on GitHub |
+| PR template | 01/16/2025 | 01/17/2025 | Merge branch on GitHub |
+| Test case design |  |  | Test cases |
+| Build 1: Data integrity | 01/20/2025 | 01/21/2025 | Build 1 tested |
+| Build 2: Functional accuracy | 01/21/2025 | 01/22/2025 |  Build 2 tested |
+| Build 3: Versatility | 01/22/2025 | 01/23/2025 | Build 3 tested |
 
 ## D. Environmental Needs
 
@@ -156,7 +174,6 @@ Wifi:
 #### c. Software
 
 IDE Visual Studio
-VScode
 
 ### 2. Test Lab
 
@@ -175,7 +192,9 @@ The following items will be needed full-time by the system integration test team
 
 ## B. Test Tools
 
+GitHub Issue 
 
+// TODO
 
 ## C. Test Data
 
@@ -196,9 +215,50 @@ If the observed results are not equal to the expected results, a checkmark is pl
 The order of testing will be driven primarily by the build order. Within each build, the following
 order of testing will be followed:
 
+- Build 1: Data integrity
+  - A. A utility to verify the integrity of the provided CSV file. 
+  - B. Verify that the file forms a Directed Acyclic Graph (DAG) and is free of loops.
+  - C. Ensure that the graph is fully connected, meaning it is possible to navigate between any two landmarks.
+- Build 2: Funtional accuracy
+  - A. The returned path should not exceed the shortest path duration by more than 10%.
+  - B. The API must handle all queries within 1 second on a typical laptop.
+- Build 3: Versatility
+  - A. Demonstrating the ability to handle multiple formats (XML and JSON).
+
 ## B. Pass / Fail criteria
 
-To pass the system integration test, the following criteria must be met:
+To pass the system integration test for the shortest path calculation software, the following criteria must be met:
+
+**Core Functionality**:
+- The system can calculate the quickest path between any two landmarks in a bidirectional positivly weighted graph within the performance goals.
+- The system exposes its functionality via a REST API with:
+  - Correct handling of input landmark IDs.
+  - Accurate travel time and ordered path output in XML and JSON formats.
+  - The system supports bidirectional connections between landmarks as per the provided dataset.
+
+**Data Integrity**:
+- The system ensures graph validation, confirming that the dataset (.csv) forms a Directed Acyclic Graph (DAG) without loops.
+- After transforming the graph in an Undirected Cyclic Graph (UCG) perform a connectivity check to guarantee the graph allows navigation between any two landmarks.
+
+**Performance**:
+- The API must respond to all queries within one second on a typical laptop.
+- The system adheres to the 10% approximation rule, ensuring that the travel time does not exceed 10% of the shortest path duration.
+
+**Ease of Use**:
+- The REST API documentation is complete and user-friendly, enabling developers to integrate with minimal effort.
+- Error messages are informative and assist in troubleshooting input issues.
+
+**Security and Reliability**:
+- Adequate measures prevent unauthorized access to the system.
+- The system is resilient to failures, supporting recovery through documented procedures.
+
+**Integration and Extensibility**:
+- The system can integrate seamlessly with external tools or systems that utilize the REST API.
+- The design allows future enhancements without extensive rework.
+
+**Testing**:
+- All test cases in the provided suite for correctness, performance, and compliance with the 10% approximation rule are passed.
+- Validation tools confirm the integrity of the dataset without errors.
 
 ## C. Suspension Criteria and Resumption Requirements
 
