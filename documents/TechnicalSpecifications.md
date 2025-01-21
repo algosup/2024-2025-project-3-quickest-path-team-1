@@ -180,7 +180,7 @@ This layer focuses on efficient data handling, ensuring scalability[^11] and com
 **Local Data Storage**:
 
 - **Node and Path Data**: Stored locally in CSV format, such as `USA-roads.csv`
-- **Temporary Cache**: Keeps heuristics data[^12] when you launch the program, i.e. give the answer directly if you search the same point to gain time
+- **Temporary Cache**: Keeps heuristics data when you launch the program, i.e. give the answer directly if you search the same point to gain time
 
 **Data Import**:
 
@@ -189,11 +189,11 @@ This layer focuses on efficient data handling, ensuring scalability[^11] and com
 **Security and Privacy Management**:
 
 - **Error Detection**: Handles malformed or missing data gracefully, logging issues for debugging
-- **Data Validation**: Ensures imported data conforms to expected formats (integrity[^13], connectivity, etc)
+- **Data Validation**: Ensures imported data conforms to expected formats (integrity[^12], connectivity, etc)
 
 ##### d. Complexity
 
-The goals to reach is a complexity[^14] of log(n) at least.
+The goals to reach is a complexity[^13] of log(n) at least.
 
 ![Complexity](images/complexity.png)
 
@@ -201,11 +201,11 @@ The goals to reach is a complexity[^14] of log(n) at least.
 
 **Data Linking**:
 
-- When a user uploads a data file, the system processes the data to construct the node network by making a UGC[^15]
+- When a user uploads a data file, the system processes the data to construct the node network by making a UGC[^14]
 
 **Algorithm Execution**:
 
-- You need to pre-processing[^16] the algorithm to get more fast response time
+- You need to pre-processing[^15] the algorithm to get more fast response time
 - Upon initiating the algorithm, the system calculates the quickest path between the specified nodes
 
 **Result Display**:
@@ -479,7 +479,7 @@ if (result != 0) {
 }
 ```
 
-*Initialize the Winsock library[^17].*
+*Initialize the Winsock library[^16].*
 
 ![-](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 
@@ -493,7 +493,7 @@ if (listening_socket == INVALID_SOCKET) {
 }
 ```
 
-*Create a listening socket[^18] for the server to accept incoming connections.*
+*Create a listening socket[^17] for the server to accept incoming connections.*
 
 ![-](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)
 
@@ -658,28 +658,25 @@ A web server is either web resource service software (HTTP server) or a computer
 Kong Insomnia is a collaborative open source API development platform that makes it easy to build high-quality APIs, without the bloat and clutter of other tools. This tool has a multi-protocol support and a Git syncronisation.
 
 [^10]: [heuristic](https://en.wikipedia.org/wiki/Heuristic)
-It's any approach to problem solving that employs a pragmatic method that is not fully optimized, perfected, or rationalized, but is nevertheless "good enough" as an approximation or attribute substitution.
+In mathematical optimization and computer science, heuristic is a technique designed for problem solving more quickly when classic methods are too slow for finding an exact or approximate solution, or when classic methods fail to find any exact solution in a search space. This is achieved by trading optimality, completeness, accuracy, or precision for speed. In a way, it can be considered a shortcut.
 
 [^11]: [Scalability](https://dictionary.cambridge.org/dictionary/english/scalability)
 The ability of a system to grow larger.
 
-[^12]: [Heuristics data](https://en.wikipedia.org/wiki/Heuristic_(computer_science))
-In mathematical optimization and computer science, heuristic is a technique designed for problem solving more quickly when classic methods are too slow for finding an exact or approximate solution, or when classic methods fail to find any exact solution in a search space. This is achieved by trading optimality, completeness, accuracy, or precision for speed. In a way, it can be considered a shortcut.
-
-[^13]: [Integrity](https://dictionary.cambridge.org/dictionary/english/integrity)
+[^12]: [Integrity](https://dictionary.cambridge.org/dictionary/english/integrity)
 The quality of being whole and complete.
 
-[^14]: [complexity](https://devopedia.org/algorithmic-complexity)
+[^13]: [complexity](https://devopedia.org/algorithmic-complexity)
 Algorithmic complexity is a measure of how long an algorithm would take to complete given an input of size n. the notation of the complexity is O(n) (big-O).
 
-[^15]: [UCG](https://math.stackexchange.com/questions/1029073/a-cycle-in-an-undirected-graph#:~:text=A%20cycle%20is%20a%20simple,of%20length%20at%20least%203.)
+[^14]: [UCG](https://math.stackexchange.com/questions/1029073/a-cycle-in-an-undirected-graph#:~:text=A%20cycle%20is%20a%20simple,of%20length%20at%20least%203.)
 A cycle is a simple path of length at least 1 which begins and ends at the same vertex. In an Undirected Graph Cycle, it must be of length at least 3.
 
-[^16]: [pre-processing](https://datascientest.com/guide-du-data-preprocessing)
+[^15]: [pre-processing](https://datascientest.com/guide-du-data-preprocessing)
 pre-processing is used to check that no information is missing for the programme to run smoothly and obtain a conclusive result. It allows calculations to be set up beforehand to improve performance.
 
-[^17]: [Winsock library](https://fr.wikipedia.org/wiki/Winsock#:~:text=Winsock%20(WINdows%20SOCKet)%20est%20une,sur%20des%20réseaux%20TCP%2FIP.)
+[^16]: [Winsock library](https://fr.wikipedia.org/wiki/Winsock#:~:text=Winsock%20(WINdows%20SOCKet)%20est%20une,sur%20des%20réseaux%20TCP%2FIP.)
 It's a software library for Windows designed to implement a programming interface inspired by Berkeley sockets
 
-[^18]: [socket](https://learn.microsoft.com/fr-fr/dotnet/api/system.net.sockets.socket.listen?view=net-9.0)
+[^17]: [socket](https://learn.microsoft.com/fr-fr/dotnet/api/system.net.sockets.socket.listen?view=net-9.0)
 It's a method which allows a Socket connection-oriented user to listen for incoming connection attempts.
