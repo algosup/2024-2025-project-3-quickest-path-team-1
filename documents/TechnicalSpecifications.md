@@ -67,7 +67,7 @@
 | 1.3 | Grégory PAGNOUX | 01/14/2025 | [Coding convention](#2-c-coding-convention) |
 | 1.4 | Grégory PAGNOUX | 01/16/2025 | [Description](#b-description), [Security](#c-security), [Accessibility](#d-accessibility), [Glossary](#glossary) |
 | 1.5 | Grégory PAGNOUX | 01/17/2025 | [API](#b-api), [Data Management](#c-data-management), [Workflow example](#2-workflow-example), [Technology stack](#3-technology-stack), [How it works](#c-how-it-works-), [Program architecture diagram](#d-program-architecture-diagram) |
-| 1.5 | Grégory PAGNOUX | 01/20/2025 | [How it works](#c-how-it-works-), [Glossary](#glossary) |
+| 1.6 | Grégory PAGNOUX | 01/20/2025 | [How it works](#c-how-it-works-), [Glossary](#glossary) |
 | 2.1 | Grégory PAGNOUX | 01/21/2025 | [Requirements](#a-requirements), [Hardware](#3-hardware), [Accessibility](#d-accessibility), [Technology stack](#3-technology-stack), [API](#b-api), [Complexity](#d-complexity), Correction issue #19 |
 
 ### C. Overview
