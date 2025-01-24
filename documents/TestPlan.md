@@ -116,9 +116,10 @@ The following people will be on the system integration test team:
 
 | Role | Name | Level of involvement | Responsibilities |
 |------|------|----------------------|------------------|
-| Technical Leader     | Grégory Pagnoux | 1hrs  |  |
+| Technical Leader     | Grégory Pagnoux | 5hrs  |  |
+| Project Manager      | Alexis Santos   | 4hrs  |  |
 | Quality Assurance    | Lucas MEGNAN    | 93hrs |  |
-| Software Enginner    | Yann-maël       | Xhrs  |  |
+| Software Enginner    | Yann-maël       | 4hrs  |  |
 
 ## B. Team Reviews
 
@@ -163,9 +164,9 @@ The tests will be run on the following environments:
 - macOS Sequoia 15.1.1
 
 (1) Lenovo ThinkBook 14	
-- Intel Core i7-1255U	
+- Intel Core i7-1065G7
 - 16 GB	
-- Windows 11 Pro 22H2	
+- Windows 11 Pro 21H2	
 
 #### b. Network
 
@@ -207,8 +208,8 @@ GitHub Issue
 For each requirement, system feature, or algorithm to be tested, the tester will execute a set of pre-defined test cases.
 Each test case will have a series of actions and expected results. 
 As each action is performed, the results are evaluated.
-If the observed results are equal to the expected results, a checkmark is placed in the “pass” column.
-If the observed results are not equal to the expected results, a checkmark is placed in the “fail” column.
+If the observed results are equal to the expected results, a checkmark ✅ is placed in the “Pass/Fail” column.
+If the observed results are not equal to the expected results, a checkmark ❌ is placed in the “Pass/Fail” column.
 
 ### 2. Order of Testing
 
@@ -216,9 +217,8 @@ The order of testing will be driven primarily by the build order. Within each bu
 order of testing will be followed:
 
 - Build 1: Data integrity
-  - A. A utility to verify the integrity of the provided CSV file. 
-  - B. Verify that the file forms a Directed Acyclic Graph (DAG) and is free of loops.
-  - C. Ensure that the graph is fully connected, meaning it is possible to navigate between any two landmarks.
+  - A. Verify that the file forms a Directed Acyclic Graph (DAG) and is free of loops.
+  - B. Ensure that the graph is fully connected, meaning it is possible to navigate between any two landmarks.
 - Build 2: Funtional accuracy
   - A. The returned path should not exceed the shortest path duration by more than 10%.
   - B. The API must handle all queries within 1 second on a typical laptop.
