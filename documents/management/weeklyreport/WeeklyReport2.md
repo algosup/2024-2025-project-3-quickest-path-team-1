@@ -49,7 +49,7 @@ The development team have finish to optimize the code.
 |ID|Task|Due Date|Responsible| Status|
 |-|-|-|-|-|
 |1| Functional Specifications | 01/20/2025 | Loïc NOGUES & Léna DE GERMAIN | Finished |
-|12| Issues and Pull Request templates | 01/17/2025 | Lucas MEGNAN | Usable | 100%|
+|12| Issues and Pull Request templates | 01/17/2025 | Lucas MEGNAN | Usable | 
 
 ## D. Problems 
 

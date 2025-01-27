@@ -103,14 +103,14 @@ The form link : https://docs.google.com/forms/d/e/1FAIpQLSc3I0RIRz6lXpi4_GOiqsDT
 
 |Question \ Team's Members| SANTOS Alexis | NOGUES Loïc | MEGNAN Lucas | BOUTON Yann-Maël | PAGNOUX Grégory | DE GERMAIN Léna |
 |:-|:-|:-|:-|:-|:-|:-|
-|What do you think about this week overall?|||||||
-|What had you planned to do this week?|||||||
-|Did you manage to achieve these objectives? If it was different from what you had planned. Why?|||||||
-|If you worked overtime, why did you do it? Because you didn't have enough time for the project? Because you're passionate about it and want to work harder? Anything else?|||||||
-|What problems have you encounter? If yes, how do you solve them?|||||||
-|How do you feel at the end of the week? Why?|||||||
-|What do you think everyone could do to improve their performance, to work more effectively both as a group and as individuals? Try to give a global answer and an individual answer if necessary. All answers will be anonymous, unless you request otherwise.|||||||
-|Finally, what are your goals for the upcoming week? How do you think you can achieve them?|||||||
+|What do you think about this week overall?||Good week |great|pretty good|really boring|it's fine, just don't work a lot this time|
+|What had you planned to do this week?||Continue the user manual|continue Test plan, Start test cases, reviews weekly report 2 and technical specifications, and merge the technical specification.|Enhance the code|finish my technical|logo and user manual|
+|Did you manage to achieve these objectives? If it was different from what you had planned. Why?||Yes we continue we miss juste some pictures|yes.|yes, 100%. no.|yes at 100%|nope i have not finish yet|
+|If you worked overtime, why did you do it? Because you didn't have enough time for the project? Because you're passionate about it and want to work harder? Anything else?||no overtime|no overtime.|I didn't do overtime|no|no overtime|
+|What problems have you encounter? If yes, how do you solve them?||no problem|no|nothing|the fact that I do my technical with the code but the software engineer have a code that is not the same than the GitHub because he doesn't want to push to avoid other team to stole our project idea. So he needs to send me the folder with all the code.|i'm boring because i have almost nothing to do|
+|How do you feel at the end of the week? Why?||I felt good because we are managing time and work pretty well and we are soon finished|well|tired, because I work.|tired|tired because i don't sleep|
+|What do you think everyone could do to improve their performance, to work more effectively both as a group and as individuals? Try to give a global answer and an individual answer if necessary. All answers will be anonymous, unless you request otherwise.||I have no idea and i think we are doing fine|Loic focus on his work |overall good.|try to stay focused|nothing|
+|Finally, what are your goals for the upcoming week? How do you think you can achieve them?||finish the user manual|Finish test plan, continue/finish test cases, PR dev branch and doc branch.|optimize the code and fix with test cases.|help Lucas to finish his test cases|finish user manual and logo|
 
 ## D. Week 4
 
@@ -158,16 +158,16 @@ The form link : https://docs.google.com/forms/d/e/1FAIpQLSc3I0RIRz6lXpi4_GOiqsDT
 |ID|Task|Due Date|Responsible| Status| Rate Completed |
 |:-:|:-:|:-:|:-:|:-:|:-:|
 |1| Functional Specifications | 01/20/2025 | Loïc NOGUES & Léna DE GERMAIN | Finished | 100% |
-|2| Technical Specifications | 01/27/2025 | Grégory PAGNOUX  | On Time |45%|
-|3| Test Plan | 02/07/2025 |  Lucas MEGNAN| On Time |35%|
-|4| Test Cases | 02/07/2025 | Lucas MEGNAN| On Time |15%|
-|5| User Manual | 02/07/2025 | Léna DE GERMAIN | Not Started |0%|
-|6| Code | 01/31/2025  | Yann-Maël BOUTON | On Time |50%|
+|2| Technical Specifications | 01/27/2025 | Grégory PAGNOUX  | Finished |100%|
+|3| Test Plan | 02/07/2025 |  Lucas MEGNAN| On Time |80%|
+|4| Test Cases | 02/07/2025 | Lucas MEGNAN| On Time |50%|
+|5| User Manual | 02/07/2025 | Léna DE GERMAIN | On Time |7%|
+|6| Code | 01/31/2025  | Yann-Maël BOUTON | On Time |50%|/
 |7| Settlement | 01/06/2025 | Alexis SANTOS | Finished and signed by the whole team | 100% |
 |8| Project Charter | 01/06/2025| Alexis SANTOS | Finished | 100% |
 |9| README | 01/06/2025 | ALexis SANTOS & Lucas MEGNAN| Finished | 100% |
 |10| White Board | 01/10/2025 | Lucas MEGNAN | Usable by the Team | 100% |
-|11| Development steps | 01/10/2025 | Yann-Maël BOUTON & Grégory PAGNOUX |Finished|100%|
+|11| Development steps list | 01/10/2025 | Yann-Maël BOUTON & Grégory PAGNOUX |Finished|100%|
 |12| Issues and Pull Request templates | 01/17/2025 | Lucas MEGNAN | Usable | 100%|
 
 ## B. Week 1
@@ -207,6 +207,18 @@ The form link : https://docs.google.com/forms/d/e/1FAIpQLSc3I0RIRz6lXpi4_GOiqsDT
 
 |ID|Task|Due Date|Responsible| Status| Rate Completed |
 |:-:|:-:|:-:|:-:|:-:|:-:|
+|1| Functional Specifications | 01/20/2025 | Loïc NOGUES & Léna DE GERMAIN | Finished | 100% |
+|2| Technical Specifications | 01/27/2025 | Grégory PAGNOUX  | On Time |100%|
+|3| Test Plan | 02/07/2025 |  Lucas MEGNAN| On Time |80%|
+|4| Test Cases | 02/07/2025 | Lucas MEGNAN| On Time |50%|
+|5| User Manual | 02/07/2025 | Léna DE GERMAIN | On Time |7%|
+|6| Code | 01/31/2025  | Yann-Maël BOUTON | On Time |50%|/
+|7| Settlement | 01/06/2025 | Alexis SANTOS | Finished and signed by the whole team | 100% |
+|8| Project Charter | 01/06/2025| Alexis SANTOS | Finished | 100% |
+|9| README | 01/06/2025 | ALexis SANTOS & Lucas MEGNAN| Finished | 100% |
+|10| White Board | 01/10/2025 | Lucas MEGNAN | Usable by the Team | 100% |
+|11| Development steps list | 01/10/2025 | Yann-Maël BOUTON & Grégory PAGNOUX |Finished|100%|
+|12| Issues and Pull Request templates | 01/17/2025 | Lucas MEGNAN | Usable | 100%|
 
 ## F. Week 4
 
