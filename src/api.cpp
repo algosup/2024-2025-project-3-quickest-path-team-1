@@ -54,12 +54,6 @@ std::string ipToString(const sockaddr_in& addr)
  * on port 80. The server processes GET requests with start and end node parameters
  * and returns the shortest path result in JSON or XML format.
  *
- * Functionality:
- * - Initializes and configures a network socket.
- * - Parses incoming HTTP GET requests.
- * - Computes the shortest path based on user-provided parameters.
- * - Constructs and sends an appropriate JSON/XML response.
- *
  * Steps of Execution:
  * - Step 1: Initialize Network Socket
  *   - On Windows, initializes Winsock (`WSAStartup`).
@@ -95,52 +89,6 @@ std::string ipToString(const sockaddr_in& addr)
  * - Malformed Query Parameters → Returns `400 Bad Request`.
  * - No Path Found → Returns `404 Not Found`.
  * - Unsupported Accept Headers → Returns `400 Bad Request`.
- *
- * Supported HTTP Requests:
- * ```
- * GET /?start=NODE_A&end=NODE_B&weight=1.2 HTTP/1.1
- * ```
- * - `start` → Required, start node ID.
- * - `end` → Required, destination node ID.
- * - `weight` → Optional, heuristic weight factor (1.0 - 2.0).
- * - Accept Header:
- *   - `application/json` → Returns JSON.
- *   - `application/xml` → Returns XML.
- *
- * Response Formats:
- * - JSON Example:
- * ```
- * {
- *   "status": { "message": "OK", "code": 200 },
- *   "response_time": 15,
- *   "req": { "start": 12, "end": 45, "weight": 1.2 },
- *   "res": {
- *     "total_time": 300,
- *     "total_node": 5,
- *     "itinerary": [12, 18, 30, 45]
- *   }
- * }
- * ```
- * - XML Example:
- * ```
- * <response>
- *   <status>
- *     <message>OK</message>
- *     <code>200</code>
- *   </status>
- *   <response_time>15</response_time>
- *   <req>
- *     <start>12</start>
- *     <end>45</end>
- *     <weight>1.2</weight>
- *   </req>
- *   <res>
- *     <total_time>300</total_time>
- *     <total_node>5</total_node>
- *     <itinerary>12,18,30,45</itinerary>
- *   </res>
- * </response>
- * ```
  *
  * @param gdata The graph data structure used for shortest path calculations.
  * @param conf The configuration settings for the API.
