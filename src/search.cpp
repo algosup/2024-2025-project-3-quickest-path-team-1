@@ -33,7 +33,7 @@
  * - Space Complexity: O(1) (No additional memory allocated).
  */
 
-static inline int baseHeuristicFunc(int current_node, int goal_node, const graph& gdata)
+static inline int baseHeuristicFunc(int current_node, int goal_node)
 {
     int diff = current_node - goal_node;
     return (diff < 0) ? -diff : diff;
@@ -164,7 +164,7 @@ static inline int computeHeuristic(int current_node, int goal_node, const graph&
     if (conf.use_alt) {
         return altHeuristicFunc(current_node, goal_node, gdata);
     }
-    return baseHeuristicFunc(current_node, goal_node, gdata);
+    return baseHeuristicFunc(current_node, goal_node);
 }
 
 // ✅ function + comment verified.

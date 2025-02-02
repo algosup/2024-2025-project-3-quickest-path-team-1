@@ -67,7 +67,9 @@
 #ifdef _WIN32
 #include <winsock2.h>      // Windows Sockets API
 #include <ws2tcpip.h>      // Additional network functions
-#pragma comment(lib, "ws2_32.lib") // Link Windows socket library
+#ifdef _MSC_VER
+    #pragma comment(lib, "ws2_32.lib")
+#endif
 #else
 #include <sys/types.h>      // Type definitions for system calls
 #include <sys/socket.h>     // Socket programming (socket(), bind(), listen())
@@ -108,4 +110,4 @@ typedef int SOCKET;         // Define socket type for UNIX
 #endif
 
 
-#endif INCL_H
+#endif //INCL_H

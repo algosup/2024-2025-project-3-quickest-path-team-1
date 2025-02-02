@@ -36,9 +36,9 @@ void printMenu(std::string step)
 		<< GREEN << "   ____) | | | | | | (_| \\__ \\ | | | |  | | | |  __/ |  | (_| | |_| | | |\n"
 		"  |_____/|_| |_| |_|\\__,_|___/_| |_|_|  |_| |_|\\___|_|   \\__,_|\\__|_| |_|\n\n"
 		<< RESET << "  ~ API to perform " << YELLOW << "ultra-fast" << RESET << " query inside bidirectional " << BLUE << "large" << RESET << "-" << GREEN << "scale" << RESET << " graph."
-		;
+		<< std::flush;
 
-	std::cout << "\n\n  --- " << step << " ---\n\n";
+	std::cout << "\n\n  --- " << step << " ---\n\n" << std::flush;
 }
 
 // ✅ function + comment verified.

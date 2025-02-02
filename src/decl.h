@@ -51,8 +51,6 @@ struct graph
     std::unordered_map<int, size_t> node_to_index;
     std::vector<int> index_to_node;
 
-    std::vector<std::tuple<int, int, int>> edges;
-
     size_t line_count = 0;
     size_t index_count = 0;
 
@@ -185,4 +183,4 @@ std::vector<int> dijkstraSingleSource(const std::vector<std::vector<std::pair<in
 //  api.cpp (API management)
 int launchApiGateway(const graph& gdata, const config& conf);
 
-#endif DECL_H
+#endif //DECL_H

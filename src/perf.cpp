@@ -62,7 +62,6 @@ size_t estimateTotalGraphMemory(const graph& g) {
     total += sizeof(g.index_count);
     total += estimateUnorderedMapIntSizeT(g.node_to_index);
     total += estimateVector1d(g.index_to_node);
-    total += sizeof(g.edges) + (g.edges.capacity() * sizeof(std::tuple<int, int, int>));
     total += estimateVector2dPairIntInt(g.adjacency);
     total += estimateVector2d(g.dist_landmark_to);
     total += estimateVector2d(g.dist_landmark_from);
@@ -207,7 +206,6 @@ double getProcessMemory() {
  *   - `estimateVector2d(g.dist_landmark_to)`: Computes memory for landmark-to-node distances.
  *   - `estimateVector2d(g.dist_landmark_from)`: Computes memory for node-to-landmark distances.
  *   - `estimateVector2dPairIntInt(g.adjacency)`: Estimates memory for the adjacency list.
- *   - `sizeof(g.edges) + g.edges.capacity() * sizeof(std::tuple<int, int, int>)`: Estimates memory for edges.
  *   - `estimateTotalGraphMemory(g)`: Computes the total memory used by the graph.
  *
  * - System Memory Analysis:
@@ -218,7 +216,6 @@ double getProcessMemory() {
  * - Memory Usage by Graph Components (in MB):
  *   - `node_to_index` (Hash map for node indexing).
  *   - `index_to_node` (Reverse lookup vector).
- *   - `edges` (Edge storage using `std::tuple<int, int, int>`).
  *   - `adjacency` (Adjacency list representation).
  *   - `dist_landmark_to` (Precomputed distances to landmarks).
  *   - `dist_landmark_from` (Precomputed distances from landmarks).
@@ -264,10 +261,6 @@ void storePerf(const graph& g) {
     double mem_index_to_node_mb =
         static_cast<double>(estimateVector1d(g.index_to_node)) / 1048576.0;
 
-    double mem_edges_mb =
-        (sizeof(g.edges) + g.edges.capacity() * sizeof(std::tuple<int, int, int>))
-        / 1048576.0;
-
     double mem_adjacency_mb =
         static_cast<double>(estimateVector2dPairIntInt(g.adjacency)) / 1048576.0;
 
@@ -290,11 +283,6 @@ void storePerf(const graph& g) {
     output_stream.str("");
     output_stream.clear();
     output_stream << "  index_to_node: " << mem_index_to_node_mb << " MB";
-    logger(output_stream.str());
-
-    output_stream.str("");
-    output_stream.clear();
-    output_stream << "  edges: " << mem_edges_mb << " MB";
     logger(output_stream.str());
 
     output_stream.str("");

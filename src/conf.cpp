@@ -296,10 +296,10 @@ config getConfiguration(config conf)
 {
     ensureDirectory("graph");
 
-    std::cout << "\n  > enter .csv map path (format: landmark_A,landmark_B,cost): ";
+    std::cout << "\n  > enter .csv map path (format: landmark_A,landmark_B,cost): " << std::flush;
     std::cin >> conf.map_path;
 
-    std::cout << "\n";
+    std::cout << "\n" << std::flush;
 
     std::string file_hash = computeFileHash(conf.map_path);
 
@@ -325,12 +325,12 @@ config getConfiguration(config conf)
     }
 
     console("info", "no config file detected! starting a new setup.");
-    std::cout << "\n";
+    std::cout << "\n" << std::flush;
 
     optimization_flags flags = checkGraphOptimization(conf.map_path);
     console("info","is obtimized for ALT: [" + (flags.alt_optimized ? GREEN + "Yes" + RESET : RED + "No" + RESET) + "] ");
 
-    std::cout << "\n  ~ process\n";
+    std::cout << "\n  ~ process\n" << std::flush;
 
     bool use_alt = getYesNo("\n  > do you want to use the ALT pre-processing method (1min ~ 10min)? (y/n): ");
     if (use_alt) {
@@ -347,17 +347,17 @@ config getConfiguration(config conf)
     double weight = getPercentage("\n  > what maximum percentage above the shortest path duration are you willing to allow? (e.g. 10 for 10%) (min: 0 / max: 100): ");
     conf.weight = weight;
 
-    std::cout << "\n  ~ api\n";
+    std::cout << "\n  ~ api\n" << std::flush;
 
     bool personalized_weight = getYesNo("\n  > do you authorize the user to, optionally, set a personalized heuristic percentage when making query (y/n): ");
     conf.personalized_weight = personalized_weight;
 
-    std::cout << "\n  ~ other\n";
+    std::cout << "\n  ~ other\n" << std::flush;
 
     bool log = getYesNo("\n  > do you want to get debugging log (written inside a .txt) (y/n) ? : ");
     conf.log = log;
 
-    std::cout << "\n";
+    std::cout << "\n" << std::flush;
 
     console("success", "configuration completed! saving it.");
     createConfFile(conf);

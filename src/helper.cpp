@@ -91,7 +91,7 @@ bool getYesNo(const std::string& prompt)
 {
     std::string response;
     while (true) {
-        std::cout << prompt;
+        std::cout << prompt << std::flush;
         std::cin >> response;
         if (response == "y" || response == "n") {
             return response == "y";
@@ -114,7 +114,7 @@ int getInteger(const std::string& prompt)
     std::string response;
     int value;
     while (true) {
-        std::cout << prompt;
+        std::cout << prompt << std::flush;
         std::cin >> response;
         try {
             size_t pos;
