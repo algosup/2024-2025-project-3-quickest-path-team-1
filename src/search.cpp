@@ -293,9 +293,11 @@ path_result findShortestPath(const graph& gdata, const config& conf, int start_n
         }
 
         const auto& neighbors = adjacency[cur_idx];
+        int cnt = 0;
 
+        int best_dist_snapshot = best_distance.load(std::memory_order_relaxed);
         for (auto& edge : neighbors) {
-            if (search_done.load(std::memory_order_relaxed)) {
+            if (++cnt % 4 == 0 && search_done.load(std::memory_order_relaxed)) {
                 return;
             }
 
@@ -303,7 +305,6 @@ path_result findShortestPath(const graph& gdata, const config& conf, int start_n
             int cost = edge.second;
             int new_g = cur_g + cost;
 
-            int best_dist_snapshot = best_distance.load(std::memory_order_relaxed);
             if (dist_from_end[nbr_idx] >= 0 && (new_g + dist_from_end[nbr_idx]) >= best_dist_snapshot) {
                 continue;
             }
@@ -340,9 +341,11 @@ path_result findShortestPath(const graph& gdata, const config& conf, int start_n
         }
 
         const auto& neighbors = adjacency[cur_idx];
+        int cnt = 0;
 
+        int best_dist_snapshot = best_distance.load(std::memory_order_relaxed);
         for (auto& edge : neighbors) {
-            if (search_done.load(std::memory_order_relaxed)) {
+            if (++cnt % 4 == 0 && search_done.load(std::memory_order_relaxed)) {
                 return;
             }
 
@@ -350,7 +353,6 @@ path_result findShortestPath(const graph& gdata, const config& conf, int start_n
             int cost = edge.second;
             int new_g = cur_g + cost;
 
-            int best_dist_snapshot = best_distance.load(std::memory_order_relaxed);
             if (dist_from_start[nbr_idx] >= 0 && (new_g + dist_from_start[nbr_idx]) >= best_dist_snapshot) {
                 continue;
             }
@@ -382,7 +384,6 @@ path_result findShortestPath(const graph& gdata, const config& conf, int start_n
         while (!search_done.load(std::memory_order_relaxed)) {
             int cur_f, cur_idx;
             {
-                std::lock_guard<std::mutex> lk(forward_mutex);
                 if (forward_queue.empty()) {
                     search_done.store(true, std::memory_order_relaxed);
                     break;
@@ -407,7 +408,6 @@ path_result findShortestPath(const graph& gdata, const config& conf, int start_n
         while (!search_done.load(std::memory_order_relaxed)) {
             int cur_f, cur_idx;
             {
-                std::lock_guard<std::mutex> lk(backward_mutex);
                 if (backward_queue.empty()) {
                     search_done.store(true, std::memory_order_relaxed);
                     break;
