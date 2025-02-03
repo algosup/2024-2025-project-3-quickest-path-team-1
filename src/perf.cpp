@@ -63,8 +63,7 @@ size_t estimateTotalGraphMemory(const graph& g) {
     total += estimateUnorderedMapIntSizeT(g.node_to_index);
     total += estimateVector1d(g.index_to_node);
     total += estimateVector2dPairIntInt(g.adjacency);
-    total += estimateVector2d(g.dist_landmark_to);
-    total += estimateVector2d(g.dist_landmark_from);
+    total += estimateVector2d(g.dist_landmark);
     return total;
 }
 
@@ -203,8 +202,7 @@ double getProcessMemory() {
  * - Graph Components:
  *   - `estimateUnorderedMapIntSizeT(g.node_to_index)`: Estimates memory for the node-to-index mapping.
  *   - `estimateVector1d(g.index_to_node)`: Estimates memory for the index-to-node vector.
- *   - `estimateVector2d(g.dist_landmark_to)`: Computes memory for landmark-to-node distances.
- *   - `estimateVector2d(g.dist_landmark_from)`: Computes memory for node-to-landmark distances.
+ *   - `estimateVector2d(g.dist_landmark)`: Computes memory for landmark-to-node distances.
  *   - `estimateVector2dPairIntInt(g.adjacency)`: Estimates memory for the adjacency list.
  *   - `estimateTotalGraphMemory(g)`: Computes the total memory used by the graph.
  *
@@ -217,8 +215,7 @@ double getProcessMemory() {
  *   - `node_to_index` (Hash map for node indexing).
  *   - `index_to_node` (Reverse lookup vector).
  *   - `adjacency` (Adjacency list representation).
- *   - `dist_landmark_to` (Precomputed distances to landmarks).
- *   - `dist_landmark_from` (Precomputed distances from landmarks).
+ *   - `dist_landmark` (Precomputed distances from landmarks).
  *   - Total Estimated Graph Memory.
  *
  * - System Memory Statistics (in MB):
@@ -264,11 +261,8 @@ void storePerf(const graph& g) {
     double mem_adjacency_mb =
         static_cast<double>(estimateVector2dPairIntInt(g.adjacency)) / 1048576.0;
 
-    double mem_dist_landmark_to_mb =
-        static_cast<double>(estimateVector2d(g.dist_landmark_to)) / 1048576.0;
-
-    double mem_dist_landmark_from_mb =
-        static_cast<double>(estimateVector2d(g.dist_landmark_from)) / 1048576.0;
+    double mem_dist_landmark_mb =
+        static_cast<double>(estimateVector2d(g.dist_landmark)) / 1048576.0;
 
     output_stream.str("");
     output_stream.clear();
@@ -292,12 +286,7 @@ void storePerf(const graph& g) {
 
     output_stream.str("");
     output_stream.clear();
-    output_stream << "  dist_landmark_to: " << mem_dist_landmark_to_mb << " MB";
-    logger(output_stream.str());
-
-    output_stream.str("");
-    output_stream.clear();
-    output_stream << "  dist_landmark_from: " << mem_dist_landmark_from_mb << " MB";
+    output_stream << "  dist_landmark: " << mem_dist_landmark_mb << " MB";
     logger(output_stream.str());
 
     double total_graph_mem_mb =

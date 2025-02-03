@@ -20,8 +20,7 @@
  * 2. Initialize storage structures for distance calculations.
  * 3. Select the first landmark as an arbitrary node (first node in the dataset).
  * 4. Compute shortest-path distances using Dijkstra’s algorithm:
- *    - `dist_landmark_to[i][j]` stores the shortest path distance **to** node `i` from landmark `j`.
- *    - `dist_landmark_from[i][j]` stores the shortest path distance **from** node `i` to landmark `j`.
+ *    - `dist_landmark[i][j]` stores the shortest path distance from landmark `j` to node `i`.
  * 5. Iteratively select `nb_alt` landmarks using the farthest-node heuristic:
  *    - Find the node that has the maximum minimum distance from previous landmarks.
  *    - Recompute shortest-path distances using Dijkstra’s algorithm.
@@ -31,11 +30,10 @@
  * Mathematical Background:
  * - Landmark heuristics use the triangle inequality:
  *
- *     h(n) = max{ |d_L(goal) - d_L(n)|, |d_F(n) - d_F(goal)| }
+ *     h(n) = max{ |d_L(goal) - d_L(n)| }
  *
  *   where:
  *   - `d_L(n)` is the precomputed distance from landmark `L` to node `n`.
- *   - `d_F(n)` is the precomputed distance from node `n` to landmark `L`.
  *
  * - The farthest-node landmark selection ensures a wide spread of landmarks,
  *   improving heuristic accuracy in large graphs.
@@ -72,8 +70,7 @@ void preprocessAlt(graph& gdata, config& conf)
     std::vector<int> md(n, std::numeric_limits<int>::max());
     std::vector<int> d(n, -1);
 
-    gdata.dist_landmark_to.resize(n, std::vector<int>(conf.nb_alt, -1));
-    gdata.dist_landmark_from.resize(n, std::vector<int>(conf.nb_alt, -1));
+    gdata.dist_landmark.resize(n, std::vector<int>(conf.nb_alt, -1));
 
     int fl = gdata.node_to_index.begin()->first;
     landmarks.push_back(fl);
@@ -85,9 +82,9 @@ void preprocessAlt(graph& gdata, config& conf)
         int i = 0;
         for (auto& kv : gdata.node_to_index) {
             size_t idx = kv.second;
-            gdata.dist_landmark_to[idx][i] = d[idx];
-            gdata.dist_landmark_from[idx][i] = d[idx];
-            if (d[idx] >= 0 && d[idx] < md[idx]) md[idx] = d[idx];
+            gdata.dist_landmark[idx][i] = d[idx];
+            if (d[idx] >= 0 && d[idx] < md[idx])
+                md[idx] = d[idx];
         }
     }
 
@@ -122,9 +119,9 @@ void preprocessAlt(graph& gdata, config& conf)
         d = dijkstraSingleSource(gdata.adjacency, nl, n, gdata.node_to_index);
         for (auto& kv : gdata.node_to_index) {
             size_t idx = kv.second;
-            gdata.dist_landmark_to[idx][i] = d[idx];
-            gdata.dist_landmark_from[idx][i] = d[idx];
-            if (d[idx] >= 0 && d[idx] < md[idx]) md[idx] = d[idx];
+            gdata.dist_landmark[idx][i] = d[idx];
+            if (d[idx] >= 0 && d[idx] < md[idx])
+                md[idx] = d[idx];
         }
 
         size_t selected_idx = gdata.node_to_index[nl];
@@ -138,4 +135,3 @@ void preprocessAlt(graph& gdata, config& conf)
         saveAltData(gdata, conf);
     }
 }
-

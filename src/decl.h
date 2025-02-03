@@ -56,8 +56,7 @@ struct graph
 
     std::vector<std::vector<std::pair<int, int>>> adjacency;
 
-    std::vector<std::vector<int>> dist_landmark_to;
-    std::vector<std::vector<int>> dist_landmark_from;
+    std::vector<std::vector<int>> dist_landmark;
 };
 
 /**

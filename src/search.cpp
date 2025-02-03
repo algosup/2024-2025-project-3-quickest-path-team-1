@@ -47,11 +47,10 @@ static inline int baseHeuristicFunc(int current_node, int goal_node)
  * This function implements a more advanced heuristic based on precomputed distances
  * to and from landmarks. It estimates the heuristic cost using the triangle inequality:
  *
- *     h(n) = max{ |d_L(goal) - d_L(n)|, |d_F(n) - d_F(goal)| }
+ *      h(n) = max{ |d_L(goal) - d_L(n)| }
  *
  * where:
- * - `d_L(n)` represents the distance from a landmark to node `n`.
- * - `d_F(n)` represents the distance from node `n` to a landmark.
+ * - `d_L(n)` represents the precomputed distance from landmark L to node n.
  *
  * Functionality:
  * - Computes heuristic estimates based on landmark distances.
@@ -86,31 +85,24 @@ static inline int altHeuristicFunc(int current_node, int goal_node, const graph&
     size_t idx_c = it_cur->second;
     size_t idx_g = it_goal->second;
 
-    const auto& ld_c = gdata.dist_landmark_to[idx_c];
-    const auto& ld_g = gdata.dist_landmark_to[idx_g];
-    const auto& lf_c = gdata.dist_landmark_from[idx_c];
-    const auto& lf_g = gdata.dist_landmark_from[idx_g];
+    const auto& dm_c = gdata.dist_landmark[idx_c];
+    const auto& dm_g = gdata.dist_landmark[idx_g];
 
     int best_val = 0;
-    int count_l = (int)ld_c.size();
+    int count_l = (int)dm_c.size();
 
-    const int* ld_c_ptr = ld_c.data();
-    const int* ld_g_ptr = ld_g.data();
-    const int* lf_c_ptr = lf_c.data();
-    const int* lf_g_ptr = lf_g.data();
+    const int* dm_c_ptr = dm_c.data();
+    const int* dm_g_ptr = dm_g.data();
 
-#define ALT_HEURISTIC_STEP(I)                                 \
-    {                                                         \
-        int lg_ = ld_g_ptr[(I)];                              \
-        int ln_ = ld_c_ptr[(I)];                              \
-        int nl_ = lf_c_ptr[(I)];                              \
-        int gl_ = lf_g_ptr[(I)];                              \
-        if (lg_ < 0 || ln_ < 0 || nl_ < 0 || gl_ < 0)         \
-            continue;                                         \
-        int h1_ = lg_ - ln_;                                  \
-        if (h1_ > best_val) best_val = h1_;                   \
-        int h2_ = nl_ - gl_;                                  \
-        if (h2_ > best_val) best_val = h2_;                   \
+#define ALT_HEURISTIC_STEP(I)                                \
+    {                                                        \
+        int d_c = dm_c_ptr[(I)];                             \
+        int d_g = dm_g_ptr[(I)];                             \
+        if (d_c < 0 || d_g < 0)                              \
+            continue;                                      \
+        int diff = d_g - d_c;                                \
+        if (diff < 0) diff = -diff;                          \
+        if (diff > best_val) best_val = diff;                \
     }
 
     int i = 0;
