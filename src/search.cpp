@@ -45,7 +45,7 @@ static inline int baseHeuristicFunc(int current_node, int goal_node)
  *
  * @detailed
  * This function implements a more advanced heuristic based on precomputed distances
- * to and from landmarks. It estimates the heuristic cost using the triangle inequality:
+ * from landmarks. It estimates the heuristic cost using the triangle inequality:
  *
  *      h(n) = max{ |d_L(goal) - d_L(n)| }
  *
