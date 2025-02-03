@@ -160,6 +160,10 @@ int main()
     graph gdata;
 
     gdata = loadGraphData(conf, edges);
+    
+    search_buffers buffers;
+    initializeSearchBuffers(gdata, buffers);
+    console("success", "search buffers succefully initialized.");
 
 #if defined(_WIN32) || defined(_WIN64)
     Sleep(3000);
@@ -171,7 +175,7 @@ int main()
 
     storePerf(gdata);
 
-    launchApiGateway(gdata, conf);
+    launchApiGateway(gdata, buffers, conf);
 
     closeLogger();
 }

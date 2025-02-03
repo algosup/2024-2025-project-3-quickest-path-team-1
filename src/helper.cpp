@@ -219,3 +219,25 @@ std::vector<int> dijkstraSingleSource(const std::vector<std::vector<std::pair<in
 
     return distances;
 }
+
+// ✅ function + comment verified.
+/**
+ * @brief Initializes the search buffers for the graph.
+ *
+ * Allocates and prepares the necessary buffers (distance vectors, parent pointers,
+ * and heuristic caches) based solely on the graph's size. This function is intended
+ * to be called once at initialization (or whenever the graph changes), so that subsequent
+ * searches can reuse these buffers without incurring per-search allocation overhead.
+ *
+ * @param gdata The graph data structure.
+ * @param buffers The search_buffers structure to initialize.
+ */
+void initializeSearchBuffers(const graph& gdata, search_buffers& buffers) {
+    size_t n = gdata.node_to_index.size();
+    buffers.dist_from_start.assign(n, -1);
+    buffers.dist_from_end.assign(n, -1);
+    buffers.parent_forward.assign(n, { -1, 0 });
+    buffers.parent_backward.assign(n, { -1, 0 });
+    buffers.h_forward.assign(n, -1);
+    buffers.h_backward.assign(n, -1);
+}

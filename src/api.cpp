@@ -106,7 +106,7 @@ std::string ipToString(const sockaddr_in& addr)
  *   - Response Buffer: O(1)
  *   - Graph Memory Usage: O(V + E).
  */
-int launchApiGateway(const graph& gdata, const config& conf)
+int launchApiGateway(const graph& gdata, search_buffers& buffers, const config& conf)
 {
 #ifdef _WIN32
     WSADATA wsa_data;
@@ -324,7 +324,7 @@ int launchApiGateway(const graph& gdata, const config& conf)
 
         path_result pres;
         if (success) {
-            pres = findShortestPath(gdata, conf, start_val, end_val, used_weight);
+            pres = findShortestPath(gdata, buffers, conf, start_val, end_val, used_weight);
             if (pres.total_time < 0) {
                 success = false;
                 message_response = "NO PATH FOUND";

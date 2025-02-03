@@ -124,6 +124,21 @@ struct edge
     int t;
 };
 
+/**
+ * @brief Holds reusable buffers for the shortest path search.
+ *
+ * Stores distance vectors, parent tracking, and heuristic caches to avoid 
+ * per-search memory allocations. Initialized once based on graph size and 
+ * reset for each search.
+ */
+struct search_buffers {
+    std::vector<int> dist_from_start;
+    std::vector<int> dist_from_end;
+    std::vector<std::pair<int, int>> parent_forward;
+    std::vector<std::pair<int, int>> parent_backward;
+    std::vector<int> h_forward;
+    std::vector<int> h_backward;
+};
 
 /*------------------------------------------------------------------------------------
 							function declaration.
@@ -139,6 +154,8 @@ void clear();
 int getInteger(const std::string& prompt);
 double getPercentage(const std::string& prompt);
 bool getYesNo(const std::string& prompt);
+
+void initializeSearchBuffers(const graph& gdata, search_buffers& buffers);
 
 //  log.cpp (Logging)
 bool initLogger(const std::string& log_file_path);
@@ -175,11 +192,11 @@ bool loadAltData(graph& gdata, config& conf);
 void storePerf(const graph& g);
 
 //  search.cpp (Pathfinding)
-path_result findShortestPath(const graph& gdata, const config& conf, int start_node, int end_node, double weight);
+path_result findShortestPath(const graph& gdata, search_buffers& buffers, const config& conf, int start_node, int end_node, double weight);
 
 std::vector<int> dijkstraSingleSource(const std::vector<std::vector<std::pair<int, int>>>& adjacency, int source, size_t node_count, const std::unordered_map<int, size_t>& node_to_index);
 
 //  api.cpp (API management)
-int launchApiGateway(const graph& gdata, const config& conf);
+int launchApiGateway(const graph& gdata, search_buffers& buffers, const config& conf);
 
 #endif //DECL_H
