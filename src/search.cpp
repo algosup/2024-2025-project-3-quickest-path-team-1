@@ -185,12 +185,15 @@ static inline int computeHeuristic(int current_node, int goal_node, const graph&
  *   actually led to better performance with a weight of 1.0 than 1.2)
  *
  * Updates:
- * - Refactored to reuse preallocated search buffers (`search_buffers`):
- *   - Removed per-call vector allocations.
- *   - Buffers are initialized once and reset per search, reducing overhead.
+ * - Optimized buffer initialization using lazy reset via versioning:
+ *   - Instead of resetting all buffers with `std::fill`, a search ID system is used.
+ *   - Each search increments `current_search_id`, avoiding O(n) reset costs.
  * - Improved memory efficiency and response time:
- *   - Faster initialization through `std::fill` instead of full reallocations.
- *   - Reduced overall heap usage, leading to better performance.
+ *   - Removed redundant buffer resets, reducing overhead.
+ *   - Significantly reduces unnecessary memory writes, leading to better cache performance.
+ * - Maintains correctness with conditional access:
+ *   - Buffers now track their version, ensuring correctness while skipping unnecessary writes.
+ *   - Default values (`-1` or `{ -1, 0 }`) are automatically used for untouched entries.
  *
  * Properties:
  * - Efficient pathfinding through bidirectional expansion.
@@ -211,6 +214,56 @@ static inline int computeHeuristic(int current_node, int goal_node, const graph&
  * - Space Complexity: O(V) for storing distances, parents, etc.
  */
 
+namespace {
+    inline int getDistFromStart(const search_buffers &buffers, size_t idx) {
+        return (buffers.version_dist_from_start[idx] == buffers.current_search_id) ? buffers.dist_from_start[idx] : -1;
+    }
+    inline void setDistFromStart(search_buffers &buffers, size_t idx, int value) {
+        buffers.dist_from_start[idx] = value;
+        buffers.version_dist_from_start[idx] = buffers.current_search_id;
+    }
+    
+    inline int getDistFromEnd(const search_buffers &buffers, size_t idx) {
+        return (buffers.version_dist_from_end[idx] == buffers.current_search_id) ? buffers.dist_from_end[idx] : -1;
+    }
+    inline void setDistFromEnd(search_buffers &buffers, size_t idx, int value) {
+        buffers.dist_from_end[idx] = value;
+        buffers.version_dist_from_end[idx] = buffers.current_search_id;
+    }
+    
+    inline int getHForward(const search_buffers &buffers, size_t idx) {
+        return (buffers.version_h_forward[idx] == buffers.current_search_id) ? buffers.h_forward[idx] : -1;
+    }
+    inline void setHForward(search_buffers &buffers, size_t idx, int value) {
+        buffers.h_forward[idx] = value;
+        buffers.version_h_forward[idx] = buffers.current_search_id;
+    }
+    
+    inline int getHBackward(const search_buffers &buffers, size_t idx) {
+        return (buffers.version_h_backward[idx] == buffers.current_search_id) ? buffers.h_backward[idx] : -1;
+    }
+    inline void setHBackward(search_buffers &buffers, size_t idx, int value) {
+        buffers.h_backward[idx] = value;
+        buffers.version_h_backward[idx] = buffers.current_search_id;
+    }
+    
+    inline std::pair<int,int> getParentForward(const search_buffers &buffers, size_t idx) {
+        return (buffers.version_parent_forward[idx] == buffers.current_search_id) ? buffers.parent_forward[idx] : std::make_pair(-1, 0);
+    }
+    inline void setParentForward(search_buffers &buffers, size_t idx, std::pair<int,int> value) {
+        buffers.parent_forward[idx] = value;
+        buffers.version_parent_forward[idx] = buffers.current_search_id;
+    }
+    
+    inline std::pair<int,int> getParentBackward(const search_buffers &buffers, size_t idx) {
+        return (buffers.version_parent_backward[idx] == buffers.current_search_id) ? buffers.parent_backward[idx] : std::make_pair(-1, 0);
+    }
+    inline void setParentBackward(search_buffers &buffers, size_t idx, std::pair<int,int> value) {
+        buffers.parent_backward[idx] = value;
+        buffers.version_parent_backward[idx] = buffers.current_search_id;
+    }
+}
+
 path_result findShortestPath(const graph& gdata, search_buffers& buffers, const config& conf, int start_node, int end_node, double weight)
 {
     if (start_node == end_node) {
@@ -225,18 +278,12 @@ path_result findShortestPath(const graph& gdata, search_buffers& buffers, const 
 
     size_t start_idx = it_start->second;
     size_t end_idx = it_end->second;
-
     const int inf = std::numeric_limits<int>::max();
 
-    std::fill(buffers.dist_from_start.begin(), buffers.dist_from_start.end(), -1);
-    std::fill(buffers.dist_from_end.begin(), buffers.dist_from_end.end(), -1);
-    std::fill(buffers.h_forward.begin(),  buffers.h_forward.end(), -1);
-    std::fill(buffers.h_backward.begin(), buffers.h_backward.end(), -1);
-    std::fill(buffers.parent_forward.begin(), buffers.parent_forward.end(), std::make_pair(-1, 0));
-    std::fill(buffers.parent_backward.begin(), buffers.parent_backward.end(), std::make_pair(-1, 0));
+    buffers.current_search_id++;
 
-    buffers.dist_from_start[start_idx] = 0;
-    buffers.dist_from_end[end_idx] = 0;
+    setDistFromStart(buffers, start_idx, 0);
+    setDistFromEnd(buffers, end_idx, 0);
 
     using pq_item = std::pair<int, int>;
     auto cmp = [](const pq_item& a, const pq_item& b) {
@@ -247,11 +294,11 @@ path_result findShortestPath(const graph& gdata, search_buffers& buffers, const 
 
     int h_start = computeHeuristic(start_node, end_node, gdata, conf);
     int h_end   = computeHeuristic(end_node, start_node, gdata, conf);
-    buffers.h_forward[start_idx] = h_start;
-    buffers.h_backward[end_idx] = h_end;
+    setHForward(buffers, start_idx, h_start);
+    setHBackward(buffers, end_idx, h_end);
 
-    forward_queue.push({ buffers.dist_from_start[start_idx] + (int)(weight * h_start), (int)start_idx });
-    backward_queue.push({ buffers.dist_from_end[end_idx]   + (int)(weight * h_end),   (int)end_idx });
+    forward_queue.push({ getDistFromStart(buffers, start_idx) + (int)(weight * h_start), (int)start_idx });
+    backward_queue.push({ getDistFromEnd(buffers, end_idx)   + (int)(weight * h_end),   (int)end_idx });
 
     std::atomic<int> best_distance(inf);
     std::atomic<int> best_meet_node(-1);
@@ -263,27 +310,29 @@ path_result findShortestPath(const graph& gdata, search_buffers& buffers, const 
     const auto& adjacency = gdata.adjacency;
 
     auto getForwardH = [&](int idx) -> int {
-        if (buffers.h_forward[idx] >= 0) {
-            return buffers.h_forward[idx];
+        int hv = getHForward(buffers, idx);
+        if (hv >= 0) {
+            return hv;
         }
         int real_node = gdata.index_to_node[idx];
-        int hv = computeHeuristic(real_node, end_node, gdata, conf);
-        buffers.h_forward[idx] = hv;
+        hv = computeHeuristic(real_node, end_node, gdata, conf);
+        setHForward(buffers, idx, hv);
         return hv;
     };
 
     auto getBackwardH = [&](int idx) -> int {
-        if (buffers.h_backward[idx] >= 0) {
-            return buffers.h_backward[idx];
+        int hv = getHBackward(buffers, idx);
+        if (hv >= 0) {
+            return hv;
         }
         int real_node = gdata.index_to_node[idx];
-        int hv = computeHeuristic(real_node, start_node, gdata, conf);
-        buffers.h_backward[idx] = hv;
+        hv = computeHeuristic(real_node, start_node, gdata, conf);
+        setHBackward(buffers, idx, hv);
         return hv;
     };
 
     auto expandForward = [&](int cur_idx, int cur_f) {
-        int cur_g = buffers.dist_from_start[cur_idx];
+        int cur_g = getDistFromStart(buffers, cur_idx);
         int h_val = getForwardH(cur_idx);
         if (cur_g + (int)(weight * h_val) < cur_f) {
             return;
@@ -298,12 +347,13 @@ path_result findShortestPath(const graph& gdata, search_buffers& buffers, const 
             int nbr_idx = edge.first;
             int cost = edge.second;
             int new_g = cur_g + cost;
-            if (buffers.dist_from_end[nbr_idx] >= 0 && (new_g + buffers.dist_from_end[nbr_idx]) >= best_dist_snapshot) {
+            if (getDistFromEnd(buffers, nbr_idx) >= 0 && (new_g + getDistFromEnd(buffers, nbr_idx)) >= best_dist_snapshot) {
                 continue;
             }
-            if (buffers.dist_from_start[nbr_idx] < 0 || new_g < buffers.dist_from_start[nbr_idx]) {
-                buffers.dist_from_start[nbr_idx] = new_g;
-                buffers.parent_forward[nbr_idx] = { cur_idx, cost };
+            int existing = getDistFromStart(buffers, nbr_idx);
+            if (existing < 0 || new_g < existing) {
+                setDistFromStart(buffers, nbr_idx, new_g);
+                setParentForward(buffers, nbr_idx, { cur_idx, cost });
                 int h_nbr = getForwardH(nbr_idx);
                 int f_cost = new_g + (int)(weight * h_nbr);
                 {
@@ -311,8 +361,8 @@ path_result findShortestPath(const graph& gdata, search_buffers& buffers, const 
                     forward_queue.push({ f_cost, nbr_idx });
                 }
             }
-            if (buffers.dist_from_end[nbr_idx] >= 0) {
-                int total_cost = new_g + buffers.dist_from_end[nbr_idx];
+            if (getDistFromEnd(buffers, nbr_idx) >= 0) {
+                int total_cost = new_g + getDistFromEnd(buffers, nbr_idx);
                 if (total_cost < best_dist_snapshot) {
                     best_distance.store(total_cost, std::memory_order_relaxed);
                     best_meet_node.store(nbr_idx, std::memory_order_relaxed);
@@ -322,7 +372,7 @@ path_result findShortestPath(const graph& gdata, search_buffers& buffers, const 
     };
 
     auto expandBackward = [&](int cur_idx, int cur_f) {
-        int cur_g = buffers.dist_from_end[cur_idx];
+        int cur_g = getDistFromEnd(buffers, cur_idx);
         int h_val = getBackwardH(cur_idx);
         if (cur_g + (int)(weight * h_val) < cur_f) {
             return;
@@ -337,12 +387,13 @@ path_result findShortestPath(const graph& gdata, search_buffers& buffers, const 
             int nbr_idx = edge.first;
             int cost = edge.second;
             int new_g = cur_g + cost;
-            if (buffers.dist_from_start[nbr_idx] >= 0 && (new_g + buffers.dist_from_start[nbr_idx]) >= best_dist_snapshot) {
+            if (getDistFromStart(buffers, nbr_idx) >= 0 && (new_g + getDistFromStart(buffers, nbr_idx)) >= best_dist_snapshot) {
                 continue;
             }
-            if (buffers.dist_from_end[nbr_idx] < 0 || new_g < buffers.dist_from_end[nbr_idx]) {
-                buffers.dist_from_end[nbr_idx] = new_g;
-                buffers.parent_backward[nbr_idx] = { cur_idx, cost };
+            int existing = getDistFromEnd(buffers, nbr_idx);
+            if (existing < 0 || new_g < existing) {
+                setDistFromEnd(buffers, nbr_idx, new_g);
+                setParentBackward(buffers, nbr_idx, { cur_idx, cost });
                 int h_nbr = getBackwardH(nbr_idx);
                 int f_cost = new_g + (int)(weight * h_nbr);
                 {
@@ -350,8 +401,8 @@ path_result findShortestPath(const graph& gdata, search_buffers& buffers, const 
                     backward_queue.push({ f_cost, nbr_idx });
                 }
             }
-            if (buffers.dist_from_start[nbr_idx] >= 0) {
-                int total_cost = new_g + buffers.dist_from_start[nbr_idx];
+            if (getDistFromStart(buffers, nbr_idx) >= 0) {
+                int total_cost = new_g + getDistFromStart(buffers, nbr_idx);
                 if (total_cost < best_dist_snapshot) {
                     best_distance.store(total_cost, std::memory_order_relaxed);
                     best_meet_node.store(nbr_idx, std::memory_order_relaxed);
@@ -421,7 +472,7 @@ path_result findShortestPath(const graph& gdata, search_buffers& buffers, const 
     {
         int cur = meet_idx;
         while (cur != (int)start_idx) {
-            auto& par = buffers.parent_forward[cur];
+            auto par = getParentForward(buffers, cur);
             forward_indices.push_back(cur);
             cur = par.first;
         }
@@ -433,7 +484,7 @@ path_result findShortestPath(const graph& gdata, search_buffers& buffers, const 
     {
         int cur = meet_idx;
         while (cur != (int)end_idx) {
-            auto& par = buffers.parent_backward[cur];
+            auto par = getParentBackward(buffers, cur);
             backward_indices.push_back(cur);
             cur = par.first;
         }

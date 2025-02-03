@@ -224,20 +224,37 @@ std::vector<int> dijkstraSingleSource(const std::vector<std::vector<std::pair<in
 /**
  * @brief Initializes the search buffers for the graph.
  *
- * Allocates and prepares the necessary buffers (distance vectors, parent pointers,
- * and heuristic caches) based solely on the graph's size. This function is intended
- * to be called once at initialization (or whenever the graph changes), so that subsequent
- * searches can reuse these buffers without incurring per-search allocation overhead.
+ * Allocates and prepares the necessary buffers (distance vectors, 
+ * parent pointers, and heuristic caches) based on the graph's size. It also 
+ * initializes version tracking for each buffer to enable efficient reuse across 
+ * multiple searches without requiring full reallocation.
+ * 
+ * The versioning system ensures that buffer values remain valid for the 
+ * duration of a search while allowing automatic reset when a new search begins. 
+ * This approach improves performance by reducing redundant operations.
+ *
+ * This function should be called once during initialization or whenever the 
+ * graph structure changes, ensuring that the buffers are properly sized 
+ * and ready for subsequent searches.
  *
  * @param gdata The graph data structure.
  * @param buffers The search_buffers structure to initialize.
  */
 void initializeSearchBuffers(const graph& gdata, search_buffers& buffers) {
     size_t n = gdata.node_to_index.size();
-    buffers.dist_from_start.assign(n, -1);
-    buffers.dist_from_end.assign(n, -1);
-    buffers.parent_forward.assign(n, { -1, 0 });
-    buffers.parent_backward.assign(n, { -1, 0 });
-    buffers.h_forward.assign(n, -1);
-    buffers.h_backward.assign(n, -1);
+    buffers.dist_from_start.resize(n);
+    buffers.dist_from_end.resize(n);
+    buffers.parent_forward.resize(n);
+    buffers.parent_backward.resize(n);
+    buffers.h_forward.resize(n);
+    buffers.h_backward.resize(n);
+    
+    buffers.version_dist_from_start.assign(n, 0);
+    buffers.version_dist_from_end.assign(n, 0);
+    buffers.version_parent_forward.assign(n, 0);
+    buffers.version_parent_backward.assign(n, 0);
+    buffers.version_h_forward.assign(n, 0);
+    buffers.version_h_backward.assign(n, 0);
+    
+    buffers.current_search_id = 1; 
 }

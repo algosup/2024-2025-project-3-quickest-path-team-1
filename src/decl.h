@@ -127,9 +127,14 @@ struct edge
 /**
  * @brief Holds reusable buffers for the shortest path search.
  *
- * Stores distance vectors, parent tracking, and heuristic caches to avoid 
- * per-search memory allocations. Initialized once based on graph size and 
- * reset for each search.
+ * This structure stores preallocated buffers for distance tracking, parent 
+ * pointers, and heuristic values to optimize repeated searches. Instead of 
+ * reinitializing buffers for each search, a versioning system is used to track 
+ * valid entries, enabling efficient reuse without unnecessary memory operations.
+ * 
+ * Each buffer has an associated version vector that ensures only relevant values 
+ * are accessed or updated in a given search. The `current_search_id` increments 
+ * with each new search, allowing old values to be automatically ignored.
  */
 struct search_buffers {
     std::vector<int> dist_from_start;
@@ -138,6 +143,15 @@ struct search_buffers {
     std::vector<std::pair<int, int>> parent_backward;
     std::vector<int> h_forward;
     std::vector<int> h_backward;
+    
+    int current_search_id = 1;
+
+    std::vector<int> version_dist_from_start;
+    std::vector<int> version_dist_from_end;
+    std::vector<int> version_parent_forward;
+    std::vector<int> version_parent_backward;
+    std::vector<int> version_h_forward;
+    std::vector<int> version_h_backward;
 };
 
 /*------------------------------------------------------------------------------------
