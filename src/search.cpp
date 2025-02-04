@@ -1,6 +1,7 @@
 ﻿// ✅ file verified.
 #include "incl.h"
 #include "decl.h"
+#include "profiling.h"
 
 // ✅ function + comment verified.
 /**
@@ -99,7 +100,7 @@ static inline int altHeuristicFunc(int current_node, int goal_node, const graph&
         int d_c = dm_c_ptr[(I)];                             \
         int d_g = dm_g_ptr[(I)];                             \
         if (d_c < 0 || d_g < 0)                              \
-            continue;                                      \
+            continue;                                        \
         int diff = d_g - d_c;                                \
         if (diff < 0) diff = -diff;                          \
         if (diff > best_val) best_val = diff;                \
@@ -153,10 +154,8 @@ static inline int altHeuristicFunc(int current_node, int goal_node, const graph&
  */
 static inline int computeHeuristic(int current_node, int goal_node, const graph& gdata, const config& conf)
 {
-    if (conf.use_alt) {
-        return altHeuristicFunc(current_node, goal_node, gdata);
-    }
-    return baseHeuristicFunc(current_node, goal_node);
+    return conf.use_alt ? altHeuristicFunc(current_node, goal_node, gdata)
+                        : baseHeuristicFunc(current_node, goal_node);
 }
 
 // ✅ function + comment verified.
@@ -266,39 +265,56 @@ namespace {
 
 path_result findShortestPath(const graph& gdata, search_buffers& buffers, const config& conf, int start_node, int end_node, double weight)
 {
+    PROFILE_START("findShortestPath_total");
+
+    PROFILE_START("input_validation");
     if (start_node == end_node) {
+        PROFILE_STOP("input_validation");
+        PROFILE_STOP("findShortestPath_total");
         return { 0, 0, {} };
     }
-
+    
     auto it_start = gdata.node_to_index.find(start_node);
     auto it_end = gdata.node_to_index.find(end_node);
     if (it_start == gdata.node_to_index.end() || it_end == gdata.node_to_index.end()) {
+        PROFILE_STOP("input_validation");
+        PROFILE_STOP("findShortestPath_total");
         return { -1, 0, {} };
     }
+    PROFILE_STOP("input_validation");
 
+    PROFILE_START("index_mapping");
     size_t start_idx = it_start->second;
     size_t end_idx = it_end->second;
     const int inf = std::numeric_limits<int>::max();
+    PROFILE_STOP("index_mapping");
 
+    PROFILE_START("buffers_update");
     buffers.current_search_id++;
-
     setDistFromStart(buffers, start_idx, 0);
     setDistFromEnd(buffers, end_idx, 0);
+    PROFILE_STOP("buffers_update");
 
+    PROFILE_START("priority_queue_setup");
     using pq_item = std::pair<int, int>;
     auto cmp = [](const pq_item& a, const pq_item& b) {
         return a.first > b.first;
     };
     std::priority_queue<pq_item, std::vector<pq_item>, decltype(cmp)> forward_queue(cmp);
     std::priority_queue<pq_item, std::vector<pq_item>, decltype(cmp)> backward_queue(cmp);
+    PROFILE_STOP("priority_queue_setup");
 
+    PROFILE_START("heuristic_computation");
     int h_start = computeHeuristic(start_node, end_node, gdata, conf);
     int h_end   = computeHeuristic(end_node, start_node, gdata, conf);
     setHForward(buffers, start_idx, h_start);
     setHBackward(buffers, end_idx, h_end);
+    PROFILE_STOP("heuristic_computation");
 
+    PROFILE_START("initial_queue_push");
     forward_queue.push({ getDistFromStart(buffers, start_idx) + (int)(weight * h_start), (int)start_idx });
     backward_queue.push({ getDistFromEnd(buffers, end_idx)   + (int)(weight * h_end),   (int)end_idx });
+    PROFILE_STOP("initial_queue_push");
 
     std::atomic<int> best_distance(inf);
     std::atomic<int> best_meet_node(-1);
@@ -306,9 +322,9 @@ path_result findShortestPath(const graph& gdata, search_buffers& buffers, const 
 
     std::mutex forward_mutex;
     std::mutex backward_mutex;
-
     const auto& adjacency = gdata.adjacency;
 
+    PROFILE_START("lambda_getForwardH_setup");
     auto getForwardH = [&](int idx) -> int {
         int hv = getHForward(buffers, idx);
         if (hv >= 0) {
@@ -319,7 +335,9 @@ path_result findShortestPath(const graph& gdata, search_buffers& buffers, const 
         setHForward(buffers, idx, hv);
         return hv;
     };
+    PROFILE_STOP("lambda_getForwardH_setup");
 
+    PROFILE_START("lambda_getBackwardH_setup");
     auto getBackwardH = [&](int idx) -> int {
         int hv = getHBackward(buffers, idx);
         if (hv >= 0) {
@@ -330,24 +348,32 @@ path_result findShortestPath(const graph& gdata, search_buffers& buffers, const 
         setHBackward(buffers, idx, hv);
         return hv;
     };
+    PROFILE_STOP("lambda_getBackwardH_setup");
 
     auto expandForward = [&](int cur_idx, int cur_f) {
+        PROFILE_START("expandForward_total");
         int cur_g = getDistFromStart(buffers, cur_idx);
         int h_val = getForwardH(cur_idx);
         if (cur_g + (int)(weight * h_val) < cur_f) {
+            PROFILE_STOP("expandForward_total");
             return;
         }
+        PROFILE_START("expandForward_neighbors");
         const auto& neighbors = adjacency[cur_idx];
         int cnt = 0;
         int best_dist_snapshot = best_distance.load(std::memory_order_relaxed);
         for (auto& edge : neighbors) {
+            PROFILE_START("expandForward_iteration");
             if (++cnt % 4 == 0 && search_done.load(std::memory_order_relaxed)) {
-                return;
+                PROFILE_STOP("expandForward_iteration");
+                break;
             }
             int nbr_idx = edge.first;
             int cost = edge.second;
             int new_g = cur_g + cost;
+
             if (getDistFromEnd(buffers, nbr_idx) >= 0 && (new_g + getDistFromEnd(buffers, nbr_idx)) >= best_dist_snapshot) {
+                PROFILE_STOP("expandForward_iteration");
                 continue;
             }
             int existing = getDistFromStart(buffers, nbr_idx);
@@ -368,26 +394,35 @@ path_result findShortestPath(const graph& gdata, search_buffers& buffers, const 
                     best_meet_node.store(nbr_idx, std::memory_order_relaxed);
                 }
             }
+            PROFILE_STOP("expandForward_iteration");
         }
+        PROFILE_STOP("expandForward_neighbors");
+        PROFILE_STOP("expandForward_total");
     };
 
     auto expandBackward = [&](int cur_idx, int cur_f) {
+        PROFILE_START("expandBackward_total");
         int cur_g = getDistFromEnd(buffers, cur_idx);
         int h_val = getBackwardH(cur_idx);
         if (cur_g + (int)(weight * h_val) < cur_f) {
+            PROFILE_STOP("expandBackward_total");
             return;
         }
+        PROFILE_START("expandBackward_neighbors");
         const auto& neighbors = adjacency[cur_idx];
         int cnt = 0;
         int best_dist_snapshot = best_distance.load(std::memory_order_relaxed);
         for (auto& edge : neighbors) {
+            PROFILE_START("expandBackward_iteration");
             if (++cnt % 4 == 0 && search_done.load(std::memory_order_relaxed)) {
-                return;
+                PROFILE_STOP("expandBackward_iteration");
+                break;
             }
             int nbr_idx = edge.first;
             int cost = edge.second;
             int new_g = cur_g + cost;
             if (getDistFromStart(buffers, nbr_idx) >= 0 && (new_g + getDistFromStart(buffers, nbr_idx)) >= best_dist_snapshot) {
+                PROFILE_STOP("expandBackward_iteration");
                 continue;
             }
             int existing = getDistFromEnd(buffers, nbr_idx);
@@ -408,15 +443,21 @@ path_result findShortestPath(const graph& gdata, search_buffers& buffers, const 
                     best_meet_node.store(nbr_idx, std::memory_order_relaxed);
                 }
             }
+            PROFILE_STOP("expandBackward_iteration");
         }
+        PROFILE_STOP("expandBackward_neighbors");
+        PROFILE_STOP("expandBackward_total");
     };
 
     auto forwardThreadFunc = [&]() {
+        PROFILE_START("forwardThread_total");
         while (!search_done.load(std::memory_order_relaxed)) {
+            PROFILE_START("forwardThread_iteration");
             int cur_f, cur_idx;
             {
                 if (forward_queue.empty()) {
                     search_done.store(true, std::memory_order_relaxed);
+                    PROFILE_STOP("forwardThread_iteration");
                     break;
                 }
                 auto top_item = forward_queue.top();
@@ -427,18 +468,24 @@ path_result findShortestPath(const graph& gdata, search_buffers& buffers, const 
             int best_dist_snapshot = best_distance.load(std::memory_order_relaxed);
             if (cur_f >= best_dist_snapshot) {
                 search_done.store(true, std::memory_order_relaxed);
+                PROFILE_STOP("forwardThread_iteration");
                 break;
             }
             expandForward(cur_idx, cur_f);
+            PROFILE_STOP("forwardThread_iteration");
         }
+        PROFILE_STOP("forwardThread_total");
     };
 
     auto backwardThreadFunc = [&]() {
+        PROFILE_START("backwardThread_total");
         while (!search_done.load(std::memory_order_relaxed)) {
+            PROFILE_START("backwardThread_iteration");
             int cur_f, cur_idx;
             {
                 if (backward_queue.empty()) {
                     search_done.store(true, std::memory_order_relaxed);
+                    PROFILE_STOP("backwardThread_iteration");
                     break;
                 }
                 auto top_item = backward_queue.top();
@@ -449,27 +496,39 @@ path_result findShortestPath(const graph& gdata, search_buffers& buffers, const 
             int best_dist_snapshot = best_distance.load(std::memory_order_relaxed);
             if (cur_f >= best_dist_snapshot) {
                 search_done.store(true, std::memory_order_relaxed);
+                PROFILE_STOP("backwardThread_iteration");
                 break;
             }
             expandBackward(cur_idx, cur_f);
+            PROFILE_STOP("backwardThread_iteration");
         }
+        PROFILE_STOP("backwardThread_total");
     };
 
+    PROFILE_START("thread_launch");
     std::thread forward_thread(forwardThreadFunc);
     std::thread backward_thread(backwardThreadFunc);
+    PROFILE_STOP("thread_launch");
 
+    PROFILE_START("thread_join");
     forward_thread.join();
     backward_thread.join();
+    PROFILE_STOP("thread_join");
 
+    PROFILE_START("result_evaluation");
     int final_best_distance = best_distance.load(std::memory_order_relaxed);
     int meet_idx = best_meet_node.load(std::memory_order_relaxed);
-
     if (meet_idx < 0 || final_best_distance >= inf) {
+        PROFILE_STOP("result_evaluation");
+        PROFILE_STOP("findShortestPath_total");
         return { -1, 0, {} };
     }
+    PROFILE_STOP("result_evaluation");
 
+    PROFILE_START("path_reconstruction");
     std::vector<int> forward_indices;
     {
+        PROFILE_START("forward_path_build");
         int cur = meet_idx;
         while (cur != (int)start_idx) {
             auto par = getParentForward(buffers, cur);
@@ -478,10 +537,12 @@ path_result findShortestPath(const graph& gdata, search_buffers& buffers, const 
         }
         forward_indices.push_back((int)start_idx);
         std::reverse(forward_indices.begin(), forward_indices.end());
+        PROFILE_STOP("forward_path_build");
     }
 
     std::vector<int> backward_indices;
     {
+        PROFILE_START("backward_path_build");
         int cur = meet_idx;
         while (cur != (int)end_idx) {
             auto par = getParentBackward(buffers, cur);
@@ -489,23 +550,24 @@ path_result findShortestPath(const graph& gdata, search_buffers& buffers, const 
             cur = par.first;
         }
         backward_indices.push_back((int)end_idx);
+        PROFILE_STOP("backward_path_build");
     }
 
     if (!backward_indices.empty()) {
         backward_indices.erase(backward_indices.begin());
     }
-    forward_indices.insert(
-        forward_indices.end(),
-        backward_indices.begin(),
-        backward_indices.end()
-    );
+    forward_indices.insert(forward_indices.end(), backward_indices.begin(), backward_indices.end());
     for (auto& idx : forward_indices) {
         idx = gdata.index_to_node[idx];
     }
+    PROFILE_STOP("path_reconstruction");
 
     path_result result{};
     result.total_time = final_best_distance;
     result.total_node = (int)forward_indices.size();
     result.steps = std::move(forward_indices);
+
+    PROFILE_STOP("findShortestPath_total");
+    PROFILE_REPORT();
     return result;
 }
