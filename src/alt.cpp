@@ -77,7 +77,7 @@ void preprocessAlt(graph& gdata, config& conf)
     console("info", "processing landmark " + std::to_string(fl) + " (1/" + std::to_string(conf.nb_alt) + ")");
     logger("processing landmark " + std::to_string(fl) + " (1/" + std::to_string(conf.nb_alt) + ")");
 
-    d = dijkstraSingleSource(gdata.adjacency, fl, n, gdata.node_to_index);
+    d = dijkstraSingleSource(gdata, fl, n);
     {
         int i = 0;
         for (auto& kv : gdata.node_to_index) {
@@ -116,7 +116,7 @@ void preprocessAlt(graph& gdata, config& conf)
         logger("processing landmark " + std::to_string(nl) +
             " (" + std::to_string(i + 1) + "/" + std::to_string(conf.nb_alt) + ")");
 
-        d = dijkstraSingleSource(gdata.adjacency, nl, n, gdata.node_to_index);
+        d = dijkstraSingleSource(gdata, nl, n);
         for (auto& kv : gdata.node_to_index) {
             size_t idx = kv.second;
             gdata.dist_landmark[idx][i] = d[idx];

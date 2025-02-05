@@ -42,9 +42,9 @@ struct config
 };
 
 /**
- * @brief Represents a graph structure with adjacency lists and landmarks.
+ * @brief Represents a graph structure with edges lists and landmarks.
  *
- * Stores graph topology, adjacency representation, and precomputed landmark distances.
+ * Stores graph topology, edges representation, and precomputed landmark distances.
  */
 struct graph
 {
@@ -54,7 +54,13 @@ struct graph
     size_t line_count = 0;
     size_t index_count = 0;
 
-    std::vector<std::vector<std::pair<int, int>>> adjacency;
+    struct edge_repr {
+        int target;
+        int weight;
+    };
+
+    std::vector<size_t> offsets;
+    std::vector<edge_repr> edges;
 
     std::vector<std::vector<int>> dist_landmark;
 };
@@ -208,7 +214,7 @@ void storePerf(const graph& g);
 //  search.cpp (Pathfinding)
 path_result findShortestPath(const graph& gdata, search_buffers& buffers, const config& conf, int start_node, int end_node, double weight);
 
-std::vector<int> dijkstraSingleSource(const std::vector<std::vector<std::pair<int, int>>>& adjacency, int source, size_t node_count, const std::unordered_map<int, size_t>& node_to_index);
+std::vector<int> dijkstraSingleSource(const graph& gdata, int source, size_t node_count);
 
 //  api.cpp (API management)
 int launchApiGateway(const graph& gdata, search_buffers& buffers, const config& conf);

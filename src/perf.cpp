@@ -47,22 +47,14 @@ size_t estimateVector2d(const std::vector<std::vector<T>>& vec2d) {
     return total;
 }
 
-size_t estimateVector2dPairIntInt(const std::vector<std::vector<std::pair<int, int>>>& vec2d) {
-    size_t total = sizeof(vec2d)
-        + (vec2d.capacity() * sizeof(std::vector<std::pair<int, int>>));
-    for (auto& sub : vec2d) {
-        total += sizeof(sub) + (sub.capacity() * sizeof(std::pair<int, int>));
-    }
-    return total;
-}
-
 size_t estimateTotalGraphMemory(const graph& g) {
     size_t total = 0;
     total += sizeof(g.line_count);
     total += sizeof(g.index_count);
     total += estimateUnorderedMapIntSizeT(g.node_to_index);
     total += estimateVector1d(g.index_to_node);
-    total += estimateVector2dPairIntInt(g.adjacency);
+    total += estimateVector1d(g.offsets);
+    total += estimateVector1d(g.edges);
     total += estimateVector2d(g.dist_landmark);
     return total;
 }
@@ -202,9 +194,9 @@ double getProcessMemory() {
  * - Graph Components:
  *   - `estimateUnorderedMapIntSizeT(g.node_to_index)`: Estimates memory for the node-to-index mapping.
  *   - `estimateVector1d(g.index_to_node)`: Estimates memory for the index-to-node vector.
+ *   - `estimateVector1d(g.offsets)`: Estimates memory for the CSR offsets.
+ *   - `estimateVector1d(g.edges)`: Estimates memory for the CSR edge list.
  *   - `estimateVector2d(g.dist_landmark)`: Computes memory for landmark-to-node distances.
- *   - `estimateVector2dPairIntInt(g.adjacency)`: Estimates memory for the adjacency list.
- *   - `estimateTotalGraphMemory(g)`: Computes the total memory used by the graph.
  *
  * - System Memory Analysis:
  *   - `getSystemMemory(total_ram_mb, free_ram_mb)`: Retrieves total and free system RAM.
@@ -214,7 +206,8 @@ double getProcessMemory() {
  * - Memory Usage by Graph Components (in MB):
  *   - `node_to_index` (Hash map for node indexing).
  *   - `index_to_node` (Reverse lookup vector).
- *   - `adjacency` (Adjacency list representation).
+ *   - `offsets` (CSR offsets array).
+ *   - `edges` (Contiguous edge list).
  *   - `dist_landmark` (Precomputed distances from landmarks).
  *   - Total Estimated Graph Memory.
  *
@@ -258,8 +251,11 @@ void storePerf(const graph& g) {
     double mem_index_to_node_mb =
         static_cast<double>(estimateVector1d(g.index_to_node)) / 1048576.0;
 
-    double mem_adjacency_mb =
-        static_cast<double>(estimateVector2dPairIntInt(g.adjacency)) / 1048576.0;
+    double mem_offsets_mb =
+        static_cast<double>(estimateVector1d(g.offsets)) / 1048576.0;
+
+    double mem_edges_mb =
+        static_cast<double>(estimateVector1d(g.edges)) / 1048576.0;
 
     double mem_dist_landmark_mb =
         static_cast<double>(estimateVector2d(g.dist_landmark)) / 1048576.0;
@@ -281,7 +277,12 @@ void storePerf(const graph& g) {
 
     output_stream.str("");
     output_stream.clear();
-    output_stream << "  adjacency: " << mem_adjacency_mb << " MB";
+    output_stream << "  offsets: " << mem_offsets_mb << " MB";
+    logger(output_stream.str());
+
+    output_stream.str("");
+    output_stream.clear();
+    output_stream << "  edges: " << mem_edges_mb << " MB";
     logger(output_stream.str());
 
     output_stream.str("");

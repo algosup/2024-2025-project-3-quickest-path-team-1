@@ -181,38 +181,48 @@ double getPercentage(const std::string& prompt)
  * Edge Cases:
  * - If the source node is invalid, the function returns a distance array filled with `-1`.
  *
- * @param adjacency Adjacency list representation of the graph.
+ * @param gdata Graph representation containing adjacency information.
  * @param source The starting node for the shortest path computation.
  * @param node_count The total number of nodes in the graph.
- * @param node_to_index Mapping of node IDs to array indices.
  * @return A vector containing the shortest path distances from the source to all nodes.
  *
  * @complexity
  * - Time Complexity: O((V + E) log V) (Dijkstra's algorithm with a binary heap).
  * - Space Complexity: O(V) (Stores shortest path distances).
  */
-std::vector<int> dijkstraSingleSource(const std::vector<std::vector<std::pair<int, int>>>& adjacency, int source, size_t node_count, const std::unordered_map<int, size_t>& node_to_index)
+
+std::vector<int> dijkstraSingleSource(const graph& gdata, int source, size_t node_count)
 {
     std::vector<int> distances(node_count, -1);
 
-    auto it = node_to_index.find(source);
-    if (it == node_to_index.end()) return distances;
+    auto it = gdata.node_to_index.find(source);
+    if (it == gdata.node_to_index.end())
+        return distances;
 
-    distances[it->second] = 0;
-    std::priority_queue<dijkstra_state, std::vector<dijkstra_state>, std::greater<dijkstra_state>> pq;
-    pq.push({ static_cast<int>(it->second), 0 });
+    size_t source_idx = it->second;
+    distances[source_idx] = 0;
+
+    using state = std::pair<int, size_t>;
+    std::priority_queue<state, std::vector<state>, std::greater<state>> pq;
+    pq.push({0, source_idx});
 
     while (!pq.empty()) {
-        auto [cur_idx, cur_dist] = pq.top();
+        auto [cur_dist, cur_idx] = pq.top();
         pq.pop();
 
-        if (distances[cur_idx] != cur_dist) continue;
+        if (distances[cur_idx] != cur_dist)
+            continue;
 
-        for (auto& [nbr_idx, cost] : adjacency[cur_idx]) {
-            int nd = cur_dist + cost;
+        size_t start_edge = gdata.offsets[cur_idx];
+        size_t end_edge = (cur_idx + 1 < gdata.offsets.size()) ? gdata.offsets[cur_idx + 1] : gdata.edges.size();
+
+        for (size_t i = start_edge; i < end_edge; ++i) {
+            const auto& edge = gdata.edges[i];
+            size_t nbr_idx = edge.target;
+            int nd = cur_dist + edge.weight;
             if (distances[nbr_idx] < 0 || nd < distances[nbr_idx]) {
                 distances[nbr_idx] = nd;
-                pq.push({ nbr_idx, nd });
+                pq.push({nd, nbr_idx});
             }
         }
     }

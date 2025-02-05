@@ -322,7 +322,6 @@ path_result findShortestPath(const graph& gdata, search_buffers& buffers, const 
 
     std::mutex forward_mutex;
     std::mutex backward_mutex;
-    const auto& adjacency = gdata.adjacency;
 
     PROFILE_START("lambda_getForwardH_setup");
     auto getForwardH = [&](int idx) -> int {
@@ -359,23 +358,28 @@ path_result findShortestPath(const graph& gdata, search_buffers& buffers, const 
             return;
         }
         PROFILE_START("expandForward_neighbors");
-        const auto& neighbors = adjacency[cur_idx];
+
+        size_t start_edge = gdata.offsets[cur_idx];
+        size_t end_edge = ((static_cast<size_t>(cur_idx) + 1) < gdata.offsets.size()) ? gdata.offsets[static_cast<size_t>(cur_idx) + 1] : gdata.edges.size();
+
         int cnt = 0;
         int best_dist_snapshot = best_distance.load(std::memory_order_relaxed);
-        for (auto& edge : neighbors) {
+        for (size_t i = start_edge; i < end_edge; i++) {
             PROFILE_START("expandForward_iteration");
             if (++cnt % 4 == 0 && search_done.load(std::memory_order_relaxed)) {
                 PROFILE_STOP("expandForward_iteration");
                 break;
             }
-            int nbr_idx = edge.first;
-            int cost = edge.second;
+            const auto& edge = gdata.edges[i];
+            int nbr_idx = edge.target;
+            int cost = edge.weight;
             int new_g = cur_g + cost;
 
             if (getDistFromEnd(buffers, nbr_idx) >= 0 && (new_g + getDistFromEnd(buffers, nbr_idx)) >= best_dist_snapshot) {
                 PROFILE_STOP("expandForward_iteration");
                 continue;
             }
+        
             int existing = getDistFromStart(buffers, nbr_idx);
             if (existing < 0 || new_g < existing) {
                 setDistFromStart(buffers, nbr_idx, new_g);
@@ -409,19 +413,24 @@ path_result findShortestPath(const graph& gdata, search_buffers& buffers, const 
             return;
         }
         PROFILE_START("expandBackward_neighbors");
-        const auto& neighbors = adjacency[cur_idx];
+
+        size_t start_edge = gdata.offsets[cur_idx];
+        size_t end_edge = ((static_cast<size_t>(cur_idx) + 1) < gdata.offsets.size()) ? gdata.offsets[static_cast<size_t>(cur_idx) + 1] : gdata.edges.size();
+        
         int cnt = 0;
         int best_dist_snapshot = best_distance.load(std::memory_order_relaxed);
-        for (auto& edge : neighbors) {
+        for (size_t i = start_edge; i < end_edge; i++) {
             PROFILE_START("expandBackward_iteration");
             if (++cnt % 4 == 0 && search_done.load(std::memory_order_relaxed)) {
                 PROFILE_STOP("expandBackward_iteration");
                 break;
             }
-            int nbr_idx = edge.first;
-            int cost = edge.second;
+            const auto& edge = gdata.edges[i];
+            int nbr_idx = edge.target;
+            int cost = edge.weight;
             int new_g = cur_g + cost;
-            if (getDistFromStart(buffers, nbr_idx) >= 0 && (new_g + getDistFromStart(buffers, nbr_idx)) >= best_dist_snapshot) {
+            if (getDistFromStart(buffers, nbr_idx) >= 0 &&
+                (new_g + getDistFromStart(buffers, nbr_idx)) >= best_dist_snapshot) {
                 PROFILE_STOP("expandBackward_iteration");
                 continue;
             }
@@ -448,7 +457,7 @@ path_result findShortestPath(const graph& gdata, search_buffers& buffers, const 
         PROFILE_STOP("expandBackward_neighbors");
         PROFILE_STOP("expandBackward_total");
     };
-
+    
     auto forwardThreadFunc = [&]() {
         PROFILE_START("forwardThread_total");
         while (!search_done.load(std::memory_order_relaxed)) {
