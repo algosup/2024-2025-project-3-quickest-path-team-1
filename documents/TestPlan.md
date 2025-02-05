@@ -92,6 +92,10 @@ The users can use this to gain time and travel more effectively and easily acros
 
 ### 1. Definitions
 
+| Words | Definition | Sources |
+|-------|------------|---------|
+|  
+
 ### 2. Acronyms
 
 | Acronyms | Definition |
@@ -188,7 +192,19 @@ The following items will be needed full-time by the system integration test team
 
 ## A. GitHub Issues
 
-// TODO
+We decided to use GitHub Issues for the different reviews of documents and for the code, to check grammar issue, convention, and fix what needs to be changed.
+
+The templates we used are different between code and documents to be more accurate with the problem encountred. 
+Before I open an Issue, I read 3 times everything and if I see errors I write it on a paper, and I prepare an Issue for all errors I saw on the document or the code.
+If I didn't saw errors I don't open issue and I pass to the next task.
+
+Template of document issue:
+
+// SCREEN
+
+Template of code issue:
+
+//SCREEN
 
 ## B. Pull Request
 
