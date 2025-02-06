@@ -5,7 +5,7 @@
 
 | Created by | Creation date | Last modified |
 |:-------------:|:---------------:|:--------:|
-| Megnan Lucas | 01/06/2025 | 02/03/2025 |
+| Megnan Lucas | 01/06/2025 | 02/06/2025 |
 
 <br>
 </p>
@@ -143,12 +143,14 @@ Refer to the work schedule for the planned review dates.
 
 | Task | Start | Stop | Deliveable(s) |
 |------|-------|------|---------------|
-| Issue template                | 01/09/2025 | 01/10/2025 | Issue on GitHub        |
-| PR template                   | 01/16/2025 | 01/17/2025 | Merge branch on GitHub |
-| Test case design              | 01/17/2025 | 01/20/2025 | Test cases             |
-| Build 1: Data integrity       | 01/20/2025 | 01/21/2025 | Build 1 tested         |
-| Build 2: Functional accuracy  | 01/21/2025 | 01/22/2025 |  Build 2 tested        |
-| Build 3: Versatility          | 01/22/2025 | 01/23/2025 | Build 3 tested         |
+| Issue template                          | 01/09/2025 | 01/10/2025 | Issue on GitHub        |
+| PR template                             | 01/16/2025 | 01/17/2025 | Merge branch on GitHub |
+| Test case design                        | 01/17/2025 | 01/20/2025 | Test cases             |
+| Build 1: API tests                      | 01/20/2025 | 01/21/2025 | Build 1 tested         |
+| Build 2: Integrity & Connectivity tests | 01/21/2025 | 01/22/2025 | Build 2 tested         |
+| Build 3: Process tests                  | 01/22/2025 | 01/23/2025 | Build 3 tested         |
+| Build 4: CSV files tests                | 01/23/2025 | 01/23/2025 | Build 4 tested         |
+| Build 5: Output                         | 01/23/2025 | 01/23/2025 | Build 5 tested         |
 
 ## D. Testing Tools
 
@@ -172,7 +174,7 @@ The tests will be run on the following environments:
 
 #### b. Network
 
-Wifi: 
+A Wifi with a good and stable connection.
 
 #### c. Software
 
@@ -194,17 +196,15 @@ The following items will be needed full-time by the system integration test team
 
 We decided to use GitHub Issues for the different reviews of documents and for the code, to check grammar issue, convention, and fix what needs to be changed.
 
-The templates we used are different between code and documents to be more accurate with the problem encountred. 
-Before I open an Issue, I read 3 times everything and if I see errors I write it on a paper, and I prepare an Issue for all errors I saw on the document or the code.
-If I didn't saw errors I don't open issue and I pass to the next task.
+The templates we used are different between code and documents to be more accurate with the problem encountred. Before I open an Issue, I read 3 times everything and if I see errors I write it on a paper, and I prepare an Issue for all errors I saw on the document or the code. If I didn't saw errors I don't open issue and I pass to the next task.
 
-Template of document issue:
+Template of **document issue**:
 
-// SCREEN
+![docIssue](images/docIssue.png)
 
-Template of code issue:
+Template of **code issue**:
 
-//SCREEN
+![bugIssue](images/bugIssue.png)
 
 ## B. Pull Request
 
