@@ -1,6 +1,8 @@
 ﻿// ✅ file verified.
+/* comment in the code have been added with ChatGPT. */
 #include "incl.h"
 #include "decl.h"
+
 
 // ✅ function + comment verified.
 /**
@@ -120,7 +122,13 @@ int main()
 
     storePerf(gdata);
 
-    launchApiGateway(gdata, buffers, conf);
+    std::thread apiThread(launchApiGateway, std::ref(gdata), std::ref(buffers), std::ref(conf));
+    apiThread.detach();
+
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.get();
 
     closeLogger();
+
+    return 0;
 }

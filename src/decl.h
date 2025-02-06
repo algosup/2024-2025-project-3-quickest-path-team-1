@@ -14,7 +14,7 @@ inline std::string GREEN = "\033[1;32m";
 inline std::string RESET = "\033[0m";
 
 /*------------------------------------------------------------------------------------
-							weight definition.
+							structure definition.
 ------------------------------------------------------------------------------------*/
 
 /**
@@ -37,6 +37,8 @@ struct config
     bool personalized_weight = false;
 
     bool log = false;
+
+    int search_engine = 1;
 
     config() = default;
 };
@@ -74,6 +76,7 @@ struct graph
 struct optimization_flags
 {
     bool alt_optimized = false;
+    int search_engine_recommanded = 1;
 };
 
 /**
@@ -174,8 +177,11 @@ void clear();
 int getInteger(const std::string& prompt);
 double getPercentage(const std::string& prompt);
 bool getYesNo(const std::string& prompt);
+double getOneOrTwo(const std::string& prompt);
 
 void initializeSearchBuffers(const graph& gdata, search_buffers& buffers);
+
+std::vector<int> dijkstraSingleSource(const graph& gdata, int source, size_t node_count);
 
 //  log.cpp (Logging)
 bool initLogger(const std::string& log_file_path);
@@ -212,9 +218,8 @@ bool loadAltData(graph& gdata, config& conf);
 void storePerf(const graph& g);
 
 //  search.cpp (Pathfinding)
-path_result findShortestPath(const graph& gdata, search_buffers& buffers, const config& conf, int start_node, int end_node, double weight);
-
-std::vector<int> dijkstraSingleSource(const graph& gdata, int source, size_t node_count);
+path_result findShortestPathBidirectional(const graph& gdata, search_buffers& buffers, const config& conf, int start_node, int end_node, double weight);
+path_result findShortestPathUnidirectional(const graph& gdata, search_buffers& buffers, const config& conf, int start_node, int end_node, double weight);
 
 //  api.cpp (API management)
 int launchApiGateway(const graph& gdata, search_buffers& buffers, const config& conf);

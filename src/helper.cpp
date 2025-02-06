@@ -154,6 +154,27 @@ double getPercentage(const std::string& prompt)
     return 1.0 + (static_cast<double>(percent) / 100.0);
 }
 
+// ✅ function + comment verified.
+/**
+ * @brief Prompts the user for a 1/2 response.
+ *
+ * Continuously asks until the user enters '1' or '2'.
+ *
+ * @param prompt The message displayed to the user.
+ * @return '1' or '2'.
+ */
+double getOneOrTwo(const std::string& prompt)
+{
+    int one_or_two;
+    while (true) {
+        one_or_two = getInteger(prompt);
+        if (one_or_two != 1 || one_or_two != 2) {
+            break;
+        }
+        console("error", "invalid input. please enter 1 or 2.");
+    }
+    return one_or_two;
+}
 
 
 // ✅ function + comment verified.

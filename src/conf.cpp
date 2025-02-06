@@ -161,6 +161,7 @@ static bool verifyConfFile(const config& conf)
     if (data.find("log") == data.end() || !isBoolString(data["log"])) return false;
     if (data.find("nb_alt") == data.end() || !isIntString(data["nb_alt"])) return false;
     if (data.find("weight") == data.end() || !isFloatString(data["weight"])) return false;
+    if (data.find("search_engine") == data.end() || !isIntString(data["search_engine"])) return false;
     return true;
 }
 
@@ -181,6 +182,7 @@ static void createConfFile(const config& conf)
     ofs << "weight=" << conf.weight << "\n";
     ofs << "personalized_weight=" << (conf.personalized_weight ? "true" : "false") << "\n";
     ofs << "log=" << (conf.log ? "true" : "false") << "\n";
+    ofs << "search_engine=" << conf.search_engine << "\n";
     ofs.close();
 }
 
@@ -204,6 +206,7 @@ static config loadConfFile(config conf)
         conf.personalized_weight = toBool(data["personalized_weight"]);
     }
     if (data.find("log") != data.end() && isBoolString(data["log"])) conf.log = toBool(data["log"]);
+    if (data.find("search_engine") != data.end() && isIntString(data["search_engine"])) conf.search_engine = toInt(data["search_engine"]);
     return conf;
 }
 
@@ -224,6 +227,7 @@ void loggerConf(config& conf)
     logger("  weight > " + std::to_string(conf.weight));
     logger("  personalized_weight > " + std::to_string(conf.personalized_weight));
     logger("  log > " + std::to_string(conf.log));
+    logger("  search_engine > " + std::to_string(conf.search_engine));
 }
 
 // ✅ function + comment verified.
@@ -329,14 +333,19 @@ config getConfiguration(config conf)
 
     optimization_flags flags = checkGraphOptimization(conf.map_path);
     console("info","is obtimized for ALT: [" + (flags.alt_optimized ? GREEN + "Yes" + RESET : RED + "No" + RESET) + "] ");
+    console("info", std::string("Search engine recommended: [ ") + (flags.search_engine_recommanded == 1 ? GREEN + "Unidirectional (avg: < 4 edges per node)" + RESET : "Unidirectional (avg: < 4 edges per node)") 
+    + " / " + (flags.search_engine_recommanded == 2 ? GREEN + "Both can be used (avg: 4-5 edges per node) " + RESET : "Both can be used (avg: 4-5 edges per node) ") 
+    + " / " + (flags.search_engine_recommanded == 3 ? GREEN + "Bidirectional (avg: > 5 edges per node)" + RESET : "Bidirectional (avg: > 5 edges per node)") + " ]");
 
     std::cout << "\n  ~ process\n" << std::flush;
+
+    conf.search_engine = getOneOrTwo("\n  > what type of search engine do you want to use? ('1' for unidirectional - '2' for bidirectional): ");
 
     bool use_alt = getYesNo("\n  > do you want to use the ALT pre-processing method (1min ~ 10min)? (y/n): ");
     if (use_alt) {
         conf.use_alt = true;
         conf.nb_alt = getInteger("\n  > how many landmarks do you want to use? (e.g., 10): ");
-        std::cout << "\n";
+        std::cout << "\n" << std::flush;
         bool backup_alt = getYesNo("  > do you want to backup this pre-process for future use? (this will consume time/storage) (y/n): ");
         conf.save_alt = backup_alt;
     }

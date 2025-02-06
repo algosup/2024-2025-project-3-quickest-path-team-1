@@ -153,7 +153,7 @@ int launchApiGateway(const graph& gdata, search_buffers& buffers, const config& 
         return 1;
     }
 
-    console("success", "server is listening on port 80.");
+    console("success", "server is listening on port 80. press any touch to close it.");
     logger("server is listening on port 80.");
 
     while (true)
@@ -324,7 +324,12 @@ int launchApiGateway(const graph& gdata, search_buffers& buffers, const config& 
 
         path_result pres;
         if (success) {
-            pres = findShortestPath(gdata, buffers, conf, start_val, end_val, used_weight);
+            if(conf.search_engine == 1) {
+                pres = findShortestPathUnidirectional(gdata, buffers, conf, start_val, end_val, used_weight); 
+            }
+            else {
+                pres = findShortestPathBidirectional(gdata, buffers, conf, start_val, end_val, used_weight);
+            }
             if (pres.total_time < 0) {
                 success = false;
                 message_response = "NO PATH FOUND";
