@@ -59,7 +59,7 @@ To use our API, feel free to check the documentation here : User Manual
 |Functional Specifications|[FunctionalSpecifications.md](documents\FunctionalSpecifications.md)|
 |Technical Specifications |[TechnicalSpecifications.md](documents\TechnicalSpecifications.md)  |
 |Test Plan                |[TestPlan.md](documents\TestPlan.md)                                |
-|Test Cases               |                                                                    |
+|Test Cases               |[TestCases.md](documents\TestCases.md)                                                                    |
 |User Manual              |[UserManual]()                                                      |
 |Settlement               |[Settlement.md](documents\management\Settlement.md)                 |
 |Project Charter          |[ProjectCharter.md](documents\management\ProjectCharter.md)         |
