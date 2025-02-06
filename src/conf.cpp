@@ -249,6 +249,23 @@ bool updateNbAlt(config& conf, int new_nb_alt)
 
 // ✅ function + comment verified.
 /**
+ * @brief Updates the nb_alt field in both memory and the config file.
+ */
+bool updateMapPath(config& conf, std::string map_path)
+{
+    auto config_map = readKeyValueFile(conf.config_file, true);
+    if (config_map.empty()) return false;
+    updateConfigMap(config_map, "map_path", map_path);
+    if (!writeConfigFile(conf.config_file, config_map)) {
+        logger("error: failed to write updated config to file.");
+        console("error", "failed to write updated config to file.");
+        return false;
+    }
+    return true;
+}
+
+// ✅ function + comment verified.
+/**
  * @brief Loads or creates a new configuration file based on user input.
  *
  * @detailed
@@ -300,8 +317,17 @@ config getConfiguration(config conf)
 {
     ensureDirectory("graph");
 
-    std::cout << "\n  > enter .csv map path (format: landmark_A,landmark_B,cost): " << std::flush;
-    std::cin >> conf.map_path;
+    while (true) {
+        std::cout << "\n  > enter .csv map path (format: landmark_A,landmark_B,cost): " << std::flush;
+        std::cin >> conf.map_path;
+
+        if (fileExists(conf.map_path)) {
+            break;
+        } else {
+            console("error", "could not open file : " + conf.map_path);
+            logger("error: could not open file : " + conf.map_path);
+        }
+    }
 
     std::cout << "\n" << std::flush;
 
@@ -322,7 +348,15 @@ config getConfiguration(config conf)
     {
         if (verifyConfFile(conf)) {
             console("success", "config file detected! file path: " + conf.config_file);
+            
+            std::string tmp_map_path = conf.map_path;
             conf = loadConfFile(conf);
+            if(conf.map_path != tmp_map_path) {
+                conf.map_path = tmp_map_path;
+                updateMapPath(conf, tmp_map_path);
+                console("info", "new map path updated inside configuration file.");
+            }
+
             console("success", "config file loaded!");
             return conf;
         }
