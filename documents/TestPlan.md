@@ -94,7 +94,16 @@ The users can use this to gain time and travel more effectively and easily acros
 
 | Words | Definition | Sources |
 |-------|------------|---------|
-|  
+| **API**      | API stands for application programming interface, which is a set of definitions and protocols for building and integrating application software. | [Red Hat API](https://www.redhat.com/en/topics/api/what-are-application-programming-interfaces) |
+| **REST API** | A REST API is an application programming interface (API) that follows the design principles of the REST architectural style. REST is short for representational state transfer, and is a set of rules and guidelines about how you should build a web API. | [Red Hat REST API](https://www.redhat.com/en/topics/api/what-is-a-rest-api) |
+| **Directed Acyclic Graph (DAG)**  | It consists of vertices and edges (also called arcs), with each edge directed from one vertex to another, such that following those directions will never form a closed loop. A directed graph is a DAG if and only if it can be topologically ordered, by arranging the vertices as a linear ordering that is consistent with all edge directions. | [Wikipedia DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph) |
+| **Undirected Cyclic Graph (UCG)** | In an undirected cyclic graph, the edges have no direction, and the cycle can go in any direction. | [GeeksforGeeks](https://www.geeksforgeeks.org/what-is-cyclic-graph/) |
+| **Comma-Separated Values (CSV)**  | Comma-separated values (CSV) is a text file format that uses commas to separate values, and newlines to separate records. A CSV file stores tabular data (numbers and text) in plain text, where each line of the file typically represents one data record. Each record consists of the same number of fields, and these are separated by commas in the CSV file. If the field delimiter itself may appear within a field, fields can be surrounded with quotation marks. | [Wikipedia CSV](https://en.wikipedia.org/wiki/Comma-separated_values) |
+| **Extensible Markup Language (XML)**  | Extensible Markup Language (XML) is a markup language and file format for storing, transmitting, and reconstructing data. | [Wikipedia XML](https://en.wikipedia.org/wiki/XML) |
+| **JavaScript Object Notation (JSON)** | Open standard file format and data interchange format that uses human-readable text to store and transmit data objects consisting of name–value pairs and arrays (or other serializable values). It is a commonly used data format with diverse uses in electronic data interchange, including that of web applications with servers. | [Wikipedia JSON](https://en.wikipedia.org/wiki/JSON) |
+| **C++**      | a high-level, general-purpose programming language created by Danish computer scientist Bjarne Stroustrup. First released in 1985 as an extension of the C programming language, it has since expanded significantly over time; as of 1997, C++ has object-oriented, generic, and functional features, in addition to facilities for low-level memory manipulation for systems like microcomputers or to make operating systems like Linux or Windows. It is usually implemented as a compiled language, and many vendors provide C++ compilers, including the Free Software Foundation, LLVM, Microsoft, Intel, Embarcadero, Oracle, and IBM. | [Wikipedia C++](https://en.wikipedia.org/wiki/C%2B%2B) |
+| **Insomnia** | Insomnia is a powerful REST client that allows you to send HTTP requests and view responses from REST APIs. It is designed to be easy to use and helps developers debug and test their APIs more effectively. With Insomnia, you can create and save requests, organize them into workspaces, and share them with others. | [ProAbano Insomnia](https://docs.proabono.com/documentation/api-overview/what-is-insomnia-the-api-rest-client/) |
+
 
 ### 2. Acronyms
 
@@ -107,6 +116,7 @@ The users can use this to gain time and travel more effectively and easily acros
 | OS | Operating System   |
 | VS | Visual Studio      |
 | IDE | Integrated Development Environment |
+| API | Application Programming Interface  |
 
 ## E. References
 
@@ -118,10 +128,9 @@ The following people will be on the system integration test team:
 
 | Role | Name | Level of involvement | Responsibilities |
 |------|------|----------------------|------------------|
-| Technical Leader     | Grégory Pagnoux | 5hrs  |  |
-| Project Manager      | Alexis Santos   | 4hrs  |  |
-| Quality Assurance    | Lucas MEGNAN    | 93hrs |  |
-| Software Enginner    | Yann-maël       | 4hrs  |  |
+| Technical Leader     | Grégory Pagnoux | 5hrs  | Help the QA to reviews the code and validate PR from the branch dev. Help to do test cases. |
+| Project Manager      | Alexis Santos   | 4hrs  | Reviews all documents when a PR is ask from the branch document with the QA. Help to do test cases. |
+| Quality Assurance    | Lucas MEGNAN    | 93hrs | Review code and documents, prepare and doing test cases, make template for PR and Issues, make Issues if necessary and validate PRs. |
 
 ## B. Team Reviews
 
