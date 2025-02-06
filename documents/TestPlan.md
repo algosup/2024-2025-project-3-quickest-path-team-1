@@ -100,12 +100,12 @@ The users can use this to gain time and travel more effectively and easily acros
 
 | Acronyms | Definition |
 |----------|------------|
-| QA | Quality Assurance |
-| TL | Technical Leader  |
-| SE | Software Engineer |
-| PR | Pull Request      |
-| OS | Operating System  |
-| VS | Visual Studio     |
+| QA | Quality Assurance  |
+| TL | Technical Leader   |
+| SE | Software Engineer  |
+| PR(s) | Pull Request(s) |
+| OS | Operating System   |
+| VS | Visual Studio      |
 | IDE | Integrated Development Environment |
 
 ## E. References
@@ -194,9 +194,24 @@ The following items will be needed full-time by the system integration test team
 
 ## A. GitHub Issues
 
-We decided to use GitHub Issues for the different reviews of documents and for the code, to check grammar issue, convention, and fix what needs to be changed.
+GitHub Issues are used to track, manage, and resolve defects or enhancements. The following process must be followed when opening an issue:
 
-The templates we used are different between code and documents to be more accurate with the problem encountred. Before I open an Issue, I read 3 times everything and if I see errors I write it on a paper, and I prepare an Issue for all errors I saw on the document or the code. If I didn't saw errors I don't open issue and I pass to the next task.
+1. **Issue Creation**:
+   - Each issue must have a clear and descriptive title.
+   - Provide a detailed description of the problem, including steps to reproduce it if applicable.
+   - Assign the issue to the relevant team members and add appropriate labels (e.g., bug, enhancement, documentation).
+
+2. **Issue Triage**:
+   - The QA or technical lead will review issues and prioritize them based on severity and impact.
+   - High-priority issues should be addressed before moving on to new feature development.
+
+3. **Issue Resolution**:
+   - Developers must provide comments and updates on the issue’s progress.
+   - Once fixed, the issue should be linked to the corresponding pull request.
+
+4. **Issue Closure**:
+   - After verification and testing, the issue is marked as resolved and closed by the QA.
+   - If the issue persists, it should be reopened and assigned for further investigation.
 
 Template of **document issue**:
 
@@ -208,7 +223,34 @@ Template of **code issue**:
 
 ## B. Pull Request
 
-// TODO 
+Pull requests are used to propose, review, and merge changes into the main codebase. The following process must be followed when submitting a PR:
+
+1. **Branching**: Developers must create a new feature or bug-fix branch from the latest main branch before making any modifications.
+
+2. **Code Commit Guidelines**: Each commit should be atomic, well-documented, and follow the project's coding standards.
+
+3. **Pull Request Creation**:
+   - PRs must include a clear title and description summarizing the changes.
+   - Link any relevant issues that the PR addresses.
+   - Ensure that all unit and integration tests pass before submission.
+
+4. **Review Process**:
+   - At least one reviewer (QA or technical lead) must approve the PR before merging.
+   - Reviewers should check for correctness, readability, adherence to coding standards, and the absence of regressions.
+   - Any requested changes must be addressed before approval.
+
+5. **Merging**:
+   - Once approved, the developer or the reviewer can merge the PR.
+   - Squash and merge should be preferred for small changes; standard merge for larger features.
+   - Delete the feature branch after merging to keep the repository clean.
+
+6. **Post-Merge Actions**:
+   - Ensure the latest changes are pulled into local environments.
+   - Monitor production (if applicable) for unexpected issues after deployment.
+
+Template of **PR**:
+
+![PullRequest](images/pullRequest.png)
 
 # IV. Testing Procedures
 
