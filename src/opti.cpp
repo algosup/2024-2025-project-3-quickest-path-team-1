@@ -104,13 +104,13 @@ optimization_flags checkGraphOptimization(const std::string& map_path, double al
     
     optimization_flags flags;
     flags.alt_optimized = (density < alt_density_threshold);
-    if (avg_edges_per_node < 4) {
+    if (avg_edges_per_node < 3) {
         flags.search_engine_recommanded = 1;
     }
-    else if (avg_edges_per_node >= 4 && avg_edges_per_node <= 5) {
+    else if (avg_edges_per_node >= 3 && avg_edges_per_node <= 4) {
         flags.search_engine_recommanded = 2;
     }
-    else if (avg_edges_per_node > 5) {
+    else if (avg_edges_per_node > 4) {
         flags.search_engine_recommanded = 3;
     }
     return flags;
