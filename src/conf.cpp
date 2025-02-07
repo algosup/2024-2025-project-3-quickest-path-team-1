@@ -366,10 +366,10 @@ config getConfiguration(config conf)
     std::cout << "\n" << std::flush;
 
     optimization_flags flags = checkGraphOptimization(conf.map_path);
-    console("info","is optimized for ALT: [" + (flags.alt_optimized ? GREEN + "Yes" + RESET : RED + "No" + RESET) + "] ");
-    console("info", std::string("search engine recommended: [ ") + (flags.search_engine_recommanded == 1 ? GREEN + "unidirectional (avg: < 3 edges per node)" + RESET : "unidirectional (avg: < 3 edges per node)") 
-    + " / " + (flags.search_engine_recommanded == 2 ? GREEN + "both can be used (avg: 3-4 edges per node) " + RESET : "both can be used (avg: 3-4 edges per node) ") 
-    + " / " + (flags.search_engine_recommanded == 3 ? GREEN + "bidirectional (avg: > 4 edges per node)" + RESET : "bidirectional (avg: > 4 edges per node)") + " ]");
+    console("info","is optimized for ALT: [" + (flags.alt_optimized ? GREEN + "yes" + RESET : RED + "no" + RESET) + "] ");
+    console("info", std::string("search engine recommended: [") + (flags.search_engine_recommanded == 1 ? GREEN + "unidirectional (avg: < 3 edges per node)" + RESET : "unidirectional (avg: < 3 edges per node)") 
+    + " / " + (flags.search_engine_recommanded == 2 ? GREEN + "both can be used (avg: 3-4 edges per node)" + RESET : "both can be used (avg: 3-4 edges per node)") 
+    + " / " + (flags.search_engine_recommanded == 3 ? GREEN + "bidirectional (avg: > 4 edges per node)" + RESET : "bidirectional (avg: > 4 edges per node)") + "]");
 
     std::cout << "\n  ~ process\n" << std::flush;
 
