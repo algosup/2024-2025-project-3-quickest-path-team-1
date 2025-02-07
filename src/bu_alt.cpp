@@ -50,24 +50,12 @@ void saveAltData(const graph& gdata, const config& conf)
         }
 
         {
-            uint64_t outer_size = static_cast<uint64_t>(gdata.dist_landmark_to.size());
+            uint64_t outer_size = static_cast<uint64_t>(gdata.dist_landmark.size());
             ofs.write(reinterpret_cast<const char*>(&outer_size), sizeof(outer_size));
 
-            for (const auto& row : gdata.dist_landmark_to) {
+            for (const auto& row : gdata.dist_landmark) {
                 uint64_t inner_size = static_cast<uint64_t>(row.size());
                 ofs.write(reinterpret_cast<const char*>(&inner_size), sizeof(inner_size));
-
-                ofs.write(reinterpret_cast<const char*>(row.data()), inner_size * sizeof(int));
-            }
-        }
-        {
-            uint64_t outer_size = static_cast<uint64_t>(gdata.dist_landmark_from.size());
-            ofs.write(reinterpret_cast<const char*>(&outer_size), sizeof(outer_size));
-
-            for (const auto& row : gdata.dist_landmark_from) {
-                uint64_t inner_size = static_cast<uint64_t>(row.size());
-                ofs.write(reinterpret_cast<const char*>(&inner_size), sizeof(inner_size));
-
                 ofs.write(reinterpret_cast<const char*>(row.data()), inner_size * sizeof(int));
             }
         }
@@ -94,12 +82,9 @@ void saveAltData(const graph& gdata, const config& conf)
  * data from a binary file. The format must match the one used by `saveAltData`.
  *
  * Data Loaded:
- * - dist_landmark_to:
+ * - dist_landmark:
  *   - Reads the number of nodes (outer size).
  *   - For each node, reads the number of landmarks, then reads `int` distances.
- *
- * - dist_landmark_from:
- *   - Same pattern as dist_landmark_to.
  *
  * Steps of Execution:
  * 1. Open the input file in binary mode.
@@ -144,56 +129,27 @@ bool loadAltData(graph& gdata, config& conf)
             uint64_t outer_size = 0;
             ifs.read(reinterpret_cast<char*>(&outer_size), sizeof(outer_size));
             if (!ifs.good()) {
-                console("error", "failed to read the size of dist_landmark_to, processing landmarks again");
-                logger("error: failed to read the size of dist_landmark_to, processing landmarks again.");
+                console("error", "failed to read the size of dist_landmark, processing landmarks again");
+                logger("error: failed to read the size of dist_landmark, processing landmarks again.");
                 return false;
             }
 
-            gdata.dist_landmark_to.resize(static_cast<size_t>(outer_size));
+            gdata.dist_landmark.resize(static_cast<size_t>(outer_size));
             for (size_t i = 0; i < outer_size; ++i) {
                 uint64_t inner_size = 0;
                 ifs.read(reinterpret_cast<char*>(&inner_size), sizeof(inner_size));
                 if (!ifs.good()) {
-                    console("error", "failed to read the size of a dist_landmark_to row, processing landmarks again");
-                    logger("error: failed to read the size of a dist_landmark_to row, processing landmarks again.");
+                    console("error", "failed to read the size of a dist_landmark row, processing landmarks again");
+                    logger("error: failed to read the size of a dist_landmark row, processing landmarks again.");
                     return false;
                 }
 
-                gdata.dist_landmark_to[i].resize(static_cast<size_t>(inner_size));
-                ifs.read(reinterpret_cast<char*>(gdata.dist_landmark_to[i].data()),
-                    static_cast<std::streamsize>(inner_size * sizeof(int)));
+                gdata.dist_landmark[i].resize(static_cast<size_t>(inner_size));
+                ifs.read(reinterpret_cast<char*>(gdata.dist_landmark[i].data()),
+                         static_cast<std::streamsize>(inner_size * sizeof(int)));
                 if (!ifs.good()) {
-                    console("error", "failed to read dist_landmark_to row data, processing landmarks again");
-                    logger("error: failed to read dist_landmark_to row data, processing landmarks again.");
-                    return false;
-                }
-            }
-        }
-        {
-            uint64_t outer_size = 0;
-            ifs.read(reinterpret_cast<char*>(&outer_size), sizeof(outer_size));
-            if (!ifs.good()) {
-                console("error", "failed to read the size of dist_landmark_from, processing landmarks again");
-                logger("error: failed to read the size of dist_landmark_from, processing landmarks again.");
-                return false;
-            }
-
-            gdata.dist_landmark_from.resize(static_cast<size_t>(outer_size));
-            for (size_t i = 0; i < outer_size; ++i) {
-                uint64_t inner_size = 0;
-                ifs.read(reinterpret_cast<char*>(&inner_size), sizeof(inner_size));
-                if (!ifs.good()) {
-                    console("error", "failed to read the size of a dist_landmark_from row, processing landmarks again");
-                    logger("error: failed to read the size of a dist_landmark_from row, processing landmarks again.");
-                    return false;
-                }
-
-                gdata.dist_landmark_from[i].resize(static_cast<size_t>(inner_size));
-                ifs.read(reinterpret_cast<char*>(gdata.dist_landmark_from[i].data()),
-                    static_cast<std::streamsize>(inner_size * sizeof(int)));
-                if (!ifs.good()) {
-                    console("error", "failed to read dist_landmark_from row data, processing landmarks again");
-                    logger("error: failed to read dist_landmark_from row data, processing landmarks again");
+                    console("error", "failed to read dist_landmark row data, processing landmarks again");
+                    logger("error: failed to read dist_landmark row data, processing landmarks again.");
                     return false;
                 }
             }

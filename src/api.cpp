@@ -106,7 +106,7 @@ std::string ipToString(const sockaddr_in& addr)
  *   - Response Buffer: O(1)
  *   - Graph Memory Usage: O(V + E).
  */
-int launchApiGateway(const graph& gdata, const config& conf)
+int launchApiGateway(const graph& gdata, search_buffers& buffers, const config& conf)
 {
 #ifdef _WIN32
     WSADATA wsa_data;
@@ -153,7 +153,7 @@ int launchApiGateway(const graph& gdata, const config& conf)
         return 1;
     }
 
-    console("success", "server is listening on port 80.");
+    console("success", "server is listening on port 80. press any touch to close it.");
     logger("server is listening on port 80.");
 
     while (true)
@@ -224,7 +224,12 @@ int launchApiGateway(const graph& gdata, const config& conf)
                     try {
                         size_t amp_pos = query_part.find("&", st_pos);
                         std::string val = query_part.substr(st_pos + 6, amp_pos - (st_pos + 6));
-                        start_val = std::stoi(val);
+                        size_t consumed = 0;
+                        int parsed = std::stoi(val, &consumed);
+                        if (consumed != val.size()) {
+                            throw std::invalid_argument("invalid integer parameter");
+                        }
+                        start_val = parsed;
                         start_ok = true;
                     }
                     catch (...) {
@@ -238,7 +243,12 @@ int launchApiGateway(const graph& gdata, const config& conf)
                     try {
                         size_t amp_pos = query_part.find("&", en_pos);
                         std::string val = query_part.substr(en_pos + 4, amp_pos - (en_pos + 4));
-                        end_val = std::stoi(val);
+                        size_t consumed = 0;
+                        int parsed = std::stoi(val, &consumed);
+                        if (consumed != val.size()) {
+                            throw std::invalid_argument("invalid integer parameter");
+                        }
+                        end_val = parsed;
                         end_ok = true;
                     }
                     catch (...) {
@@ -324,7 +334,12 @@ int launchApiGateway(const graph& gdata, const config& conf)
 
         path_result pres;
         if (success) {
-            pres = findShortestPath(gdata, conf, start_val, end_val, used_weight);
+            if(conf.search_engine == 1) {
+                pres = findShortestPathUnidirectional(gdata, buffers, conf, start_val, end_val, used_weight); 
+            }
+            else {
+                pres = findShortestPathBidirectional(gdata, buffers, conf, start_val, end_val, used_weight);
+            }
             if (pres.total_time < 0) {
                 success = false;
                 message_response = "NO PATH FOUND";

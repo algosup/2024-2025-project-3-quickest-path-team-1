@@ -161,6 +161,7 @@ static bool verifyConfFile(const config& conf)
     if (data.find("log") == data.end() || !isBoolString(data["log"])) return false;
     if (data.find("nb_alt") == data.end() || !isIntString(data["nb_alt"])) return false;
     if (data.find("weight") == data.end() || !isFloatString(data["weight"])) return false;
+    if (data.find("search_engine") == data.end() || !isIntString(data["search_engine"])) return false;
     return true;
 }
 
@@ -181,6 +182,7 @@ static void createConfFile(const config& conf)
     ofs << "weight=" << conf.weight << "\n";
     ofs << "personalized_weight=" << (conf.personalized_weight ? "true" : "false") << "\n";
     ofs << "log=" << (conf.log ? "true" : "false") << "\n";
+    ofs << "search_engine=" << conf.search_engine << "\n";
     ofs.close();
 }
 
@@ -204,6 +206,7 @@ static config loadConfFile(config conf)
         conf.personalized_weight = toBool(data["personalized_weight"]);
     }
     if (data.find("log") != data.end() && isBoolString(data["log"])) conf.log = toBool(data["log"]);
+    if (data.find("search_engine") != data.end() && isIntString(data["search_engine"])) conf.search_engine = toInt(data["search_engine"]);
     return conf;
 }
 
@@ -224,6 +227,7 @@ void loggerConf(config& conf)
     logger("  weight > " + std::to_string(conf.weight));
     logger("  personalized_weight > " + std::to_string(conf.personalized_weight));
     logger("  log > " + std::to_string(conf.log));
+    logger("  search_engine > " + std::to_string(conf.search_engine));
 }
 
 // ✅ function + comment verified.
@@ -235,6 +239,23 @@ bool updateNbAlt(config& conf, int new_nb_alt)
     auto config_map = readKeyValueFile(conf.config_file, true);
     if (config_map.empty()) return false;
     updateConfigMap(config_map, "nb_alt", std::to_string(new_nb_alt));
+    if (!writeConfigFile(conf.config_file, config_map)) {
+        logger("error: failed to write updated config to file.");
+        console("error", "failed to write updated config to file.");
+        return false;
+    }
+    return true;
+}
+
+// ✅ function + comment verified.
+/**
+ * @brief Updates the nb_alt field in both memory and the config file.
+ */
+bool updateMapPath(config& conf, std::string map_path)
+{
+    auto config_map = readKeyValueFile(conf.config_file, true);
+    if (config_map.empty()) return false;
+    updateConfigMap(config_map, "map_path", map_path);
     if (!writeConfigFile(conf.config_file, config_map)) {
         logger("error: failed to write updated config to file.");
         console("error", "failed to write updated config to file.");
@@ -296,10 +317,19 @@ config getConfiguration(config conf)
 {
     ensureDirectory("graph");
 
-    std::cout << "\n  > enter .csv map path (format: landmark_A,landmark_B,cost): ";
-    std::cin >> conf.map_path;
+    while (true) {
+        std::cout << "\n  > enter .csv map path (format: landmark_A,landmark_B,cost): " << std::flush;
+        std::cin >> conf.map_path;
 
-    std::cout << "\n";
+        if (fileExists(conf.map_path)) {
+            break;
+        } else {
+            console("error", "could not open file : " + conf.map_path);
+            logger("error: could not open file : " + conf.map_path);
+        }
+    }
+
+    std::cout << "\n" << std::flush;
 
     std::string file_hash = computeFileHash(conf.map_path);
 
@@ -318,25 +348,38 @@ config getConfiguration(config conf)
     {
         if (verifyConfFile(conf)) {
             console("success", "config file detected! file path: " + conf.config_file);
+            
+            std::string tmp_map_path = conf.map_path;
             conf = loadConfFile(conf);
+            if(conf.map_path != tmp_map_path) {
+                conf.map_path = tmp_map_path;
+                updateMapPath(conf, tmp_map_path);
+                console("info", "new map path updated inside configuration file.");
+            }
+
             console("success", "config file loaded!");
             return conf;
         }
     }
 
     console("info", "no config file detected! starting a new setup.");
-    std::cout << "\n";
+    std::cout << "\n" << std::flush;
 
     optimization_flags flags = checkGraphOptimization(conf.map_path);
     console("info","is obtimized for ALT: [" + (flags.alt_optimized ? GREEN + "Yes" + RESET : RED + "No" + RESET) + "] ");
+    console("info", std::string("Search engine recommended: [ ") + (flags.search_engine_recommanded == 1 ? GREEN + "Unidirectional (avg: < 3 edges per node)" + RESET : "Unidirectional (avg: < 3 edges per node)") 
+    + " / " + (flags.search_engine_recommanded == 2 ? GREEN + "Both can be used (avg: 3-4 edges per node) " + RESET : "Both can be used (avg: 3-4 edges per node) ") 
+    + " / " + (flags.search_engine_recommanded == 3 ? GREEN + "Bidirectional (avg: > 4 edges per node)" + RESET : "Bidirectional (avg: > 4 edges per node)") + " ]");
 
-    std::cout << "\n  ~ process\n";
+    std::cout << "\n  ~ process\n" << std::flush;
+
+    conf.search_engine = getOneOrTwo("\n  > what type of search engine do you want to use? ('1' for unidirectional - '2' for bidirectional): ");
 
     bool use_alt = getYesNo("\n  > do you want to use the ALT pre-processing method (1min ~ 10min)? (y/n): ");
     if (use_alt) {
         conf.use_alt = true;
         conf.nb_alt = getInteger("\n  > how many landmarks do you want to use? (e.g., 10): ");
-        std::cout << "\n";
+        std::cout << "\n" << std::flush;
         bool backup_alt = getYesNo("  > do you want to backup this pre-process for future use? (this will consume time/storage) (y/n): ");
         conf.save_alt = backup_alt;
     }
@@ -347,17 +390,17 @@ config getConfiguration(config conf)
     double weight = getPercentage("\n  > what maximum percentage above the shortest path duration are you willing to allow? (e.g. 10 for 10%) (min: 0 / max: 100): ");
     conf.weight = weight;
 
-    std::cout << "\n  ~ api\n";
+    std::cout << "\n  ~ api\n" << std::flush;
 
     bool personalized_weight = getYesNo("\n  > do you authorize the user to, optionally, set a personalized heuristic percentage when making query (y/n): ");
     conf.personalized_weight = personalized_weight;
 
-    std::cout << "\n  ~ other\n";
+    std::cout << "\n  ~ other\n" << std::flush;
 
     bool log = getYesNo("\n  > do you want to get debugging log (written inside a .txt) (y/n) ? : ");
     conf.log = log;
 
-    std::cout << "\n";
+    std::cout << "\n" << std::flush;
 
     console("success", "configuration completed! saving it.");
     createConfFile(conf);

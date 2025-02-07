@@ -1,6 +1,8 @@
 ﻿// ✅ file verified.
+/* comment in the code have been added with ChatGPT. */
 #include "incl.h"
 #include "decl.h"
+
 
 // ✅ function + comment verified.
 /**
@@ -36,67 +38,12 @@ void printMenu(std::string step)
 		<< GREEN << "   ____) | | | | | | (_| \\__ \\ | | | |  | | | |  __/ |  | (_| | |_| | | |\n"
 		"  |_____/|_| |_| |_|\\__,_|___/_| |_|_|  |_| |_|\\___|_|   \\__,_|\\__|_| |_|\n\n"
 		<< RESET << "  ~ API to perform " << YELLOW << "ultra-fast" << RESET << " query inside bidirectional " << BLUE << "large" << RESET << "-" << GREEN << "scale" << RESET << " graph."
-		;
+		<< std::flush;
 
-	std::cout << "\n\n  --- " << step << " ---\n\n";
+	std::cout << "\n\n  --- " << step << " ---\n\n" << std::flush;
 }
 
-// ✅ function + comment verified.
-/**
- * @brief Entry point of the API Gateway application.
- *
- * @detailed
- * This function initializes and launches the graph processing API, executing a sequence
- * of steps to configure, preprocess, and serve shortest-path computations.
- *
- * Workflow:
- *
- * Step 1: Configuration Setup
- * - Displays the configuration menu (`printMenu("configuration (1/3)")`).
- * - Calls `getConfiguration()` to:
- *   - Retrieve user-defined parameters (graph path, heuristics, logging).
- * - If logging is enabled, initializes the logger (`initLogger()`) and logs settings.
- * - Displays a warning about memory usage.
- * - Waits for 3 seconds (`sleep(3)`) before proceeding.
- *
- * Step 2: Graph Preprocessing
- * - Displays the preprocessing menu (`printMenu("pre-processing (2/3)")`).
- * - Reads graph data from a CSV file (`readCSV()`).
- *   - Ensures the file format is valid.
- *   - Extracts edge data into memory.
- * - Integrity Check (`checkIntegrity()`):
- *   - Ensures the graph contains no duplicate edges.
- *   - Logs an error and terminates if the check fails.
- * - Connectivity Check (`checkConnectivity()`):
- *   - Ensures the graph is fully connected.
- *   - Logs an error and terminates if the check fails.
- *
- * Step 3: Graph Loading
- * - Calls `loadGraphData(conf, edges)`, which:
- *   - Builds the adjacency list.
- *   - Prepares ALT heuristic preprocessing (if enabled).
- * - Clears unused memory (`edges.clear()`).
- * - Waits for 3 seconds before proceeding.
- *
- * Step 4: Performance Metrics
- * - Displays the "Ready" menu (`printMenu("ready (3/3)")`).
- * - Calls `storePerf(gdata)` to measure memory usage and log system statistics.
- *
- * Step 5: API Server Launch
- * - Calls `launchApiGateway(gdata, conf)`:
- *   - Starts an HTTP API server.
- *   - Handles shortest-path requests in JSON/XML format.
- *
- * Step 6: Cleanup
- * - Calls `closeLogger()` to properly close the log file before exiting.
- *
- * Error Handling:
- * - If CSV parsing fails, the program logs an error and terminates.
- * - If integrity or connectivity checks fail, the program exits with an error message.
- * - If the API server crashes, logs the failure before exiting.
- *
- * @return `0` on successful execution, non-zero on failure.
- */
+// ✅ function verified.
 int main() 
 {	
 	std::ios::sync_with_stdio(false);
@@ -160,6 +107,10 @@ int main()
     graph gdata;
 
     gdata = loadGraphData(conf, edges);
+    
+    search_buffers buffers;
+    initializeSearchBuffers(gdata, buffers);
+    console("success", "search buffers succefully initialized.");
 
 #if defined(_WIN32) || defined(_WIN64)
     Sleep(3000);
@@ -171,7 +122,13 @@ int main()
 
     storePerf(gdata);
 
-    launchApiGateway(gdata, conf);
+    std::thread apiThread(launchApiGateway, std::ref(gdata), std::ref(buffers), std::ref(conf));
+    apiThread.detach();
+
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::cin.get();
 
     closeLogger();
+
+    return 0;
 }

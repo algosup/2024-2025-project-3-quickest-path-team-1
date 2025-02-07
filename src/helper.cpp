@@ -91,7 +91,7 @@ bool getYesNo(const std::string& prompt)
 {
     std::string response;
     while (true) {
-        std::cout << prompt;
+        std::cout << prompt << std::flush;
         std::cin >> response;
         if (response == "y" || response == "n") {
             return response == "y";
@@ -114,7 +114,7 @@ int getInteger(const std::string& prompt)
     std::string response;
     int value;
     while (true) {
-        std::cout << prompt;
+        std::cout << prompt << std::flush;
         std::cin >> response;
         try {
             size_t pos;
@@ -154,6 +154,27 @@ double getPercentage(const std::string& prompt)
     return 1.0 + (static_cast<double>(percent) / 100.0);
 }
 
+// ✅ function + comment verified.
+/**
+ * @brief Prompts the user for a 1/2 response.
+ *
+ * Continuously asks until the user enters '1' or '2'.
+ *
+ * @param prompt The message displayed to the user.
+ * @return '1' or '2'.
+ */
+int getOneOrTwo(const std::string& prompt)
+{
+    int one_or_two;
+    while (true) {
+        one_or_two = getInteger(prompt);
+        if (one_or_two == 1 || one_or_two == 2) {
+            break;
+        }
+        console("error", "invalid input. please enter 1 or 2.");
+    }
+    return one_or_two;
+}
 
 
 // ✅ function + comment verified.
@@ -181,41 +202,90 @@ double getPercentage(const std::string& prompt)
  * Edge Cases:
  * - If the source node is invalid, the function returns a distance array filled with `-1`.
  *
- * @param adjacency Adjacency list representation of the graph.
+ * @param gdata Graph representation containing adjacency information.
  * @param source The starting node for the shortest path computation.
  * @param node_count The total number of nodes in the graph.
- * @param node_to_index Mapping of node IDs to array indices.
  * @return A vector containing the shortest path distances from the source to all nodes.
  *
  * @complexity
  * - Time Complexity: O((V + E) log V) (Dijkstra's algorithm with a binary heap).
  * - Space Complexity: O(V) (Stores shortest path distances).
  */
-std::vector<int> dijkstraSingleSource(const std::vector<std::vector<std::pair<int, int>>>& adjacency, int source, size_t node_count, const std::unordered_map<int, size_t>& node_to_index)
+
+std::vector<int> dijkstraSingleSource(const graph& gdata, int source, size_t node_count)
 {
     std::vector<int> distances(node_count, -1);
 
-    auto it = node_to_index.find(source);
-    if (it == node_to_index.end()) return distances;
+    auto it = gdata.node_to_index.find(source);
+    if (it == gdata.node_to_index.end())
+        return distances;
 
-    distances[it->second] = 0;
-    std::priority_queue<dijkstra_state, std::vector<dijkstra_state>, std::greater<dijkstra_state>> pq;
-    pq.push({ static_cast<int>(it->second), 0 });
+    size_t source_idx = it->second;
+    distances[source_idx] = 0;
+
+    using state = std::pair<int, size_t>;
+    std::priority_queue<state, std::vector<state>, std::greater<state>> pq;
+    pq.push({0, source_idx});
 
     while (!pq.empty()) {
-        auto [cur_idx, cur_dist] = pq.top();
+        auto [cur_dist, cur_idx] = pq.top();
         pq.pop();
 
-        if (distances[cur_idx] != cur_dist) continue;
+        if (distances[cur_idx] != cur_dist)
+            continue;
 
-        for (auto& [nbr_idx, cost] : adjacency[cur_idx]) {
-            int nd = cur_dist + cost;
+        size_t start_edge = gdata.offsets[cur_idx];
+        size_t end_edge = (cur_idx + 1 < gdata.offsets.size()) ? gdata.offsets[cur_idx + 1] : gdata.edges.size();
+
+        for (size_t i = start_edge; i < end_edge; ++i) {
+            const auto& edge = gdata.edges[i];
+            size_t nbr_idx = edge.target;
+            int nd = cur_dist + edge.weight;
             if (distances[nbr_idx] < 0 || nd < distances[nbr_idx]) {
                 distances[nbr_idx] = nd;
-                pq.push({ nbr_idx, nd });
+                pq.push({nd, nbr_idx});
             }
         }
     }
 
     return distances;
+}
+
+// ✅ function + comment verified.
+/**
+ * @brief Initializes the search buffers for the graph.
+ *
+ * Allocates and prepares the necessary buffers (distance vectors, 
+ * parent pointers, and heuristic caches) based on the graph's size. It also 
+ * initializes version tracking for each buffer to enable efficient reuse across 
+ * multiple searches without requiring full reallocation.
+ * 
+ * The versioning system ensures that buffer values remain valid for the 
+ * duration of a search while allowing automatic reset when a new search begins. 
+ * This approach improves performance by reducing redundant operations.
+ *
+ * This function should be called once during initialization or whenever the 
+ * graph structure changes, ensuring that the buffers are properly sized 
+ * and ready for subsequent searches.
+ *
+ * @param gdata The graph data structure.
+ * @param buffers The search_buffers structure to initialize.
+ */
+void initializeSearchBuffers(const graph& gdata, search_buffers& buffers) {
+    size_t n = gdata.node_to_index.size();
+    buffers.dist_from_start.resize(n);
+    buffers.dist_from_end.resize(n);
+    buffers.parent_forward.resize(n);
+    buffers.parent_backward.resize(n);
+    buffers.h_forward.resize(n);
+    buffers.h_backward.resize(n);
+    
+    buffers.version_dist_from_start.assign(n, 0);
+    buffers.version_dist_from_end.assign(n, 0);
+    buffers.version_parent_forward.assign(n, 0);
+    buffers.version_parent_backward.assign(n, 0);
+    buffers.version_h_forward.assign(n, 0);
+    buffers.version_h_backward.assign(n, 0);
+    
+    buffers.current_search_id = 1; 
 }

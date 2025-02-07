@@ -14,7 +14,7 @@ inline std::string GREEN = "\033[1;32m";
 inline std::string RESET = "\033[0m";
 
 /*------------------------------------------------------------------------------------
-							weight definition.
+							structure definition.
 ------------------------------------------------------------------------------------*/
 
 /**
@@ -38,28 +38,33 @@ struct config
 
     bool log = false;
 
+    int search_engine = 1;
+
     config() = default;
 };
 
 /**
- * @brief Represents a graph structure with adjacency lists and landmarks.
+ * @brief Represents a graph structure with edges lists and landmarks.
  *
- * Stores graph topology, adjacency representation, and precomputed landmark distances.
+ * Stores graph topology, edges representation, and precomputed landmark distances.
  */
 struct graph
 {
     std::unordered_map<int, size_t> node_to_index;
     std::vector<int> index_to_node;
 
-    std::vector<std::tuple<int, int, int>> edges;
-
     size_t line_count = 0;
     size_t index_count = 0;
 
-    std::vector<std::vector<std::pair<int, int>>> adjacency;
+    struct edge_repr {
+        int target;
+        int weight;
+    };
 
-    std::vector<std::vector<int>> dist_landmark_to;
-    std::vector<std::vector<int>> dist_landmark_from;
+    std::vector<size_t> offsets;
+    std::vector<edge_repr> edges;
+
+    std::vector<std::vector<int>> dist_landmark;
 };
 
 /**
@@ -71,6 +76,7 @@ struct graph
 struct optimization_flags
 {
     bool alt_optimized = false;
+    int search_engine_recommanded = 1;
 };
 
 /**
@@ -127,6 +133,35 @@ struct edge
     int t;
 };
 
+/**
+ * @brief Holds reusable buffers for the shortest path search.
+ *
+ * This structure stores preallocated buffers for distance tracking, parent 
+ * pointers, and heuristic values to optimize repeated searches. Instead of 
+ * reinitializing buffers for each search, a versioning system is used to track 
+ * valid entries, enabling efficient reuse without unnecessary memory operations.
+ * 
+ * Each buffer has an associated version vector that ensures only relevant values 
+ * are accessed or updated in a given search. The `current_search_id` increments 
+ * with each new search, allowing old values to be automatically ignored.
+ */
+struct search_buffers {
+    std::vector<int> dist_from_start;
+    std::vector<int> dist_from_end;
+    std::vector<std::pair<int, int>> parent_forward;
+    std::vector<std::pair<int, int>> parent_backward;
+    std::vector<int> h_forward;
+    std::vector<int> h_backward;
+    
+    int current_search_id = 1;
+
+    std::vector<int> version_dist_from_start;
+    std::vector<int> version_dist_from_end;
+    std::vector<int> version_parent_forward;
+    std::vector<int> version_parent_backward;
+    std::vector<int> version_h_forward;
+    std::vector<int> version_h_backward;
+};
 
 /*------------------------------------------------------------------------------------
 							function declaration.
@@ -142,6 +177,11 @@ void clear();
 int getInteger(const std::string& prompt);
 double getPercentage(const std::string& prompt);
 bool getYesNo(const std::string& prompt);
+int getOneOrTwo(const std::string& prompt);
+
+void initializeSearchBuffers(const graph& gdata, search_buffers& buffers);
+
+std::vector<int> dijkstraSingleSource(const graph& gdata, int source, size_t node_count);
 
 //  log.cpp (Logging)
 bool initLogger(const std::string& log_file_path);
@@ -178,11 +218,10 @@ bool loadAltData(graph& gdata, config& conf);
 void storePerf(const graph& g);
 
 //  search.cpp (Pathfinding)
-path_result findShortestPath(const graph& gdata, const config& conf, int start_node, int end_node, double weight);
-
-std::vector<int> dijkstraSingleSource(const std::vector<std::vector<std::pair<int, int>>>& adjacency, int source, size_t node_count, const std::unordered_map<int, size_t>& node_to_index);
+path_result findShortestPathBidirectional(const graph& gdata, search_buffers& buffers, const config& conf, int start_node, int end_node, double weight);
+path_result findShortestPathUnidirectional(const graph& gdata, search_buffers& buffers, const config& conf, int start_node, int end_node, double weight);
 
 //  api.cpp (API management)
-int launchApiGateway(const graph& gdata, const config& conf);
+int launchApiGateway(const graph& gdata, search_buffers& buffers, const config& conf);
 
-#endif DECL_H
+#endif //DECL_H
