@@ -163,12 +163,12 @@ double getPercentage(const std::string& prompt)
  * @param prompt The message displayed to the user.
  * @return '1' or '2'.
  */
-double getOneOrTwo(const std::string& prompt)
+int getOneOrTwo(const std::string& prompt)
 {
     int one_or_two;
     while (true) {
         one_or_two = getInteger(prompt);
-        if (one_or_two != 1 || one_or_two != 2) {
+        if (one_or_two == 1 || one_or_two == 2) {
             break;
         }
         console("error", "invalid input. please enter 1 or 2.");

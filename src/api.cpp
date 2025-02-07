@@ -224,7 +224,12 @@ int launchApiGateway(const graph& gdata, search_buffers& buffers, const config& 
                     try {
                         size_t amp_pos = query_part.find("&", st_pos);
                         std::string val = query_part.substr(st_pos + 6, amp_pos - (st_pos + 6));
-                        start_val = std::stoi(val);
+                        size_t consumed = 0;
+                        int parsed = std::stoi(val, &consumed);
+                        if (consumed != val.size()) {
+                            throw std::invalid_argument("invalid integer parameter");
+                        }
+                        start_val = parsed;
                         start_ok = true;
                     }
                     catch (...) {
@@ -238,7 +243,12 @@ int launchApiGateway(const graph& gdata, search_buffers& buffers, const config& 
                     try {
                         size_t amp_pos = query_part.find("&", en_pos);
                         std::string val = query_part.substr(en_pos + 4, amp_pos - (en_pos + 4));
-                        end_val = std::stoi(val);
+                        size_t consumed = 0;
+                        int parsed = std::stoi(val, &consumed);
+                        if (consumed != val.size()) {
+                            throw std::invalid_argument("invalid integer parameter");
+                        }
+                        end_val = parsed;
                         end_ok = true;
                     }
                     catch (...) {

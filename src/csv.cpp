@@ -176,6 +176,12 @@ bool readCSV(const std::string& map_path, std::vector<edge>& edges)
     logger("total lines read: " + std::to_string(line_num));
     logger("total valid edges loaded: " + std::to_string(valid_lines));
 
+    if (edges.size() == 0) {
+        logger("error: no valid edges loaded. graph is empty.");
+        console("error", "no valid edges loaded. graph is empty.");
+        return false;
+    }
+
     return true;
 }
 

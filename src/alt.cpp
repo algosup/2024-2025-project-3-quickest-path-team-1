@@ -18,7 +18,7 @@
  * Steps of the Algorithm:
  * 1. If `save_alt` is enabled, attempt to load precomputed landmark data from storage.
  * 2. Initialize storage structures for distance calculations.
- * 3. Select the first landmark as an arbitrary node (first node in the dataset).
+ * 3. Select the first landmark as the node with the smallest ID (e.g., ID 1 if available).
  * 4. Compute shortest-path distances using Dijkstra’s algorithm:
  *    - `dist_landmark[i][j]` stores the shortest path distance from landmark `j` to node `i`.
  * 5. Iteratively select `nb_alt` landmarks using the farthest-node heuristic:
@@ -72,7 +72,13 @@ void preprocessAlt(graph& gdata, config& conf)
 
     gdata.dist_landmark.resize(n, std::vector<int>(conf.nb_alt, -1));
 
-    int fl = gdata.node_to_index.begin()->first;
+    int fl = std::numeric_limits<int>::max();
+    for (const auto& kv : gdata.node_to_index)
+    {
+        if (kv.first < fl)
+            fl = kv.first;
+    }
+    
     landmarks.push_back(fl);
     console("info", "processing landmark " + std::to_string(fl) + " (1/" + std::to_string(conf.nb_alt) + ")");
     logger("processing landmark " + std::to_string(fl) + " (1/" + std::to_string(conf.nb_alt) + ")");
@@ -87,6 +93,8 @@ void preprocessAlt(graph& gdata, config& conf)
                 md[idx] = d[idx];
         }
     }
+    
+    md[gdata.node_to_index[fl]] = -1;
 
     for (int i = 1; i < conf.nb_alt; ++i) {
         int nl = -1;

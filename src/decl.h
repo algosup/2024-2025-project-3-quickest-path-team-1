@@ -177,7 +177,7 @@ void clear();
 int getInteger(const std::string& prompt);
 double getPercentage(const std::string& prompt);
 bool getYesNo(const std::string& prompt);
-double getOneOrTwo(const std::string& prompt);
+int getOneOrTwo(const std::string& prompt);
 
 void initializeSearchBuffers(const graph& gdata, search_buffers& buffers);
 
