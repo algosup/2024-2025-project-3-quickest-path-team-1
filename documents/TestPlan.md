@@ -5,7 +5,7 @@
 
 | Created by | Creation date | Last modified |
 |:-------------:|:---------------:|:--------:|
-| Megnan Lucas | 01/06/2025 | 02/06/2025 |
+| Megnan Lucas | 01/06/2025 | 02/07/2025 |
 
 <br>
 </p>
@@ -272,6 +272,8 @@ Each test case will have a series of actions and expected results.
 As each action is performed, the results are evaluated.
 If the observed results are equal to the expected results, a checkmark ✅ is placed in the “Pass/Fail” column.
 If the observed results are not equal to the expected results, a checkmark ❌ is placed in the “Pass/Fail” column.
+
+We've used various CSV files for the test cases, which are available in the test-csv-file folder. When a file is used for a test case, you can see which file is being used in the category description.
 
 ### 2. Order of Testing
 
