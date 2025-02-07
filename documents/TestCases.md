@@ -46,13 +46,13 @@
 
 # I. Introduction
 
-| Category ID | Category Name | Description | 
-|------------|----------------|-------------|
-| 1 | API tests                         |  |
-| 2 | Integrity & Connectivity tests    |  |
-| 3 | Process tests                     |  |
-| 4 | CSV files tests                   |  |
-| 5 | Output                            |  |
+| Category ID | Category Name |
+|------------|----------------|
+| 1 | API tests                         | 
+| 2 | Integrity & Connectivity tests    |  
+| 3 | Process tests                     |  
+| 4 | CSV files tests                   |  
+| 5 | Output                            |  
 
 # II. Prototype version
 
