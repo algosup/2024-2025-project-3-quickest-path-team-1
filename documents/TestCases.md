@@ -15,7 +15,7 @@
 | Role | Name | Signature | Date |
 |------|------|-----------|------|
 | Project Manager      | [Alexis SANTOS](https://github.com/Mamoru-fr)                 |  |  |
-| Technical Lead       | [Grégory PAGNOUX](https://github.com/Gregory-Pagnoux)         |  |  |
+| Technical Lead       | [Grégory PAGNOUX](https://github.com/Gregory-Pagnoux)         | ✅ | 02/07/2025 |
 | Quality Assurance    | [Lucas MEGNAN](https://github.com/LucasMegnan)                | ✅ | 02/07/2025 |
 
 ---
@@ -41,12 +41,11 @@
   - [D. CSV files tests](#d-csv-files-tests-1)
   - [E. Output](#e-output-1)
 
-
 </details>
 
 # I. Introduction
 
-| Category ID | Category Name | Description | 
+| Category ID | Category Name | Description |
 |------------|----------------|-------------|
 | 1 | API tests                         |  |
 | 2 | Integrity & Connectivity tests    |  |
@@ -73,7 +72,6 @@
 | **1.11** | Input a Int in the Localhost. | Verify if the program work correctly. | The program work correctly. | The program work correctly. | Tested on Mac and Windows. | High | ✅ |
 | **1.12** | Put more landmarks than nodes. | When we set up the program on the terminal, put 45 landmarks because we have 39 nodes. | Skipping X landmarks, maximum value has been reach + message. | Make the pre-processor successfully and put landmarks in addition on the first landmark. | Tested on Mac and Windows. | High | ❌ |
 
-
 ## B. Integrity & Connectivity tests
 
 | Test Case ID | Test Case Name | Test Case Description | Expected Result | Actual Result | Tested | Priority | Pass/Fail |
@@ -96,7 +94,7 @@
 | **4.01** | Compilation and running. | Verify the program laucnh well. | The program run and initialize. | The program run and initialize. | Tested on Mac and Windows. | High | ✅ |
 | **4.02** | Blanck space in the file .csv. | Space between the comma and a value in the test-blank-space.csv file. | return the file with the path found. | Return the file with the path found. | Tested on Mac and Windows. | Low | ✅ |
 | **4.03** | Input string distance in the file .csv. | Have a string distance value in the test-string-distance.csv file. | Send an ERROR message. | Send error 404 NO PATH FOUND. | Tested on Mac and Windows. | Low | ❌ |
-| **4.04** | Input float distance. | Have a float distance value in the test-float-distance.csv file. | Send an ERROR message. | It doesn’t take attention about the float and just take the int of the float (ex : 5.98, the program take 5). | Tested on Mac and Windows. | Medium | ❌ | 
+| **4.04** | Input float distance. | Have a float distance value in the test-float-distance.csv file. | Send an ERROR message. | It doesn’t take attention about the float and just take the int of the float (ex : 5.98, the program take 5). | Tested on Mac and Windows. | Medium | ❌ |
 | **4.05** | Signed number distance. | Have a signed distance value in the test-signed-number-distance.csv file. | Send an ERROR message. | The pre-processing block without send ERROR message. | Tested on Mac and Windows. | Medium | ❌ |
 | **4.06** | Input string node. | Have a string node value in the test-string-node.csv file. | Send an ERROR message. | **Mac**:  Message “terminating due to uncaught exception of type std::invalid_argument: stoi: no conversion”. **Windows**: Nothing, the program shutdown during the integrity check. | Tested on Mac and Windows. | Medium | ❌ |
 | **4.07** | Input float node. | Have a float node value in the test-float-node.csv file. | Send an ERROR message. | It doesn’t take a float and put it like an int. It return the path found. | Tested on Mac and Windows. | Low | ❌ |
