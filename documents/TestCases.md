@@ -15,7 +15,7 @@
 | Role | Name | Signature | Date |
 |------|------|-----------|------|
 | Project Manager      | [Alexis SANTOS](https://github.com/Mamoru-fr)                 |  |  |
-| Technical Lead       | [Grégory PAGNOUX](https://github.com/Gregory-Pagnoux)         |  |  |
+| Technical Lead       | [Grégory PAGNOUX](https://github.com/Gregory-Pagnoux)         | ✅ | 02/07/2025 |
 | Quality Assurance    | [Lucas MEGNAN](https://github.com/LucasMegnan)                |  |  |
 
 ---
@@ -46,7 +46,7 @@
 
 # I. Introduction
 
-| Category ID | Category Name | Description | 
+| Category ID | Category Name | Description |
 |------------|----------------|-------------|
 | 1 | API tests                         |  |
 | 2 | Integrity & Connectivity tests    |  |

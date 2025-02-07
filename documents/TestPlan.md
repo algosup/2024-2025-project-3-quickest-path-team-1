@@ -15,7 +15,7 @@
 | Role | Name | Signature | Date |
 |------|------|-----------|------|
 | Project Manager      | [Alexis SANTOS](https://github.com/Mamoru-fr)         |  |  |
-| Technical Lead       | [Grégory PAGNOUX](https://github.com/Gregory-Pagnoux) |  |  |
+| Technical Lead       | [Grégory PAGNOUX](https://github.com/Gregory-Pagnoux) | ✅ | 02/07/2025 |
 | Quality Assurance    | [Lucas MEGNAN](https://github.com/LucasMegnan)        |  |  |
 
 <details>
@@ -70,7 +70,7 @@ The system integration test of the quickest path must validate the following req
 - **Data Integrity**:
   - Verify that the file forms a Directed Acyclic Graph (DAG) and is free of loops.
   - Ensure that the graph is fully connected, meaning it is possible to navigate between any two landmarks.
-  - A utility to verify the integrity of the provided CSV file. 
+  - A utility to verify the integrity of the provided CSV file.
 - **Versatility**:
   - Demonstrating the ability to handle multiple formats (XML and JSON).
 
@@ -85,7 +85,7 @@ The scope is to **develop and validate a high-performance algorithm in C++** tha
 
 ## C. Product Overview
 
-Our software enginner aim to make **travel easier** with faster pathing using the language C++ and the software Visual Studio. 
+Our software enginner aim to make **travel easier** with faster pathing using the language C++ and the software Visual Studio.
 The users can use this to gain time and travel more effectively and easily across the United States.
 
 ## D. Definitions / Acronyms
@@ -103,7 +103,6 @@ The users can use this to gain time and travel more effectively and easily acros
 | **JavaScript Object Notation (JSON)** | Open standard file format and data interchange format that uses human-readable text to store and transmit data objects consisting of name–value pairs and arrays (or other serializable values). It is a commonly used data format with diverse uses in electronic data interchange, including that of web applications with servers. | [Wikipedia JSON](https://en.wikipedia.org/wiki/JSON) |
 | **C++**      | a high-level, general-purpose programming language created by Danish computer scientist Bjarne Stroustrup. First released in 1985 as an extension of the C programming language, it has since expanded significantly over time; as of 1997, C++ has object-oriented, generic, and functional features, in addition to facilities for low-level memory manipulation for systems like microcomputers or to make operating systems like Linux or Windows. It is usually implemented as a compiled language, and many vendors provide C++ compilers, including the Free Software Foundation, LLVM, Microsoft, Intel, Embarcadero, Oracle, and IBM. | [Wikipedia C++](https://en.wikipedia.org/wiki/C%2B%2B) |
 | **Insomnia** | Insomnia is a powerful REST client that allows you to send HTTP requests and view responses from REST APIs. It is designed to be easy to use and helps developers debug and test their APIs more effectively. With Insomnia, you can create and save requests, organize them into workspaces, and share them with others. | [ProAbano Insomnia](https://docs.proabono.com/documentation/api-overview/what-is-insomnia-the-api-rest-client/) |
-
 
 ### 2. Acronyms
 
@@ -134,7 +133,7 @@ The following people will be on the system integration test team:
 
 ## B. Team Reviews
 
-The following reviews will be conducted by the QA, and for the developement part the TL and SE will support the QA. 
+The following reviews will be conducted by the QA, and for the developement part the TL and SE will support the QA.
 Refer to the work schedule for the planned review dates.
 
 - Settlement review.
@@ -172,14 +171,16 @@ Our team members have different computer OS, which are Windows and MacOs, that g
 The tests will be run on the following environments:
 
 (1) Apple MacBook Air M3 2024
+
 - Apple M3
 - 16 GB
 - macOS Sequoia 15.1.1
 
-(1) Lenovo ThinkBook 14	
+(1) Lenovo ThinkBook 14
+
 - Intel Core i7-1065G7
-- 16 GB	
-- Windows 11 Pro 21H2	
+- 16 GB
+- Windows 11 Pro 21H2
 
 #### b. Network
 
@@ -268,7 +269,7 @@ Template of **PR**:
 ### 1. Test Cases
 
 For each requirement, system feature, or algorithm to be tested, the tester will execute a set of pre-defined test cases.
-Each test case will have a series of actions and expected results. 
+Each test case will have a series of actions and expected results.
 As each action is performed, the results are evaluated.
 If the observed results are equal to the expected results, a checkmark ✅ is placed in the “Pass/Fail” column.
 If the observed results are not equal to the expected results, a checkmark ❌ is placed in the “Pass/Fail” column.
@@ -305,6 +306,7 @@ order of testing will be followed:
 To pass the system integration test for the shortest path calculation software, the following criteria must be met:
 
 **Core Functionality**:
+
 - The system can calculate the quickest path between any two landmarks in a bidirectional positivly weighted graph within the performance goals.
 - The system exposes its functionality via a REST API with:
   - Correct handling of input landmark IDs.
@@ -312,26 +314,32 @@ To pass the system integration test for the shortest path calculation software, 
   - The system supports bidirectional connections between landmarks as per the provided dataset.
 
 **Data Integrity**:
+
 - The system ensures graph validation, confirming that the dataset (.csv) forms a Directed Acyclic Graph (DAG) without loops.
 - After transforming the graph in an Undirected Cyclic Graph (UCG) perform a connectivity check to guarantee the graph allows navigation between any two landmarks.
 
 **Performance**:
+
 - The API must respond to all queries within one second on a typical laptop.
 - The system adheres to the 10% approximation rule, ensuring that the travel time does not exceed 10% of the shortest path duration.
 
 **Ease of Use**:
+
 - The REST API documentation is complete and user-friendly, enabling developers to integrate with minimal effort.
 - Error messages are informative and assist in troubleshooting input issues.
 
 **Security and Reliability**:
+
 - Adequate measures prevent unauthorized access to the system.
 - The system is resilient to failures, supporting recovery through documented procedures.
 
 **Integration and Extensibility**:
+
 - The system can integrate seamlessly with external tools or systems that utilize the REST API.
 - The design allows future enhancements without extensive rework.
 
 **Testing**:
+
 - All test cases in the provided suite for correctness, performance, and compliance with the 10% approximation rule are passed.
 - Validation tools confirm the integrity of the dataset without errors.
 
@@ -347,13 +355,13 @@ When all test cases have been executed, the test will be suspended and the resul
 
 ### 2. Abnormal Criteria
 
-As a general guideline, if the defect backlog continually increases over a ten days period, testing should be suspended. 
+As a general guideline, if the defect backlog continually increases over a ten days period, testing should be suspended.
 This will allow the developers time to fix existing defects without the pressure and confusion of new defects being added to the backlog.
 
-When a change is being migrated to the test environment, the system integration test team leader must be notified in advance to schedule a time for the move. 
+When a change is being migrated to the test environment, the system integration test team leader must be notified in advance to schedule a time for the move.
 After the move has been completed, a retest of previously tested functions should be performed.
 
-If a critical processing unit is found to have severe defects (as defined by the defect reporting process), testing should be suspended until the defects have been fixed. 
+If a critical processing unit is found to have severe defects (as defined by the defect reporting process), testing should be suspended until the defects have been fixed.
 When the fixed unit is moved back into the test environment, any previously performed tests that affect the unit should be performed again to ensure new defects were not created as a result of the fix.
 
 ## D. Defect Management
