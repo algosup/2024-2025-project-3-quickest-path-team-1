@@ -1,0 +1,42 @@
+name: Document Error Report
+description: Fill a document error report
+title: "[Doc Error]: "
+labels: ["documentation"]
+body:
+  - type: textarea
+    id: doc-name
+    attributes:
+      label: Which document is concerned?
+      description: In which document was the error found?
+      placeholder: Give document name Here!
+    validations:
+      required: true
+  - type: textarea
+    id: error-descr
+    attributes:
+      label: What is the error?
+      description: Describe the nature of the error, the line it appears in, and what you think would be better?
+      placeholder: Explain Here!
+    validations:
+      required: true
+  - type: textarea
+    id: any-solution
+    attributes:
+      label: Do you have a solution?
+      description: If you have a solution, please describe it here.
+      placeholder: Explain Here!
+    validations:
+      required: false
+  - type: dropdown
+    id: importance
+    attributes:
+      label: priority
+      description: Which priority is the error?
+      options:
+        - Optional
+        - Can wait
+        - Should be done quickly
+        - Urgent
+      default: 0
+    validations:
+      required: true
