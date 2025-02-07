@@ -16,7 +16,7 @@
 |------|------|-----------|------|
 | Project Manager      | [Alexis SANTOS](https://github.com/Mamoru-fr)                 |  |  |
 | Technical Lead       | [Grégory PAGNOUX](https://github.com/Gregory-Pagnoux)         |  |  |
-| Quality Assurance    | [Lucas MEGNAN](https://github.com/LucasMegnan)                |  |  |
+| Quality Assurance    | [Lucas MEGNAN](https://github.com/LucasMegnan)                | ✅ | 02/07/2025 |
 
 ---
 
